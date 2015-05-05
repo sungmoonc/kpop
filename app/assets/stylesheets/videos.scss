@@ -4,9 +4,20 @@
 
 
 .video {
-  width: 400px;
+  width: 560px;
+  height: 315px;
+  display: block;
+  margin: 20px auto;
 }
 
-#ex1Slider .slider-selection {
-  background: #BABABA;
+.video_small {
+  width: 280px;
+  height: 157px;
+  display: inline-block;
+  margin: 20px;
 }
+
+.filter-slider {
+  width: 200px;
+}
+

@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('#ex1').slider formatter: (value) ->
-  'Current value: ' + value
+$ ->
+  $('#year').slider()
+  return
 
