@@ -5319,3 +5319,22 @@ Started GET "/assets/videos.self-cb0e3c736b2b7375ecb667559792cf1147d273a56ecca5b
 
 
 Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2015-05-05 00:06:15 -0700
+
+
+Started GET "/" for ::1 at 2015-05-05 14:36:04 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VideosController#index as HTML
+  Rendered videos/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 2047ms (Views: 2023.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-05-05 14:36:06 -0700
+Processing by VideosController#index as HTML
+  Rendered videos/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1083ms (Views: 1082.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-05-05 14:39:19 -0700
+Processing by VideosController#index as HTML
+  Rendered videos/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1214ms (Views: 1208.7ms | ActiveRecord: 0.0ms)
