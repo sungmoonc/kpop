@@ -1,0 +1,1 @@
+json.extract! @video, :id, :url, :artist, :korean_title, :english_title, :description, :artist_gender, :hotness, :cuteness, :english_lyrics, :subtitle, :official, :views, :up, :down, :created_at, :updated_at

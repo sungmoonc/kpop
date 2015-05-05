@@ -1,0 +1,73 @@
+<%= form_for(@video) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :artist %><br>
+    <%= f.text_field :artist %>
+  </div>
+  <div class="field">
+    <%= f.label :korean_title %><br>
+    <%= f.text_field :korean_title %>
+  </div>
+  <div class="field">
+    <%= f.label :english_title %><br>
+    <%= f.text_field :english_title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :artist_gender %><br>
+    <%= f.text_field :artist_gender %>
+  </div>
+  <div class="field">
+    <%= f.label :hotness %><br>
+    <%= f.number_field :hotness %>
+  </div>
+  <div class="field">
+    <%= f.label :cuteness %><br>
+    <%= f.number_field :cuteness %>
+  </div>
+  <div class="field">
+    <%= f.label :english_lyrics %><br>
+    <%= f.number_field :english_lyrics %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle %><br>
+    <%= f.number_field :subtitle %>
+  </div>
+  <div class="field">
+    <%= f.label :official %><br>
+    <%= f.number_field :official %>
+  </div>
+  <div class="field">
+    <%= f.label :views %><br>
+    <%= f.number_field :views %>
+  </div>
+  <div class="field">
+    <%= f.label :up %><br>
+    <%= f.number_field :up %>
+  </div>
+  <div class="field">
+    <%= f.label :down %><br>
+    <%= f.number_field :down %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

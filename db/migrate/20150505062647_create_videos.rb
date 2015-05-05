@@ -13,6 +13,8 @@ class CreateVideos < ActiveRecord::Migration
       t.integer :subtitle
       t.integer :official
       t.integer :views
+      t.integer :up
+      t.integer :down
 
       t.timestamps null: false
     end

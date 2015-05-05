@@ -4,8 +4,7 @@ one:
   url: MyString
   artist: MyString
   korean_title: MyString
-  string: MyString
-  English_title: MyString
+  english_title: MyString
   description: MyText
   artist_gender: MyString
   hotness: 1
@@ -14,13 +13,14 @@ one:
   subtitle: 1
   official: 1
   views: 1
+  up: 1
+  down: 1
 
 two:
   url: MyString
   artist: MyString
   korean_title: MyString
-  string: MyString
-  English_title: MyString
+  english_title: MyString
   description: MyText
   artist_gender: MyString
   hotness: 1
@@ -29,3 +29,5 @@ two:
   subtitle: 1
   official: 1
   views: 1
+  up: 1
+  down: 1
