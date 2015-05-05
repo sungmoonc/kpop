@@ -1,53 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div id="notice"></div>
 
-<h1>Listing Videos</h1>
+<div id="main-container" class="container-fluid">
+  <div class="row">
+    <div id="sidebar" class="col-xs-3">
+      <h1>filters</h1>
+      <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>    </div>
+    <div id="main-content" class="col-xs-9">
+      <h1>videos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Url</th>
-      <th>Artist</th>
-      <th>Korean title</th>
-      <th>English title</th>
-      <th>Description</th>
-      <th>Artist gender</th>
-      <th>Hotness</th>
-      <th>Cuteness</th>
-      <th>English lyrics</th>
-      <th>Subtitle</th>
-      <th>Official</th>
-      <th>Views</th>
-      <th>Up</th>
-      <th>Down</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <iframe src="https://www.youtube.com/embed/8TeeJvcBdLA?list=PLpVYKOdz7C8M3aQkPfq7SNUj_yX-1b11D" frameborder="0" allowfullscreen class="video"></iframe>
 
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.url %></td>
-        <td><%= video.artist %></td>
-        <td><%= video.korean_title %></td>
-        <td><%= video.english_title %></td>
-        <td><%= video.description %></td>
-        <td><%= video.artist_gender %></td>
-        <td><%= video.hotness %></td>
-        <td><%= video.cuteness %></td>
-        <td><%= video.english_lyrics %></td>
-        <td><%= video.subtitle %></td>
-        <td><%= video.official %></td>
-        <td><%= video.views %></td>
-        <td><%= video.up %></td>
-        <td><%= video.down %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Video', new_video_path %>
+    </div>
+  </div>
+</div>
