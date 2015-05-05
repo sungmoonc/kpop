@@ -11,8 +11,13 @@
     </div>
     <div id="main-content" class="col-xs-9">
       <h1>videos</h1>
+      <ul>
+      <% @videos. each do |video| %>
+        <li><a href="<%= video.thumbnail %>"><%= video.title_english %></li>
+      <% end %>
+    </ul>
 
-      <iframe src="https://www.youtube.com/embed/8TeeJvcBdLA" frameborder="0" allowfullscreen class="video"></iframe>
+ <!--      <iframe src="https://www.youtube.com/embed/8TeeJvcBdLA" frameborder="0" allowfullscreen class="video"></iframe>
 
       <iframe src="https://www.youtube.com/embed/EYKO1za5mX0" frameborder="0" allowfullscreen class="video_small"></iframe>
 
@@ -22,7 +27,7 @@
 
       <iframe src="https://www.youtube.com/embed/3fy4cqWMhyI" frameborder="0" allowfullscreen class="video_small"></iframe>
 
-      <iframe src="https://www.youtube.com/embed/3fy4cqWMhyI" frameborder="0" allowfullscreen class="video_small"></iframe>
+      <iframe src="https://www.youtube.com/embed/3fy4cqWMhyI" frameborder="0" allowfullscreen class="video_small"></iframe> -->
     </div>
   </div>
 </div>

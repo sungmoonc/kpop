@@ -2,19 +2,21 @@ class CreateVideos < ActiveRecord::Migration
   def change
     create_table :videos do |t|
       t.string :url
-      t.string :artist
-      t.string :korean_title
-      t.string :english_title
+      t.string :youtube_id
+      t.string :thumbnail
+      t.string :singer
+      t.string :title_korean
+      t.string :title_english
       t.text :description
-      t.string :artist_gender
       t.integer :hotness
-      t.integer :cuteness
-      t.integer :english_lyrics
-      t.integer :subtitle
+      t.integer :cheesiness
+      t.integer :english_percentage
+      t.integer :english_subtitle
       t.integer :official
-      t.integer :views
-      t.integer :up
-      t.integer :down
+      t.integer :youtube_views
+      t.date :upload_date
+      t.integer :upvotes
+      t.integer :downvotes
 
       t.timestamps null: false
     end
