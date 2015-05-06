@@ -3,31 +3,31 @@
 <div id="main-container" class="container-fluid">
   <div class="row">
     <div id="sidebar" class="col-xs-3">
-      <h1>filters</h1>
+      <h1>Filters</h1>
 
       year
       <div id="year" class="filter-slider"></div>
 
     </div>
     <div id="main-content" class="col-xs-9">
-      <h1>videos</h1>
-      <ul>
-      <% @videos. each do |video| %>
-        <li><a href="<%= video.thumbnail %>"><%= video.title_english %></li>
-      <% end %>
-    </ul>
+      <ul class="thumbnails">
+        <% @videos.each do |video| %>
+          <li>
+            <div class="thumbnail_image">
+              <%= image_tag video.thumbnail %>
+            </div>
+            <div class="thumbnail_title">
+              <%= video.title_korean %>
+            </div>
+            <% if video.title_english %>
+              <div class="thumbnail_title_eng">
+                <%= video.title_english %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
 
- <!--      <iframe src="https://www.youtube.com/embed/8TeeJvcBdLA" frameborder="0" allowfullscreen class="video"></iframe>
-
-      <iframe src="https://www.youtube.com/embed/EYKO1za5mX0" frameborder="0" allowfullscreen class="video_small"></iframe>
-
-      <iframe src="https://www.youtube.com/embed/3fy4cqWMhyI" frameborder="0" allowfullscreen class="video_small"></iframe>
-
-      <iframe src="https://www.youtube.com/embed/3fy4cqWMhyI" frameborder="0" allowfullscreen class="video_small"></iframe>
-
-      <iframe src="https://www.youtube.com/embed/3fy4cqWMhyI" frameborder="0" allowfullscreen class="video_small"></iframe>
-
-      <iframe src="https://www.youtube.com/embed/3fy4cqWMhyI" frameborder="0" allowfullscreen class="video_small"></iframe> -->
     </div>
   </div>
 </div>
