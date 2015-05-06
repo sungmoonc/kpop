@@ -1,0 +1,33 @@
+<div id="notice"></div>
+
+<div id="main-container" class="container-fluid">
+  <div class="row">
+    <div id="sidebar" class="col-xs-3">
+      <h1>Filters</h1>
+
+      year
+      <div id="year" class="filter-slider"></div>
+
+    </div>
+    <div id="main-content" class="col-xs-9">
+      <ul class="thumbnails">
+        <% @videos.each do |video| %>
+          <li>
+            <div class="thumbnail_image">
+              <%= image_tag video.thumbnail %>
+            </div>
+            <div class="thumbnail_title">
+              <%= video.title_korean %>
+            </div>
+            <% if video.title_english %>
+              <div class="thumbnail_title_eng">
+                <%= video.title_english %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>

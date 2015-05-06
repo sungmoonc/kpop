@@ -1,3 +1,53 @@
 // Place all the styles related to the Videos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+.video {
+  width: 560px;
+  height: 315px;
+  display: block;
+  margin: 20px auto;
+}
+
+.video_small {
+  width: 280px;
+  height: 157px;
+  display: inline-block;
+  margin: 20px;
+}
+
+.filter-slider {
+  width: 200px;
+}
+ul.thumbnails {
+  list-style-type: none;
+  li {
+    width: 440px;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: top;
+
+    .thumbnail_image {
+      width: 400px;
+      height: 220px;
+      overflow: hidden;
+    }
+    .thumbnail_title_eng {
+      color: #aaaaaa;
+    }
+    img {
+      position: relative;
+      width: 400px;
+      top: -40px
+    }
+
+  }
+
+}
+
+

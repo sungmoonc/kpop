@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @video.url %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @video.artist %>
+</p>
+
+<p>
+  <strong>Korean title:</strong>
+  <%= @video.korean_title %>
+</p>
+
+<p>
+  <strong>English title:</strong>
+  <%= @video.english_title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @video.description %>
+</p>
+
+<p>
+  <strong>Artist gender:</strong>
+  <%= @video.artist_gender %>
+</p>
+
+<p>
+  <strong>Hotness:</strong>
+  <%= @video.hotness %>
+</p>
+
+<p>
+  <strong>Cuteness:</strong>
+  <%= @video.cuteness %>
+</p>
+
+<p>
+  <strong>English lyrics:</strong>
+  <%= @video.english_lyrics %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @video.subtitle %>
+</p>
+
+<p>
+  <strong>Official:</strong>
+  <%= @video.official %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @video.views %>
+</p>
+
+<p>
+  <strong>Up:</strong>
+  <%= @video.up %>
+</p>
+
+<p>
+  <strong>Down:</strong>
+  <%= @video.down %>
+</p>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
