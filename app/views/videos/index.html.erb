@@ -9,13 +9,30 @@
       <div id="year" class="filter-slider"></div>
 
     </div>
+
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <div>
+              <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="main-content" class="col-xs-9">
       <ul class="thumbnails">
         <% @videos.each do |video| %>
-          <li>
+          <li class="each_thumbnail">
+            <a href="https://www.youtube.com/embed/<%= video.youtube_id %>" data-toggle="modal" data-target="#basicModal">
             <div class="thumbnail_image">
+
               <%= image_tag video.thumbnail %>
             </div>
+
             <div class="thumbnail_title">
               <%= video.title_korean %>
             </div>
@@ -23,7 +40,9 @@
               <div class="thumbnail_title_eng">
                 <%= video.title_english %>
               </div>
+            </a>
             <% end %>
+
           </li>
         <% end %>
       </ul>
@@ -31,3 +50,13 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+ $("a").on('click', function(){
+  var url= $(this).attr("href")
+    $("#iframe").attr('src', url);
+     })
+  });
+</script>
