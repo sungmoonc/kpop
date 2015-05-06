@@ -9,12 +9,53 @@
       <div id="year" class="filter-slider"></div>
 
     </div>
+
+    <!--<script>-->
+
+      <!-- -->
+////      FUNCTION TO GET AND AUTO PLAY YOUTUBE VIDEO FROM DATATAG
+//      function autoPlayYouTubeModal() {
+//        console.log("i am javascript")
+//        var trigger = $("body").find('[data-toggle="modal"]');
+//        trigger.click(function () {
+//          console.log("you clicked video")
+//          var theModal = $(this).data("target"),
+//              videoSRC = $(this).attr("data-theVideo"),
+//              videoSRCauto = videoSRC + "?autoplay=1";
+//          $(theModal + ' iframe').attr('src', videoSRCauto);
+//
+//          $(theModal + ' button.close').click(function () {
+//            $(theModal + ' iframe').attr('src', videoSRC);
+//          });
+//
+//          $('.modal').click(function () {
+//            $(theModal + ' iframe').attr('src', videoSRC);
+//          });
+//        });
+//      }
+    <!--</script>-->
+
+
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <div>
+              <iframe width=100% height="350" src="https://www.youtube.com/watch?v=ASO_zypdnsQ"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="main-content" class="col-xs-9">
       <ul class="thumbnails">
         <% @videos.each do |video| %>
           <li>
             <div class="thumbnail_image">
-              <%= image_tag video.thumbnail %>
+              <a href="<%= video.url %>" data-toggle="modal"
+                 data-target="#basicModal" data-theVideo="<%= video.url %>"><%= image_tag video.thumbnail %></a>
             </div>
             <div class="thumbnail_title">
               <%= video.title_korean %>
