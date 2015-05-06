@@ -6,4 +6,3 @@ $ ->
   $('#year').slider()
   return
 
-autoPlayYouTubeModal();
