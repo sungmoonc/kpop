@@ -27,7 +27,7 @@
       <ul class="thumbnails">
         <% @videos.each do |video| %>
           <li class="each_thumbnail">
-            <a href="https://www.youtube.com/embed/<%= video.youtube_id %>" data-toggle="modal" data-target="#basicModal">
+            <a href="https://www.youtube.com/embed/<%= video.youtube_id %>" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
             <div class="thumbnail_image">
 
               <%= image_tag video.thumbnail %>
@@ -54,9 +54,14 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
- $("a").on('click', function(){
+ $(".hook--showmodal").on('click', function(){
   var url= $(this).attr("href")
     $("#iframe").attr('src', url);
      })
-  });
+
+  $("#basicModal").on('hidden.bs.modal', function(){
+    $("#iframe").attr('src', '');
+  })
+});
 </script>
+
