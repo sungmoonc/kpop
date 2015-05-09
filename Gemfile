@@ -30,6 +30,9 @@ gem 'autoprefixer-rails'
 # jquery ui
 gem 'jquery-ui-rails'
 
+gem 'google-api-client'
+gem 'trollop'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
