@@ -8,7 +8,7 @@ namespace :youtube do
     # Set DEVELOPER_KEY to the "API key" value from the "Access" tab of the
     # Google Developers Console <https://cloud.google.com/console>
     # Please ensure that you have enabled the YouTube Data API for your project.
-    DEVELOPER_KEY = ""
+    DEVELOPER_KEY = "AIzaSyDMO3g93mpDZqmr9IBGmuKL1OwV7BHUYc0"
     YOUTUBE_API_SERVICE_NAME = "youtube"
     YOUTUBE_API_VERSION = "v3"
 
