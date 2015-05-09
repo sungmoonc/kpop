@@ -1,5 +1,4 @@
 require 'google/api_client'
-require 'trollop'
 
 namespace :youtube do
   desc "TODO"
@@ -11,8 +10,6 @@ namespace :youtube do
     DEVELOPER_KEY = ""
     YOUTUBE_API_SERVICE_NAME = "youtube"
     YOUTUBE_API_VERSION = "v3"
-
-    opts = Trollop::options
 
     client = Google::APIClient.new(:key => DEVELOPER_KEY,
                                    :authorization => nil,
@@ -31,21 +28,17 @@ namespace :youtube do
     user_response.data.items.each do |item|
       pid = item.contentDetails.relatedPlaylists.uploads
 
-      opts_vid = Trollop::options
-
-      opts_vid[:part] = "snippet"
-      opts_vid[:playlistId] = "pid"
-
       video_response = client.execute!(
         :api_method => youtube.playlist_items.list,
         :parameters => {
           :playlistId => pid,
-          :part => 'snippet'
+          :part => 'snippet,contentDetails'
         }
       )
 
-      p video_response
-
+      video_response.data.items.each do |video|
+        p video.snippet
+      end
     end
 
 
