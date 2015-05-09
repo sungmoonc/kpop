@@ -17,7 +17,7 @@ namespace :youtube do
                                    :application_version => '1.0.0')
     youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
 
-    user_response = client.execute!(
+    user_response = client.execute(
       :api_method => youtube.channels.list,
       :parameters => {
         :part => 'contentDetails',
@@ -28,16 +28,20 @@ namespace :youtube do
     user_response.data.items.each do |item|
       pid = item.contentDetails.relatedPlaylists.uploads
 
-      video_response = client.execute!(
+      video_response = client.execute(
         :api_method => youtube.playlist_items.list,
         :parameters => {
           :playlistId => pid,
-          :part => 'snippet,contentDetails'
+          :part => 'snippet',
+          :maxResults => 50
         }
       )
 
       video_response.data.items.each do |video|
         p video.snippet
+
+        new_video = Video.new
+        new_video.youtube_id= video.snippet.resourceId.videoId
       end
     end
 
