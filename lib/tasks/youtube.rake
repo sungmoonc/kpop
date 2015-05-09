@@ -12,27 +12,40 @@ namespace :youtube do
     YOUTUBE_API_SERVICE_NAME = "youtube"
     YOUTUBE_API_VERSION = "v3"
 
-    opts = Trollop::options do
-      opt :q, 'Search term', :type => String, :default => 'kpop'
-      opt :maxResults, 'Max results', :type => :int, :default => 25
-    end
+    opts = Trollop::options
 
     client = Google::APIClient.new(:key => DEVELOPER_KEY,
-                                   :authorization => nil)
+                                   :authorization => nil,
+                                   :application_name => 'Hello World',
+                                   :application_version => '1.0.0')
     youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
 
-    opts[:part] = 'id,snippet'
-
-    search_response = client.execute!(
-      :api_method => youtube.search.list,
-      :parameters => opts
+    user_response = client.execute!(
+      :api_method => youtube.channels.list,
+      :parameters => {
+        :part => 'contentDetails',
+        :forUsername => 'smtown'
+      }
     )
 
-    search_response.data.items.each do |search_result|
-      case search_result.id.kind
-        when 'youtube#video'
-          p search_result.snippet
-      end
+    user_response.data.items.each do |item|
+      pid = item.contentDetails.relatedPlaylists.uploads
+
+      opts_vid = Trollop::options
+
+      opts_vid[:part] = "snippet"
+      opts_vid[:playlistId] = "pid"
+
+      video_response = client.execute!(
+        :api_method => youtube.playlist_items.list,
+        :parameters => {
+          :playlistId => pid,
+          :part => 'snippet'
+        }
+      )
+
+      p video_response
+
     end
 
 
