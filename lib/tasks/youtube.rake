@@ -14,50 +14,59 @@ namespace :youtube do
                                    :application_version => '1.0.0')
     youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
 
-    user_response = client.execute(
-      :api_method => youtube.channels.list,
-      :parameters => {
-        :part => 'contentDetails',
-        :forUsername => 'smtown'
-      }
-    )
 
-    user_response.data.items.each do |item|
-      pid = item.contentDetails.relatedPlaylists.uploads
-
-      video_response = client.execute(
-        :api_method => youtube.playlist_items.list,
+    entertainments = ['smtown', 'jypentertainment']
+    entertainments.each do |entertainment|
+      user_response = client.execute(
+        :api_method => youtube.channels.list,
         :parameters => {
-          :playlistId => pid,
-          :part => 'snippet',
-          :maxResults => 50
+          :part => 'contentDetails',
+          :forUsername => entertainment
         }
       )
 
-      page_token = video_response.next_page_token
+      user_response.data.items.each do |item|
+        pid = item.contentDetails.relatedPlaylists.uploads
 
 
-      while(true) do
-        video_response = client.execute!(
-            :api_method => youtube.playlist_items.list,
-            :parameters => {
-                :playlistId => pid,
-                :part => 'snippet,contentDetails',
-                :pageToken => page_token
-            }
+        video_response = client.execute(
+          :api_method => youtube.playlist_items.list,
+          :parameters => {
+            :playlistId => pid,
+            :part => 'snippet',
+            :maxResults => 50
+          }
         )
+
         page_token = video_response.next_page_token
+
+
+        while(true) do
+          video_response = client.execute!(
+              :api_method => youtube.playlist_items.list,
+              :parameters => {
+                  :playlistId => pid,
+                  :part => 'snippet,contentDetails',
+                  :pageToken => page_token
+              }
+          )
+
+        page_token = video_response.next_page_token
+
         video_response.data.items.each do |video|
 
 
           new_video = Video.new
-          new_video.youtube_id = video.id
+          # new_video.url = video.
+          new_video.youtube_id = video["contentDetails"].videoId
           new_video.title_korean = video.snippet.title
           new_video.description = video.snippet.description
           new_video.thumbnail = video.snippet.thumbnails["medium"]["url"]
 
           new_video.save
         end
+
+      end
       end
 
 
