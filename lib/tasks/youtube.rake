@@ -4,10 +4,7 @@ namespace :youtube do
   desc "TODO"
   task fetch: :environment do
 
-    # Set DEVELOPER_KEY to the "API key" value from the "Access" tab of the
-    # Google Developers Console <https://cloud.google.com/console>
-    # Please ensure that you have enabled the YouTube Data API for your project.
-    DEVELOPER_KEY = ""
+    DEVELOPER_KEY = ENV["YOUTUBE_KEY"]
     YOUTUBE_API_SERVICE_NAME = "youtube"
     YOUTUBE_API_VERSION = "v3"
 
@@ -38,6 +35,10 @@ namespace :youtube do
 
       video_response.data.items.each do |video|
         p video.snippet
+
+        # new_video = Video.new
+        # new_video.title_korean = video.snippet
+
       end
     end
 
