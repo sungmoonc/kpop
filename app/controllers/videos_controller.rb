@@ -61,6 +61,15 @@ class VideosController < ApplicationController
     end
   end
 
+  #filter
+  def by_youtube_views
+    @videos = Video.order(youtube_views: :desc)
+  end
+
+  def by_youtube_user_id(user_id)
+    @videos = Video.where(youtube_user_id: user_id)
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_video
