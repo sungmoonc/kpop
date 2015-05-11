@@ -4,10 +4,11 @@
 def create_new_video(video)
   new_video = Video.new
   # new_video.url = video.
-  new_video.youtube_id = video.snippet.resourceId.videoId
-  new_video.title_korean = video.snippet.title
-  new_video.description = video.snippet.description
-  new_video.thumbnail = video.snippet.thumbnails["medium"]["url"]
+  puts "\t" + video["snippet"]["title"]
+  new_video.youtube_id = video["id"]
+  new_video.title_korean = video["snippet"]["title"]
+  new_video.description = video["snippet"]["description"]
+  new_video.thumbnail = video["snippet"]["thumbnails"]["medium"]["url"]
 
   new_video.save
 end
@@ -53,8 +54,6 @@ def youtube_api(method, options)
   end.join("&")
 
   url = "https://www.googleapis.com/youtube/v3/#{method}?" + options_string + "&key=#{DEVELOPER_KEY}"
-  puts url
-
   http = Curl.get(url)
 
   JSON.parse(http.body_str)
@@ -65,22 +64,29 @@ youtube_ids = ENV["YOUTUBE_IDS"].split(",")
 
 DEVELOPER_KEY = ENV["YOUTUBE_KEY"]
 
-def get_user_videos(entertainment)
+def get_user_upload_video_ids(upload_channel, next_page_token)
+  next_page_token = nil if next_page_token == "init"
+
+  video_ids = youtube_api("playlistItems", { playlistId: upload_channel,
+                                             part: 'contentDetails',
+                                             pageToken: next_page_token,
+                                             maxResults: 50 })
+  nextPageToken = video_ids["nextPageToken"]
+
+  video_ids = video_ids["items"].map do |item|
+    item["contentDetails"]["videoId"]
+  end
+
+  { nextPageToken: nextPageToken, video_ids: video_ids }
+end
+
+def get_user_upload_channel_id(entertainment)
   channels = youtube_api("channels", {
     part: "contentDetails",
     forUsername: entertainment,
     maxResults: 50
   })
-  upload_channel = channels["items"].first["contentDetails"]["relatedPlaylists"]["uploads"]
-
-  video_ids = youtube_api("playlistItems", { playlistId: upload_channel,
-                                             part: 'contentDetails',
-                                             maxResults: 50 })
-  #p  video_ids["nextPageToken"]
-
-  video_ids["items"].map do |item|
-    item["contentDetails"]["videoId"]
-  end
+  channels["items"].first["contentDetails"]["relatedPlaylists"]["uploads"]
 end
 
 def get_video_details(video_ids)
@@ -96,12 +102,27 @@ namespace :youtube do
   task fetch: :environment do
 
     youtube_ids.each do |entertainment|
-      video_ids = get_user_videos(entertainment)
-      video_details = get_video_details(video_ids)
+      puts entertainment
+      user_upload_channel = get_user_upload_channel_id(entertainment)
 
-      p video_details
+      next_page_token = "init"
+
+      page = 0
+      until next_page_token.nil? do
+        page += 1
+        puts "Page: #{page}"
+        video_ids = get_user_upload_video_ids(user_upload_channel, next_page_token)
+        video_details = get_video_details(video_ids[:video_ids])
+        next_page_token= video_ids[:nextPageToken]
+
+        video_details.each do |video|
+          unless create_new_video(video)
+            next_page_token = nil # stop going to the next page
+            break
+          end
+        end
+      end
 
     end
-
   end
 end
