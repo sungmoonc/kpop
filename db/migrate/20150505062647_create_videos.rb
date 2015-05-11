@@ -13,10 +13,10 @@ class CreateVideos < ActiveRecord::Migration
       t.integer :english_percentage
       t.integer :english_subtitle
       t.integer :official
-      t.integer :youtube_views
+      t.integer :youtube_views, limit: 8
       t.date :upload_date
-      t.integer :upvotes
-      t.integer :downvotes
+      t.integer :upvotes, limit: 8
+      t.integer :downvotes, limit: 8
 
       t.timestamps null: false
     end

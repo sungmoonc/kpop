@@ -1,51 +1,20 @@
 #require 'google/api_client'
 
 
-def create_new_video(video)
+def create_new_video(video, youtube_user_id)
   new_video = Video.new
-  # new_video.url = video.
   puts "\t" + video["snippet"]["title"]
   new_video.youtube_id = video["id"]
   new_video.title_korean = video["snippet"]["title"]
   new_video.description = video["snippet"]["description"]
   new_video.thumbnail = video["snippet"]["thumbnails"]["medium"]["url"]
+  new_video.upvotes = video["statistics"]["likeCount"]
+  new_video.downvotes = video["statistics"]["dislikeCount"]
+  new_video.youtube_views = video["statistics"]["viewCount"]
+  new_video.youtube_user_id = youtube_user_id
+  new_video.upload_date = video["snippet"]["publishedAt"]
 
   new_video.save
-end
-
-def get_video_ids(client, user_response, youtube)
-  item = user_response.data.items.first
-  pid = item.contentDetails.relatedPlaylists.uploads
-
-  video_response = client.execute(
-    :api_method => youtube.playlist_items.list,
-    :parameters => {
-      :playlistId => pid,
-      :part => 'contentDetails',
-      :maxResults => 50
-    }
-  )
-
-  # page_token = video_response.next_page_token
-  #
-  #
-  # while(true) do
-  #   video_response = client.execute!(
-  #       :api_method => youtube.playlist_items.list,
-  #       :parameters => {
-  #           :playlistId => pid,
-  #           :part => 'snippet,contentDetails',
-  #           :pageToken => page_token
-  #       }
-  #   )
-  #
-  # page_token = video_response.next_page_token
-  #
-  #   break if page_token == nil
-
-  video_response.data.items.map do |item|
-    item.contentDetails.videoId
-  end
 end
 
 def youtube_api(method, options)
@@ -86,7 +55,12 @@ def get_user_upload_channel_id(entertainment)
     forUsername: entertainment,
     maxResults: 50
   })
-  channels["items"].first["contentDetails"]["relatedPlaylists"]["uploads"]
+
+  begin
+    channels["items"].first["contentDetails"]["relatedPlaylists"]["uploads"]
+  rescue
+    nil
+  end
 end
 
 def get_video_details(video_ids)
@@ -105,24 +79,27 @@ namespace :youtube do
       puts entertainment
       user_upload_channel = get_user_upload_channel_id(entertainment)
 
-      next_page_token = "init"
+      unless user_upload_channel.nil?
+        next_page_token = "init"
 
-      page = 0
-      until next_page_token.nil? do
-        page += 1
-        puts "Page: #{page}"
-        video_ids = get_user_upload_video_ids(user_upload_channel, next_page_token)
-        video_details = get_video_details(video_ids[:video_ids])
-        next_page_token= video_ids[:nextPageToken]
+        page = 0
+        until next_page_token.nil? do
+          page += 1
+          puts "#{entertainment} Page: #{page}"
 
-        video_details.each do |video|
-          unless create_new_video(video)
-            next_page_token = nil # stop going to the next page
-            break
+          video_ids = get_user_upload_video_ids(user_upload_channel, next_page_token)
+          video_details = get_video_details(video_ids[:video_ids])
+          next_page_token= video_ids[:nextPageToken]
+
+          video_details.each do |video|
+            unless create_new_video(video, entertainment)
+              next_page_token = nil # stop going to the next page
+              puts "Page crawled before. Continuing to the next Youtube user id."
+              break
+            end
           end
         end
       end
-
     end
   end
 end
