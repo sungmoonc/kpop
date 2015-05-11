@@ -14,10 +14,9 @@
 ActiveRecord::Schema.define(version: 20150505062647) do
 
   create_table "videos", force: :cascade do |t|
-    t.string   "url"
     t.string   "youtube_id"
     t.string   "thumbnail"
-    t.string   "singer"
+    t.string   "artist"
     t.string   "title_korean"
     t.string   "title_english"
     t.text     "description"
