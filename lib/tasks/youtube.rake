@@ -29,7 +29,6 @@ def youtube_api(method, options)
 end
 
 youtube_ids = ENV["YOUTUBE_IDS"].split(",")
-#youtube_ids = ["smtown"]
 
 DEVELOPER_KEY = ENV["YOUTUBE_KEY"]
 
