@@ -14,24 +14,24 @@
 ActiveRecord::Schema.define(version: 20150505062647) do
 
   create_table "videos", force: :cascade do |t|
-    t.string   "url"
     t.string   "youtube_id"
     t.string   "thumbnail"
-    t.string   "singer"
+    t.string   "artist"
     t.string   "title_korean"
     t.string   "title_english"
+    t.string   "youtube_user_id"
     t.text     "description"
     t.integer  "hotness"
     t.integer  "cheesiness"
     t.integer  "english_percentage"
     t.integer  "english_subtitle"
     t.integer  "official"
-    t.integer  "youtube_views"
+    t.integer  "youtube_views",      limit: 8
     t.date     "upload_date"
-    t.integer  "upvotes"
-    t.integer  "downvotes"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "upvotes",            limit: 8
+    t.integer  "downvotes",          limit: 8
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end
