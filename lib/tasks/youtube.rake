@@ -87,7 +87,6 @@ namespace :youtube do
 #['smtown']
 
     entertainments.each do |entertainment|
-      p entertainment
       user_response = get_channels(client, entertainment, youtube)
 
       get_videos(client, user_response, youtube)
