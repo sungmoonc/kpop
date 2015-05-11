@@ -60,9 +60,8 @@ def youtube_api(method, options)
   JSON.parse(http.body_str)
 end
 
-entertainments = %w"100ayeon 15andOfficial 2am 2NE1 2pm 4minuteofficial abentofficial AceOfAngels8 ALi091008 alphaentkorea amoebakorea amusekr apinkTV applegirl002 b2ment b2mysofficial babysoulhome beastofficial BIGBANG BoAsmtown#p/p BoysRepublicOfficial Brandnewmusickorea BrandnewStardom/video_ids bravefamily brianjoomusic cclownofficial chB1A4 chHelloVenus CJENMMUSIC CJESJYJ cnblue coremidas crayonpopvideo DBusinessENT dlineartmedia DMTNofficial drunkentiger DSP/video_ids dspAJAX DSPKara entertainmentCUBE EXCELLENTENTofficial EXOK EXOM fcuz0108 FNCMUSICofficial fncohwonbin ftisland fxsmtown girlsday5 GIRLSGENERATION GLAMofficialvideo gnaofficial GoodFellasTVch1 happyfaceent HISTORYloen ibighit infinitehome IVYofficialChannel jaybumaom0425#p/u jaykentertainment/video_ids Jellyfishenter jewelry0127 JJprojectOfficial joojype jtunecamp jypark jypentertainment kimhyunjoong606 LadiesCode lbdemion leehyoriofficial LOENARTIST LOENENT loenFIESTAR loenIU loenSUNNYHILL loenZIA mapthesoul MIBOfficial missA mnet MrJangwoohyuk neganetwork NeuroNTV/video_ids NEWPLANETwebmaster NextarEntertainment NineMusesCh officialBEG officialbtob OfficialEpikHigh OfficialGDRAGON OfficialJUNIEL officialLC9 OfficialLEEHI officialLUNAFLY officialpsy officialroykim OfficialSe7en OfficialSEUNGRI OfficialSEUNGYOON OfficialTheRainbow OfficialTMent OFFICIALYNB OFFROAD0924 onewayonesound OPENWORLDent parkjiyooncreative pastelmusic pledis17 pledisartist pledisnuest PolarisMusicOfficial princeJKS PUREENTER RealTinyG RealVIXX RockinKOREAent royalpiratesband SHINee SHINHWACOMPANY SHINHWACOMPANY sment SMTOWN soundholicENT spicaofficial Starempireofficial starshipTV SUPERJUNIOR supervocaltomtom TAILLRUNSMEDIA TeenzOnTop TheAziatix TheCANENT TheMRMRofficial TheRealChocolat TimeZOfficial2012 Top100percent TOPmediaStar Trophyentertainment1 Troublemakerofficial#g/u TSENT2008 TVXQ ukiss2008 wondergirls woolliment YeDangCompany ygentertainment ygtablo YGTAEYANG YMCent ZEA2011"
-
-entertainments = ["smtown"]
+youtube_ids = ENV["YOUTUBE_IDS"].split(",")
+#youtube_ids = ["smtown"]
 
 DEVELOPER_KEY = ENV["YOUTUBE_KEY"]
 
@@ -96,7 +95,7 @@ namespace :youtube do
   desc "TODO"
   task fetch: :environment do
 
-    entertainments.each do |entertainment|
+    youtube_ids.each do |entertainment|
       video_ids = get_user_videos(entertainment)
       video_details = get_video_details(video_ids)
 

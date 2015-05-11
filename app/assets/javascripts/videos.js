@@ -7,4 +7,6 @@ $(document).ready(function(){
   $("#basicModal").on('hidden.bs.modal', function(){
     $("#iframe").attr('src', '');
   })
+
+  $('#year').slider()
 });
