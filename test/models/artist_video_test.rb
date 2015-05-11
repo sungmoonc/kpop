@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class VideosControllerTest < ActionController::TestCase
+class ArtistVideoTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
