@@ -1,0 +1,39 @@
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../bower_components/paper-interval-slider/paper-interval-slider.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+<polymer-element name="left-menu" vertical layout>
+<template>
+	<style>
+		:host {
+
+		}
+	</style>
+	<core-toolbar>Filters</core-toolbar>
+	<core-menu>
+		<paper-dropdown-menu label="Artists">
+		    <paper-dropdown class="dropdown">
+		        <core-menu class="menu">
+		            <paper-item>Bigbang</paper-item>
+		            <paper-item>AOA</paper-item>
+		            <paper-item>2ne1</paper-item>
+		            <paper-item>abcd</paper-item>
+		        </core-menu>
+		    </paper-dropdown>
+		</paper-dropdown-menu>
+		<core-item icon="settings" label="item1"></core-item>
+		<paper-slider min="10" max="200" value="110"></paper-slider>
+		<core-item icon="settings" label="item2"></core-item>
+		<paper-interval-slider min="10" max="200" valueA="110" valueB="180" pin="true"></paper-interval-slider>
+	</core-menu>	
+</template>
+<script>
+	Polymer('left-menu', function() {
+
+	});
+</script>
+</polymer-element>
