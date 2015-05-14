@@ -46,24 +46,71 @@
 
 			core-scaffold[mode=cover] .content {
 				margin: 20px 100px 20px 0;
-			}			
+			}	
+
+			#shadowWrapper1 {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,.15);
+				z-index: 10000;	
+			}		
+
+			#shadowWrapper2 {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,.15);
+				z-index: 10000;	
+			}		
 		</style>
 	</head>
 	<body unresolved>
 		<template id="temp_app" is="auto-binding">			
 			<section>
-				<core-scaffold>
+				<core-scaffold>					
 					<core-header-panel navigation flex mode="seamed">
-						<left-menu></left-menu>					
+						<left-menu></left-menu>											
+						<div id="shadowWrapper1" hidden></div>
 					</core-header-panel>
 
 					<div tool>Top header</div>
 
 					<div class="content">
-						<main-cards groups="{{groups}}" touch-action="auto"></main-cards>						
-					</div>
-				</core-scaffold>				
+						<main-cards groups="{{groups}}" fireToggle="{{fireToggle}}" touch-action="auto"></main-cards>
+					</div>					
+					<div id="shadowWrapper2" hidden></div>
+				</core-scaffold>																			
 			</section>			
+			<script>
+				var main_cards = document.querySelector('main-cards');
+				var shadowWrapper1 = document.querySelector("#shadowWrapper1");				
+				var shadowWrapper2 = document.querySelector("#shadowWrapper2");
+				shadowWrapper1.addEventListener("click", function() {
+					shadowWrapper1.setAttribute("hidden", null);
+					shadowWrapper2.setAttribute("hidden", null);
+					main_cards.fireToggle = !main_cards.fireToggle;
+				});
+				shadowWrapper2.addEventListener("click", function() {
+					shadowWrapper1.setAttribute("hidden", null);
+					shadowWrapper2.setAttribute("hidden", null);
+					main_cards.fireToggle = !main_cards.fireToggle;
+				});
+
+				main_cards.addEventListener('hide-content', function(e) {
+					shadowWrapper1.setAttribute("hidden", null);
+					shadowWrapper2.setAttribute("hidden", null);
+				});
+				main_cards.addEventListener('show-content', function(e) {
+					shadowWrapper1.removeAttribute("hidden");
+					shadowWrapper2.removeAttribute("hidden");
+				});	
+				
+			</script>	
 		</template>
 		<script src="app.js"></script>
 	</body>
