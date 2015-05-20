@@ -1,5 +1,5 @@
 .idea/
 log/
 tmp/
-db/
+db/*.sqlite3
 .env
