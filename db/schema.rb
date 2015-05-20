@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(version: 20150511033305) do
     t.integer  "english_subtitle"
     t.integer  "official"
     t.integer  "youtube_views",      limit: 8
+    t.string   "definition"
+    t.string   "duration"
+    t.string   "dimension"
+    t.string   "caption"
+    t.boolean  "licensed_content"
     t.date     "upload_date"
     t.integer  "upvotes",            limit: 8
     t.integer  "downvotes",          limit: 8
