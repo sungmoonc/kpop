@@ -1,0 +1,410 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ids",
+				"ids"
+			],
+			[
+				"foll",
+				"followers_id"
+			],
+			[
+				"fried",
+				"friends_id"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/views/videos/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 1829,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 307,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bin/rails",
+			"settings":
+			{
+				"buffer_size": 219,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/migrate/20150505062647_create_videos.rb",
+			"settings":
+			{
+				"buffer_size": 621,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "class VideosController < ApplicationController\n  before_action :set_video, only: [:show, :edit, :update, :destroy]\n\n  # GET /videos\n  # GET /videos.json\n  def index\n    @videos = Video.order(\"RANDOM()\").first(100)\n  end\n\n  # GET /videos/1\n  # GET /videos/1.json\n  def show\n    @video = Video.find(params[:id])\n  end\n\n  # GET /videos/new\n  def new\n    @video = Video.new\n  end\n\n  # GET /videos/1/edit\n  def edit\n  end\n\n  # POST /videos\n  # POST /videos.json\n  def create\n    @video = Video.new(video_params)\n\n    respond_to do |format|\n      if @video.save\n        format.html { redirect_to @video, notice: 'Video was successfully created.' }\n        format.json { render :show, status: :created, location: @video }\n      else\n        format.html { render :new }\n        format.json { render json: @video.errors, status: :unprocessable_entity }\n      end\n    end\n  end\n\n  # PATCH/PUT /videos/1\n  # PATCH/PUT /videos/1.json\n  def update\n    respond_to do |format|\n      if @video.update(video_params)\n        format.html { redirect_to @video, notice: 'Video was successfully updated.' }\n        format.json { render :show, status: :ok, location: @video }\n      else\n        format.html { render :edit }\n        format.json { render json: @video.errors, status: :unprocessable_entity }\n      end\n    end\n  end\n\n  # DELETE /videos/1\n  # DELETE /videos/1.json\n  def destroy\n    @video.destroy\n    respond_to do |format|\n      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }\n      format.json { head :no_content }\n    end\n  end\n\n  #filter\n  def by_youtube_views\n    @videos = Video.order(youtube_views: :desc)\n  end\n\n  # def by_youtube_user_id(user_id)\n  #   @videos = Video.where(params[:youtube_user_id])\n  # end\n\n  private\n  # Use callbacks to share common setup or constraints between actions.\n  def set_video\n    @video = Video.find(params[:id])\n  end\n\n  # Never trust parameters from the scary internet, only allow the white list through.\n  def video_params\n    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :upvotes, :downvotes)\n  end\nend\n",
+			"file": "app/controllers/videos_controller.rb",
+			"file_size": 2247,
+			"file_write_time": 1431995986000000,
+			"settings":
+			{
+				"buffer_size": 2247,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/tasks/youtube.rake",
+			"settings":
+			{
+				"buffer_size": 4951,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 360.0,
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/sungmooncho/Dropbox/Coding/kpop/app/views/videos/edit.html.erb",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/app/assets/fonts/fontello-00a9f24f8ddd2d2bf355bc5cd0e9ff21.woff",
+		"/Users/sungmooncho/Documents/code/twitteroauth-master/callback.php",
+		"/Users/sungmooncho/Documents/code/Example App/Example App/Info.plist",
+		"/Users/sungmooncho/Dropbox/video links",
+		"/Users/sungmooncho/Dropbox/Coding/get_youtube_data.py",
+		"/private/var/folders/h4/lrh18tp96wb6m9mz59xtgxrm0000gp/T/sublime-sftp-browse-1419903565/54.193.53.107/var/www/html/rest/user.json",
+		"/var/folders/h4/lrh18tp96wb6m9mz59xtgxrm0000gp/T/sublime-sftp-browse-1419903587/54.193.53.107/var/www/html/rest/twitter_test.php",
+		"/var/folders/h4/lrh18tp96wb6m9mz59xtgxrm0000gp/T/sublime-sftp-browse-1419903565/54.193.53.107/var/www/html/rest/twitter_example.php",
+		"/var/folders/h4/lrh18tp96wb6m9mz59xtgxrm0000gp/T/sublime-sftp-browse-1419903578/54.193.53.107/var/www/html/rest/twitter_request_token.php",
+		"/Users/sungmooncho/Documents/code/twitter_example.php",
+		"/Users/sungmooncho/Documents/code/sftp-config.json",
+		"/var/folders/h4/lrh18tp96wb6m9mz59xtgxrm0000gp/T/sublime-sftp-browse-1419903191/54.193.53.107/var/www/html/rest/twitter_example.php",
+		"/Users/sungmooncho/Library/Application Support/Sublime Text 2/Packages/User/sftp_servers/54.193.53.107",
+		"/Users/sungmooncho/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"routes.rb",
+			"sexy k-pop",
+			"title_korean",
+			"fetch"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/views/videos/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 1829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								746,
+								746
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/layouts/application.html.erb",
+					"settings":
+					{
+						"buffer_size": 307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "bin/rails",
+					"settings":
+					{
+						"buffer_size": 219,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "db/migrate/20150505062647_create_videos.rb",
+					"settings":
+					{
+						"buffer_size": 621,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/controllers/videos_controller.rb",
+					"settings":
+					{
+						"buffer_size": 2247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								309,
+								309
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 28.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "lib/tasks/youtube.rake",
+					"settings":
+					{
+						"buffer_size": 4951,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3836,
+								3836
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 363.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 215.0,
+	"status_bar_visible": true
+}
