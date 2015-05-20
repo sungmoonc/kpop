@@ -7,6 +7,12 @@ class VideosController < ApplicationController
     @videos = Video.order("RANDOM()").first(100)
   end
 
+
+  def by_youtube_views_asc
+    @videos = Video.order(:youtube_views)
+  end
+
+
   # GET /videos/1
   # GET /videos/1.json
   def show
@@ -62,9 +68,11 @@ class VideosController < ApplicationController
   end
 
   #filter
-  def by_youtube_views
-    @videos = Video.order(youtube_views: :desc)
-  end
+  # def by_youtube_views_desc
+  #   @videos = Video.order(youtube_views: :desc)
+  # end
+
+
 
   # def by_youtube_user_id(user_id)
   #   @videos = Video.where(params[:youtube_user_id])
