@@ -1,0 +1,54 @@
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/core-pages/core-pages.html">
+<link rel="import" href="../bower_components/core-image/core-image.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../my_components/video-card.html">
+<link rel="import" href="../my_components/list-cards.html">
+<link rel="import" href="../my_components/add-collection-dialog.html">
+
+<polymer-element name="my-page" attributes="groups" vertical layout>
+<template>
+	<style>
+
+	</style>	
+	<div horizontal layout>
+		<core-image src="../images/dtest"></core-image>
+		<div class="profile">
+			Sungmoon Cho
+		</div> 
+		<button>Edit</button>
+	</div>
+	<paper-tabs selected="{{selected}}">
+	  <paper-tab>Liked</paper-tab>
+	  <paper-tab>Collection</paper-tab>
+	  <paper-tab>Following</paper-tab>
+	</paper-tabs>
+
+	<core-pages selected="{{selected}}">
+		<div>
+			<core-icon-button icon="add" on-tap="{{openAddDialog}}"></core-icon-button>			
+			<list-cards groups="{{groups}}"></list-cards>
+			<add-collection-dialog id="addDialog" transition="core-transition-center"></add-collection-dialog>
+		</div>
+		<div>
+			Page 2
+			<list-cards groups="{{groups}}"></list-cards>
+		</div>
+		<div>Page 3</div>
+	</core-pages>
+</template>
+<script>
+	Polymer('my-page', {
+		selected: 0,
+		groups: [],					
+
+		created: function() {
+			this.groups = [];
+		},
+
+		openAddDialog: function() {
+			this.$.addDialog.toggle();
+		}
+	});
+</script>
+</polymer-element>

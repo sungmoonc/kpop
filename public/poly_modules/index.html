@@ -10,7 +10,8 @@
 		<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">					
 		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
 		<link rel="import" href="my_components/main-cards.html">
-		<link rel="import" href="my_components/left-menu.html">		
+		<link rel="import" href="my_components/left-menu.html">	
+		<link rel="import" href="my_components/my-page.html">	
 		<style shim-shadowdom>
 			html, body {
 				height: 100%;
@@ -81,10 +82,11 @@
 					<div tool>Top header</div>
 
 					<div class="content">
-						<main-cards groups="{{groups}}" fireToggle="{{fireToggle}}" touch-action="auto"></main-cards>
+						<!-- <main-cards groups="{{groups}}" fireToggle="{{fireToggle}}" touch-action="auto"></main-cards> -->
+						<my-page groups="{{groups}}"></my-page>
 					</div>					
 					<div id="shadowWrapper2" hidden></div>
-				</core-scaffold>																			
+				</core-scaffold>			
 			</section>			
 			<script>
 				var main_cards = document.querySelector('main-cards');

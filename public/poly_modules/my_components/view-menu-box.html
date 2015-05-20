@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/core-selector/core-selector.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+
+<polymer-element name="view-menu-box" attributes="cardWidth" horizontal layout>
+<template>
+	<style>
+		:host {
+
+		}
+
+		core-selector {			
+			margin: 10px;
+		}		
+
+		core-icon-button {			
+			margin: 10px;
+		}
+	</style>
+	<core-selector id="selector" selected="0" on-core-activate="{{levelBtnSelected}}">	
+		<core-icon-button icon="apps"></core-icon-button>
+		<core-icon-button icon="view-module"></core-icon-button>
+		<core-icon-button icon="view-headline"></core-icon-button>	
+	</core-selector>
+</template>
+<script>
+	Polymer('view-menu-box', {
+		selectedLevel: 0,
+		cardWidth: 320,
+
+		created: function() {
+
+		},
+
+		levelBtnSelected: function(e, detail, sender) {			
+			this.selectedLevel = this.$.selector.selected;
+			if(this.selectedLevel==0){
+				this.cardWidth = 320;
+			} else if(this.selectedLevel==1){
+				this.cardWidth = 500;
+			} else if(this.selectedLevel==2){
+				this.cardWidth = 1200;
+			}
+			this.fire('card-width-changed');
+		}		
+	});
+</script>
+</polymer-element>

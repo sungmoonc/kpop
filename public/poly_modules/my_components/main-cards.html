@@ -4,6 +4,8 @@
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
 <link rel="import" href="../my_components/content-page.html">
+<link rel="import" href="../my_components/view-menu-box.html">
+<link rel="import" href="../my_components/list-cards.html">
 
 <polymer-element name="main-cards" attributes="groups fireToggle" center-justified vertical layout>
 <template>
@@ -21,92 +23,13 @@
 			top: 0;			
 		}
 
-		.main-panel {				
+		list-cards {
 			position: absolute;
 			width: 100%;
 			height: 100%;
-			top: 100px;
 		}
-
-		core-animated-pages {
-			width: 100%;
-			height: 100%;
-		}
-
-		 #noscroll {
-	      	position: absolute;
-	      	top: 0;
-	        right: 0;
-	        left: 0;	      
-	    }
-
-		.item-list {	
-			position: absolute;				
-			left: 0;
-			right: 0;
-			top: 20px;	
-			width: 100%;								
-			margin-bottom: 40px;
-		}		
-
-		.card {	
-			position: relative;
-			float: left;
-			width: 320px; 
-			height: 180px; 
-			margin-bottom: 40px;						
-			background: rgb(255,255,255);			
-			text-align: left;
-			text-decoration: none;
-
-			border: 1px solid rgba(230,230,230,1);
-			border-radius: 5px;
-			box-shadow: 0px 3px 0px 0px rgba(220,220,220,1);
-		}
-
-		.card:hover {
-			border-color: rgba(205,205,205,1);
-			box-shadow: 0px 3px 0px 0px rgba(205,205,205,1);
-		}		
-
-		.card core-image {
-			width: 100%; 
-			height: 100%; 
-			
-		}
-
-		.card .group_title {				
-			font-size: 20px;
-			color: rgba(102,102,102,1);
-			margin-left: 30px;
-			margin-bottom: 10px;			
-			white-space: normal;
-		}		
-
-		.card a{			
-			text-decoration: none;
-		}				
-
-		.tes1 {			
-			top: 10px;
-			width: 500px;
-			height: 300px;
-		}
-
-		.tes2 {
-			top: 10px;
-			width: 500px;
-			height: 300px;
-			background-color: #fff;
-		}
-
-		content-page {
-			position: absolute;
-			top: 0;				
-			right: -1100px;
-		}		
 	</style>
-	<div class="header-panel">									
+	<div class="header-panel" horizontal layout>									
 		<paper-dropdown-menu label="Sort">
 		    <paper-dropdown class="dropdown">
 		        <core-menu class="menu">
@@ -119,101 +42,24 @@
 		            <paper-item>Oldest First</paper-item>
 		        </core-menu>
 		    </paper-dropdown>
-		</paper-dropdown-menu>				
-	</div>
-	<div class="main-panel" center-justified vertical layout>
-		<!-- <core-animated-pages flex selected="{{selected}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{transitionend}}"> -->			
+		</paper-dropdown-menu>	
 
-			<section vertical layout>
-				<div id="noscroll" fit hero-p>
-					<div class="item-list" flex horizontal around-justified layout wrap>			
-						<template repeat="{{group, i in groups}}">
-							<div class="card" on-tap="{{onCardTapped}}" hero-id="group-{{i}}" groupId="{{i}}" hero?="{{group === selectedGroup}}" vertical layout>
-								<core-image sizing="cover" src="{{group.img}}" groupId="{{i}}"></core-image>
-								<!-- <core-item class="group_title gi_{{i}}" groupId="{{i}}">{{group.title}}</core-item> -->
-							</div>						
-						</template>					
-					</div>
-				</div>
-			</section>
-		
-		<!-- </core-animated-pages> -->
+		<view-menu-box cardWidth="{{cardWidth}}" on-card-width-changed="{{onCardWidthChanged}}"></view-menu-box>
 	</div>
-	<content-page id="contentPage" on-content-back="{{changePage}}" group="{{selectedGroup}}" groupId="{{group_id}}" contentWidth="{{contentWidth}}"></content-page> 	
+		
+	<list-cards groups="{{groups}}" fireToggle="{{fireToggle}}"></list-cards>	
 </template>
 <script>
-	Polymer('main-cards', {
-		selected: 0,
-		group_id: -1,
-		groups: [],			
-		selectedGroup: [],
-		player: false,
-		isOpened: true,	
-		contentWidth: 1100,	
-		fireToggle: true,
+	Polymer('main-cards', {		
 
 		created: function() {
 			this.groups = [];
-			this.selectedGroup = [];
 		},
 
 		domReady: function() {
-
-		},
-
-		onCardTapped: function(event) {
-			this.group_id = event.target.getAttribute("groupId");
-			this.selectedGroup = this.groups[parseInt(this.group_id)];
-
-			this.changePage();
-		},
-
-		transitionend: function(e) {
-
-		},
-
-		fireToggleChanged: function() {
-			this.changePage();
-		},
-
-		changePage: function() {
-			if(this.selected===0) {
-				this.selected = 1;				
-			} else {
-				this.selected = 0;
-			}
-			this.toggleContentPage();
-		},
-
-		toggleContentPage: function() {
-			var that = this;
-			if(this.player) {
-				this.player.cancel();
-			}
-			
-			var animation = new CoreAnimation();			
-			animation.addEventListener("core-animation-finish", function() {				
-								
-			});
-			animation.duration = 400;
-			animation.easing = "ease-in-out";
-			animation.keyframes = [
-				{right: "0px"},
-				{right: "-1100px"}
-			];
-			animation.fill = "forwards";
-			if(this.isOpened){
-				animation.direction = "reverse";
-				this.isOpened = false;			
-				this.fire('show-content');
-			} else {
-				animation.direction = "normal";
-				this.isOpened = true;				
-				this.fire('hide-content');
-			}						
-			animation.target = this.$.contentPage;
-			this.player = animation.play();			
+			// console.log(this.groups);
 		}
+			
 	});
 </script>
 </polymer-element>
