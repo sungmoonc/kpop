@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
+<p>
+  <strong>Youtube_id:</strong>
+  <%= @video.youtube_id %>
+</p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @video.url %>
+  <strong>Thumbnail:</strong>
+  <%= @video.thumbnail %>
 </p>
 
 <p>
@@ -11,13 +15,19 @@
 </p>
 
 <p>
+  <strong>Youtube_user_id:</strong>
+  <%= @video.youtube_user_id %>
+</p>
+
+
+<p>
   <strong>Korean title:</strong>
-  <%= @video.korean_title %>
+  <%= @video.title_korean %>
 </p>
 
 <p>
   <strong>English title:</strong>
-  <%= @video.english_title %>
+  <%= @video.title_english %>
 </p>
 
 <p>
@@ -26,28 +36,23 @@
 </p>
 
 <p>
-  <strong>Artist gender:</strong>
-  <%= @video.artist_gender %>
-</p>
-
-<p>
   <strong>Hotness:</strong>
   <%= @video.hotness %>
 </p>
 
 <p>
-  <strong>Cuteness:</strong>
-  <%= @video.cuteness %>
+  <strong>Cheesiness:</strong>
+  <%= @video.cheesiness %>
 </p>
 
 <p>
-  <strong>English lyrics:</strong>
-  <%= @video.english_lyrics %>
+  <strong>English percentage:</strong>
+  <%= @video.english_percentage %>
 </p>
 
 <p>
-  <strong>Subtitle:</strong>
-  <%= @video.subtitle %>
+  <strong>English Subtitle:</strong>
+  <%= @video.english_subtitle %>
 </p>
 
 <p>
@@ -57,17 +62,22 @@
 
 <p>
   <strong>Views:</strong>
-  <%= @video.views %>
+  <%= @video.youtube_views %>
 </p>
 
 <p>
-  <strong>Up:</strong>
-  <%= @video.up %>
+  <strong>Upvotes:</strong>
+  <%= @video.upvotes %>
 </p>
 
 <p>
-  <strong>Down:</strong>
-  <%= @video.down %>
+  <strong>Downvotes:</strong>
+  <%= @video.downvotes %>
+</p>
+
+<p>
+  <strong>Upload Date:</strong>
+  <%= @video.upload_date %>
 </p>
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
