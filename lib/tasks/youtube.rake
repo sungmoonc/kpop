@@ -69,7 +69,7 @@ end
 def get_video_details(video_ids)
   youtube_api("videos", {
     :id => video_ids.join(","),
-    :part => 'snippet,statistics',
+    :part => 'snippet,statistics, contentDetails',
     :maxResults => 50
   })["items"]
 end
