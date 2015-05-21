@@ -7,14 +7,19 @@ Rails.application.routes.draw do
   root 'videos#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    get '/youtubeviewsasc' => 'videos#by_youtube_views_asc'
+    get '/youtubeviewsdesc' => 'videos#by_youtube_views_desc'
+    get '/upvotesasc' => 'videos#by_upvotes_asc'
+    get '/upvotesdesc' => 'videos#by_upvotes_desc'
+    get '/uploaddateasc' => 'videos#by_upload_date_asc'
+    get '/uploaddatedesc' => 'videos#by_upload_date_desc'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :videos
-    
+
   # Example resource route with options:
   #   resources :products do
   #     member do

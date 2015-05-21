@@ -8,11 +8,6 @@ class VideosController < ApplicationController
   end
 
 
-  def by_youtube_views_asc
-    @videos = Video.order(:youtube_views)
-  end
-
-
   # GET /videos/1
   # GET /videos/1.json
   def show
@@ -67,16 +62,31 @@ class VideosController < ApplicationController
     end
   end
 
-  #filter
-  # def by_youtube_views_desc
-  #   @videos = Video.order(youtube_views: :desc)
-  # end
+  #sorting
 
+  def by_youtube_views_asc
+    @videos = Video.order(:youtube_views)
+  end
 
+  def by_youtube_views_desc
+    @videos = Video.order(youtube_views: :desc)
+  end
 
-  # def by_youtube_user_id(user_id)
-  #   @videos = Video.where(params[:youtube_user_id])
-  # end
+  def by_upvotes_asc
+    @videos = Video.order(:upvotes)
+  end
+
+  def by_upvotes_desc
+    @videos = Video.order(upvotes: :desc)
+  end
+
+  def by_upload_date_asc
+    @videos = Video.order(:upload_date)
+  end
+
+  def by_upload_date_desc
+    @videos = Video.order(upload_date: :desc)
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.
