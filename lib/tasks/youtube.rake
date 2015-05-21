@@ -2,9 +2,6 @@
 
 YOUTUBE_IDS="100ayeon,15andOfficial,2am,2NE1,2pm,4minuteofficial,abentofficial,AceOfAngels8,ALi091008,alphaentkorea,amoebakorea,amusekr,apinkTV,applegirl002,b2ment,b2mysofficial,babysoulhome,beastofficial,BIGBANG,BoAsmtown,BoysRepublicOfficial,Brandnewmusickorea,BrandnewStardom,bravefamily,brianjoomusic,cclownofficial,chB1A4,chHelloVenus,CJENMMUSIC,CJESJYJ,cnblue,coremidas,crayonpopvideo,DBusinessENT,dlineartmedia,DMTNofficial,drunkentiger,DSP,dspAJAX,DSPKara,entertainmentCUBE,EXCELLENTENTofficial,EXOK,EXOM,fcuz0108,FNCMUSICofficial,fncohwonbin,ftisland,fxsmtown,girlsday5,GIRLSGENERATION,GLAMofficialvideo,gnaofficial,GoodFellasTVch1,happyfaceent,HISTORYloen,ibighit,infinitehome,IVYofficialChannel,jaybumaom0425,jaykentertainment,Jellyfishenter,jewelry0127,JJprojectOfficial,joojype,jtunecamp,jypark,jypentertainment,kimhyunjoong606,LadiesCode,lbdemion,leehyoriofficial,LOENARTIST,LOENENT,loenFIESTAR,loenIU,loenSUNNYHILL,loenZIA,mapthesoul,MIBOfficial,missA,mnet,MrJangwoohyuk,neganetwork,NeuroNTV,NEWPLANETwebmaster,NextarEntertainment,NineMusesCh,officialBEG,officialbtob,OfficialEpikHigh,OfficialGDRAGON,OfficialJUNIEL,officialLC9,OfficialLEEHI,officialLUNAFLY,officialpsy,officialroykim,OfficialSe7en,OfficialSEUNGRI,OfficialSEUNGYOON,OfficialTheRainbow,OfficialTMent,OFFICIALYNB,OFFROAD0924,onewayonesound,OPENWORLDent,parkjiyooncreative,pastelmusic,pledis17,pledisartist,pledisnuest,PolarisMusicOfficial,princeJKS,PUREENTER,RealTinyG,RealVIXX,RockinKOREAent,royalpiratesband,SHINee,SHINHWACOMPANY,SHINHWACOMPANY,sment,SMTOWN,soundholicENT,spicaofficial,Starempireofficial,starshipTV,SUPERJUNIOR,supervocaltomtom,TAILLRUNSMEDIA,TeenzOnTop,TheAziatix,TheCANENT,TheMRMRofficial,TheRealChocolat,TimeZOfficial2012,Top100percent,TOPmediaStar,Trophyentertainment1,Troublemakerofficial,TSENT2008,TVXQ,ukiss2008,wondergirls,woolliment,YeDangCompany,ygentertainment,ygtablo,YGTAEYANG,YMCent,ZEA2011"
 
-
-YOUTUBE_IDS="ZEA2011"
-
 def create_new_video(video, youtube_user_id)
   new_video = Video.new
   puts "\t" + video["snippet"]["title"]
@@ -22,7 +19,7 @@ def create_new_video(video, youtube_user_id)
   new_video.licensed_content = video["contentDetails"]["licensedContent"]
   new_video.youtube_user_id = youtube_user_id
   new_video.upload_date = video["snippet"]["publishedAt"]
-
+  new_video.category = "Music Video"
 
   new_video.save
 end

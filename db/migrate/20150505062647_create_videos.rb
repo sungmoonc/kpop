@@ -7,6 +7,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :title_korean
       t.string :title_english
       t.string :youtube_user_id
+      t.string :category
       t.text :description
       t.integer :hotness
       t.integer :cheesiness

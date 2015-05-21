@@ -11,43 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511033305) do
-
-  create_table "artist_videos", force: :cascade do |t|
-    t.integer  "artist_id"
-    t.integer  "video_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "artists", force: :cascade do |t|
-    t.string   "name"
-    t.string   "gender"
-    t.string   "wiki_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "collections", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "collections_videos", force: :cascade do |t|
-    t.integer  "collection_id"
-    t.integer  "video_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20150505062647) do
 
   create_table "videos", force: :cascade do |t|
     t.string   "youtube_id"
@@ -56,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150511033305) do
     t.string   "title_korean"
     t.string   "title_english"
     t.string   "youtube_user_id"
+    t.string   "category"
     t.text     "description"
     t.integer  "hotness"
     t.integer  "cheesiness"
