@@ -1,8 +1,8 @@
 <link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../bower_components/core-image/core-image.html">
-<link rel="import" href="../bower_components/core-item/core-item.html">
-<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/core-dropdown-menu/core-dropdown-menu.html">
+<link rel="import" href="../bower_components/core-dropdown/core-dropdown.html">
 <link rel="import" href="../my_components/content-page.html">
 <link rel="import" href="../my_components/view-menu-box.html">
 <link rel="import" href="../my_components/list-cards.html">
@@ -13,25 +13,40 @@
 		:host {
 			width: 100%;
 			height: 100%;
-			margin: 0 auto;
+			margin: 0 auto;			
 		}
 
 		.header-panel {
 			position: absolute;
 			width: 100%;
 			height: 100px;
-			top: 0;			
+			top: 40px;			
+		}
+
+		#numResults {
+			font-size: 21px;
+			color: rgb(128,128,128);
+			margin-top: 25px;
+		}
+
+		core-dropdown-menu {
+			width: 170px;
+			font-size: 18px;
+			color: rgb(128,128,128);
 		}
 
 		list-cards {
 			position: absolute;
+			top: 110px;
 			width: 100%;
 			height: 100%;
 		}
 	</style>
 	<div class="header-panel" horizontal layout>									
-		<paper-dropdown-menu label="Sort">
-		    <paper-dropdown class="dropdown">
+		<div id="numResults">7160 results</div>
+		<div flex></div>
+		<core-dropdown-menu label="Sort">
+		    <core-dropdown class="dropdown">
 		        <core-menu class="menu">
 		            <paper-item>Default</paper-item>
 		            <paper-item>Sexiness</paper-item>
@@ -41,13 +56,13 @@
 		            <paper-item>Most Recent First</paper-item>
 		            <paper-item>Oldest First</paper-item>
 		        </core-menu>
-		    </paper-dropdown>
-		</paper-dropdown-menu>	
+		    </core-dropdown>
+		</core-dropdown-menu>	
 
 		<view-menu-box cardWidth="{{cardWidth}}" on-card-width-changed="{{onCardWidthChanged}}"></view-menu-box>
 	</div>
 		
-	<list-cards groups="{{groups}}" fireToggle="{{fireToggle}}"></list-cards>	
+	<list-cards groups="{{groups}}" fireToggle="{{fireToggle}}" cardWidth="{{cardWidth}}"></list-cards>	
 </template>
 <script>
 	Polymer('main-cards', {		

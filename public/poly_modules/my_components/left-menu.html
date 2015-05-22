@@ -2,8 +2,8 @@
 <link rel="import" href="../bower_components/core-item/core-item.html">
 <link rel="import" href="../bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="../bower_components/paper-interval-slider/paper-interval-slider.html">
-<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../bower_components/core-dropdown-menu/core-dropdown-menu.html">
+<link rel="import" href="../bower_components/core-dropdown/core-dropdown.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
 
@@ -11,85 +11,82 @@
 <template>
 	<style>
 		:host {
-
+			background: rgb(48,64,79);
 		}
 
-		core-menu div{
+		core-dropdown-menu {
+			box-sizing: border-box;		
+			width: 220px;	
+			height: 35px;
+			background-color: rgb(48,64,79);
+		}
+
+		html /deep/ core-dropdown {
+			box-sizing: border-box;
+			min-width: 220px;
+			background-color: rgb(48,64,79);
+			border: 1px solid rgb(255,255,255);
+		}
+
+		core-menu div{			
 			margin: 10px;
 		}
-	</style>
-	<core-toolbar>Filters</core-toolbar>
+
+		.menu {
+			background: rgb(48,64,79);
+		}
+	</style>	
 	<core-menu>
-		<div horizontal layout>
+		<div vertical layout>
 			<div>Artist</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
+			<core-dropdown-menu label="All">
+			    <core-dropdown class="dropdown">
 			        <core-menu class="menu">
-			            <paper-item>All</paper-item>
-			            <paper-item>Girls' Generation</paper-item>
-			            <paper-item>Psy</paper-item>		     
+			            <core-item>All</core-item>
+			            <core-item>Girls' Generation</core-item>
+			            <core-item>Psy</core-item>		     
 			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
-		</div>
-		<div horizontal layout>
-			<div>Gender</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
-			        <core-menu class="menu">
-			            <paper-item>All</paper-item>
-			            <paper-item>Female</paper-item>
-			            <paper-item>Male</paper-item>		     
-			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
-		</div>
-		<div horizontal layout>
+			    </core-dropdown>
+			</core-dropdown-menu>
+		</div>		
+		<div vertical layout>
 			<div>Number of Singers</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
-			        <core-menu class="menu">
-			            <paper-item>1</paper-item>
-			            <paper-item>2</paper-item>
-			            <paper-item>3</paper-item>
-			            <paper-item>4</paper-item>
-			            <paper-item>5</paper-item>
-			            <paper-item>6</paper-item>
-			            <paper-item>7+</paper-item>		     
-			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
+			<paper-interval-slider min="1" max="7" valueA="2" valueB="5" step="1" pin></paper-interval-slider>
 		</div>
-		<div horizontal layout>
+		<div vertical layout>
 			<div>Video Type</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
+			<core-dropdown-menu label="All">
+			    <core-dropdown class="dropdown">
 			        <core-menu class="menu">
-			            <paper-item>All</paper-item>
-			            <paper-item>Music Video</paper-item>
-			            <paper-item>Live Performance</paper-item>
-			            <paper-item>Dance Practice</paper-item>			            
+			            <core-item>All</core-item>
+			            <core-item>Music Video</core-item>
+			            <core-item>Live Performance</core-item>
+			            <core-item>Dance Practice</core-item>			            
 			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
+			    </core-dropdown>
+			</core-dropdown-menu>
 		</div>
 		<div horizontal layout>
-			<div>English Subtitle Only</div>
+			<div>English Subtitle</div>
 			<paper-toggle-button></paper-toggle-button>
 		</div>
 		<div horizontal layout>
-			<div>Official Video Only</div>
+			<div>Official Video</div>
 			<paper-toggle-button></paper-toggle-button>
 		</div>
 		<div horizontal layout>
-			<div>HD Video Only</div>
+			<div>HD Video</div>
 			<paper-toggle-button></paper-toggle-button>
+		</div>		
+		<div vertical layout>
+			<div>Year</div>
+			<paper-interval-slider min="2000" max="2015" valueA="2007" valueB="2012" step="1" pin></paper-interval-slider>
 		</div>
-		<div horizontal layout>
-			<div>Year Uploaded</div>
-			<paper-interval-slider min="10" max="200" valueA="110" valueB="180" step="5" pin snaps></paper-interval-slider>
+		<div vertical layout>
+			<div>Score</div>
+			<paper-interval-slider min="0" max="100" valueA="70" valueB="100" step="1" pin></paper-slider>
 		</div>
-		<div horizontal layout>
+		<!-- <div horizontal layout>
 			<div>English Lyric Percentage</div>
 			<paper-interval-slider min="10" max="200" valueA="110" valueB="180" step="5" pin snaps></paper-interval-slider>
 		</div>
@@ -100,15 +97,7 @@
 		<div horizontal layout>
 			<div>Cheesiness</div>
 			<paper-slider min="10" max="200" value="110"></paper-slider>
-		</div>
-		<div horizontal layout>
-			<div>Approval Rating</div>
-			<paper-slider min="10" max="200" value="110"></paper-slider>
-		</div>
-		<!-- <core-item icon="settings" label="item1"></core-item>
-		<paper-slider min="10" max="200" value="110"></paper-slider>
-		<core-item icon="settings" label="item2"></core-item>
-		<paper-interval-slider min="10" max="200" valueA="110" valueB="180" pin="true"></paper-interval-slider> -->
+		</div>	 -->			
 	</core-menu>	
 </template>
 <script>

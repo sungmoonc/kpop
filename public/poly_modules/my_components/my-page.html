@@ -6,7 +6,7 @@
 <link rel="import" href="../my_components/list-cards.html">
 <link rel="import" href="../my_components/add-collection-dialog.html">
 
-<polymer-element name="my-page" attributes="groups" vertical layout>
+<polymer-element name="my-page" attributes="groups fireToggle" vertical layout>
 <template>
 	<style>
 
@@ -27,7 +27,7 @@
 	<core-pages selected="{{selected}}">
 		<div>
 			<core-icon-button icon="add" on-tap="{{openAddDialog}}"></core-icon-button>			
-			<list-cards groups="{{groups}}"></list-cards>
+			<list-cards groups="{{groups}}" fireToggle="{{fireToggle}}"></list-cards>
 			<add-collection-dialog id="addDialog" transition="core-transition-center"></add-collection-dialog>
 		</div>
 		<div>
