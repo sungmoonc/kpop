@@ -7,12 +7,8 @@ Rails.application.routes.draw do
   root 'videos#index'
 
   # Example of regular route:
-    get '/youtubeviewsasc' => 'videos#by_youtube_views_asc'
-    get '/youtubeviewsdesc' => 'videos#by_youtube_views_desc'
-    get '/upvotesasc' => 'videos#by_upvotes_asc'
-    get '/upvotesdesc' => 'videos#by_upvotes_desc'
-    get '/uploaddateasc' => 'videos#by_upload_date_asc'
-    get '/uploaddatedesc' => 'videos#by_upload_date_desc'
+
+  get '/sortby/:field/:order' => 'videos#sort_by'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

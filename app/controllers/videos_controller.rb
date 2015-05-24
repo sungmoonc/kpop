@@ -64,29 +64,12 @@ class VideosController < ApplicationController
 
   #sorting
 
-  def by_youtube_views_asc
-    @videos = Video.order(:youtube_views)
+  def sort_by
+    sorted = params[:field] + " " + params[:order]
+    @videos = Video.order(sorted)
+    render json: @videos
   end
 
-  def by_youtube_views_desc
-    @videos = Video.order(youtube_views: :desc)
-  end
-
-  def by_upvotes_asc
-    @videos = Video.order(:upvotes)
-  end
-
-  def by_upvotes_desc
-    @videos = Video.order(upvotes: :desc)
-  end
-
-  def by_upload_date_asc
-    @videos = Video.order(:upload_date)
-  end
-
-  def by_upload_date_desc
-    @videos = Video.order(upload_date: :desc)
-  end
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -96,6 +79,6 @@ class VideosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :upvotes, :downvotes)
+    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :licensed_content, upload_date, :upvotes, :downvotes)
   end
 end
