@@ -34,7 +34,7 @@
     <div id="main-content" class="col-xs-9">
       <ul class="thumbnails">
         <% @videos.each do |video| %>
-          <%= render 'each_video' %>
+          <%= render 'each_video', :video => video %>
         <% end %>
       </ul>
 
@@ -43,16 +43,5 @@
 </div>
 
 
-<script type="text/javascript">
-$(document).ready(function(){
- $(".hook--showmodal").on('click', function(){
-  var url= $(this).attr("href")
-    $("#iframe").attr('src', url);
-     })
 
-  $("#basicModal").on('hidden.bs.modal', function(){
-    $("#iframe").attr('src', '');
-  })
-});
-</script>
-
+<%= render partial: "each_video_handlebar"%>
