@@ -11,8 +11,8 @@ class CreateVideos < ActiveRecord::Migration
       t.integer :hotness
       t.integer :cheesiness
       t.integer :english_percentage
-      t.integer :english_subtitle
-      t.integer :official
+      t.boolean :english_subtitle
+      t.boolean :official
       t.integer :youtube_views, limit: 8
       t.string :definition
       t.string :duration

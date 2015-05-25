@@ -3,12 +3,13 @@
 <div id="main-container" class="container-fluid">
   <div class="row">
     <div id="sidebar" class="col-xs-3">
-      <h1>Filters</h1>
+      <!--<h1>Filters</h1>-->
 
-      year
-      <div id="year" class="filter-slider"></div>
+      <!--year-->
+      <!--<div id="year" class="filter-slider"></div><br>-->
 
 
+      <h1>Sorting</h1>
       <div class="upvoteasc"><button>Upvote(asc)</button></div>
       <div class="upvotedesc"><button>Upvote(desc)</button></div>
       <div class="youtubeasc"><button>Youtube_views(asc)</button></div>
@@ -16,6 +17,15 @@
       <div class="uploadasc"><button>Upload_date(asc)</button></div>
       <div class="uploaddesc"><button>Upload_date(desc)</button></div>
 
+      <hr>
+
+
+      <div class="filter"> <h1>Filters</h1><br>
+        Field: <input type="text" name="field" id="field"><br>
+        From: <input type="number" name="from" id="from"><br>
+        To: <input type="number" name="to" id="to"><br>
+        <input type="submit" value="submit" id="submit">
+      </div>
     </div>
 
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

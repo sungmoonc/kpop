@@ -70,6 +70,13 @@ class VideosController < ApplicationController
     render json: @videos
   end
 
+  #filtering
+
+  def filter_by
+    @videos = Video.where("#{params[:field]} >= #{params[:from]} and #{params[:field]} <= #{params[:to]}")
+    render json: @videos
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -79,6 +86,6 @@ class VideosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, upload_date, :upvotes, :downvotes)
+    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, :upload_date, :upvotes, :downvotes)
   end
 end
