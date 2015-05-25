@@ -15,23 +15,23 @@ function call_sort_by(e, field, order) {
 }
 
 
-function call_filter_integer(e) {
-  e.preventDefault();
-
-  var source = $('#indv_video_template').html();
-  var templatingFunction = Handlebars.compile(source);
-  var context = {};
-
-  $.ajax({
-    url: '/filterby/' + $("#field").val() + '/' + $("#from").val() + '/' + $("#to").val(),
-    type: 'GET'
-  }).done(function (response) {
-    console.log(response)
-    context.videos = response;
-    $("ul.thumbnails").html("");
-    $(".thumbnails").append(templatingFunction(context));
-  })
-}
+//function call_filter_integer(e) {
+//  e.preventDefault();
+//
+//  var source = $('#indv_video_template').html();
+//  var templatingFunction = Handlebars.compile(source);
+//  var context = {};
+//
+//  $.ajax({
+//    url: '/filterby/' + $("#field").val() + '/' + $("#from").val() + '/' + $("#to").val(),
+//    type: 'GET'
+//  }).done(function (response) {
+//    console.log(response)
+//    context.videos = response;
+//    $("ul.thumbnails").html("");
+//    $(".thumbnails").append(templatingFunction(context));
+//  })
+//}
 
 $(document).on('page:change', function () {
   $(".hook--showmodal").on('click', function () {
@@ -77,22 +77,5 @@ $(document).on('page:change', function () {
   });
 
   //boolean filtering
-  $(this).on('click', function (e) {
-    e.preventDefault();
-
-    var source = $('#indv_video_template').html();
-    var templatingFunction = Handlebars.compile(source);
-    var context = {};
-
-    $.ajax({
-      url: '/filterby/' + $("#field").val() + '/' + $("#from").val() + '/' + $("#to").val(),
-      type: 'GET'
-    }).done(function (response) {
-      console.log(response)
-      context.videos = response;
-      $("ul.thumbnails").html("");
-      $(".thumbnails").append(templatingFunction(context));
-    })
-  });
 
 });

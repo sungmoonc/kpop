@@ -1,23 +1,47 @@
 <%= form_tag do %>
 
-  <div class="filter"> <h1>Integer Filters</h1><br>
-    <p>For hotness, cheesiness, english_percentage, youtube_views, upvotes, downvotes</p>
-    Field: <input type="text" name="field" id="field"><br>
-    From: <input type="number" name="hotness[min]" id="from"><br>
-    To: <input type="number" name="hotness[max]" id="to"><br>
+  <div class="filter"> <h3>Hotness</h3><br>
+    min: <input type="number" name="hotness[min]" ><br>
+    max: <input type="number" name="hotness[max]"><br>
   </div>
 
-  <div class="filter"> <h1>Boolean Filters</h1><br>
-    <p>For english_subtitle, official, licensed_content</p>
-    Field: <input type="text" name="field" id="field"><br>
-    Boolean: <input type="number" name="from" id="from"><br>
-    <input type="submit" value="submit" id="submit">
+  <div class="filter"> <h3>cheesiness</h3><br>
+    min: <input type="number" name="cheesiness[min]" ><br>
+    max: <input type="number" name="cheesiness[max]"><br>
   </div>
 
-  <div class="filter"> <h1>Category Filters</h1><br>
-    <p>For type, duration, definition, dimension, caption</p>
-    Field: <input type="text" name="field" id="field"><br>
-    Boolean: <input type="number" name="from" id="from"><br>
+  <div class="filter"> <h3>english_percentage</h3><br>
+    min: <input type="number" name="english_percentage[min]" ><br>
+    max: <input type="number" name="english_percentage[max]"><br>
+  </div>
+
+  <div class="filter"> <h3>youtube_views</h3><br>
+    min: <input type="number" name="youtube_views[min]" ><br>
+    max: <input type="number" name="youtube_views[max]"><br>
+  </div>
+
+  <div class="filter"> <h3>upvotes</h3><br>
+    min: <input type="number" name="upvotes[min]" ><br>
+    max: <input type="number" name="upvotes[max]"><br>
+  </div>
+
+  <div class="filter"> <h3>downvotes</h3><br>
+    min: <input type="number" name="downvotes[min]" ><br>
+    max: <input type="number" name="downvotes[max]"><br>
+  </div>
+
+  <div class="filter"><br>
+    English_subtitle: <input type="checkbox" name="english_subtitle"><br>
+    official: <input type="checkbox" name="official" ><br>
+    licensed_content: <input type="checkbox" name="licensed_content" ><br>
+  </div>
+
+  <div class="filter"><br>
+
+    Type: <input type="text" name="type" ><br>
+    Duration: <input type="text" name="duration" ><br>
+    dimension: <input type="text" name="dimension" ><br>
+    caption: <input type="text" name="caption" ><br><br>
     <input type="submit" value="submit" id="submit">
   </div>
 
