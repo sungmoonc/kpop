@@ -14,26 +14,60 @@
 			background: rgb(48,64,79);
 		}
 
-		core-dropdown-menu {
-			box-sizing: border-box;		
-			width: 220px;	
-			height: 35px;
-			background-color: rgb(48,64,79);
-		}
-
-		html /deep/ core-dropdown {
-			box-sizing: border-box;
-			min-width: 220px;
-			background-color: rgb(48,64,79);
-			border: 1px solid rgb(255,255,255);
-		}
-
 		core-menu div{			
 			margin: 10px;
-		}
+		}		
+
+		:host /deep/ core-dropdown-menu {
+			box-sizing: border-box;		
+			width: 210px;	
+			height: 35px;
+			background-color: rgb(48,64,79);			
+			border: 1px solid rgb(255,255,255);
+			padding-left: 15px;
+		}		
+
+		:host /deep/ core-dropdown {
+			box-sizing: border-box;
+			min-width: 210px;			
+			background-color: rgb(48,64,79);
+  			border: 1px solid #ccc;
+  			border-radius: 3px;
+		}		
 
 		.menu {
 			background: rgb(48,64,79);
+			width: 180px;
+		}
+
+		paper-interval-slider::shadow #sliderBar::shadow #progress {
+			background-color: rgb(116,200,206);
+		}
+
+		paper-interval-slider::shadow .knobInner {
+			background-color: rgb(255,255,255);
+		}
+
+		paper-toggle-button {
+			margin-left: 22px;
+			margin-top: 11px;
+		}		
+
+		paper-toggle-button::shadow .toggle-bar {			
+			background-color: rgb(142,151,165);
+		}
+
+		paper-toggle-button::shadow [checked] .toggle-bar {
+			background-color: rgb(116,200,206);
+		}
+
+		paper-toggle-button::shadow [checked] .toggle-button {
+			background-color: rgb(255,255,255);
+		}
+
+		.strVar {
+			font-size: 10px;
+			margin-top: 12px;
 		}
 	</style>	
 	<core-menu>
@@ -50,8 +84,10 @@
 			</core-dropdown-menu>
 		</div>		
 		<div vertical layout>
-			<div>Number of Singers</div>
-			<paper-interval-slider min="1" max="7" valueA="2" valueB="5" step="1" pin></paper-interval-slider>
+			<div horizontal layout>
+				<div>Number of Singers</div><div class="strVar">{{numA}} - {{numB}}</div>
+			</div>
+			<paper-interval-slider min="1" max="7" valueA="{{numA}}" valueB="{{numB}}" step="1" pin></paper-interval-slider>
 		</div>
 		<div vertical layout>
 			<div>Video Type</div>
@@ -79,29 +115,31 @@
 			<paper-toggle-button></paper-toggle-button>
 		</div>		
 		<div vertical layout>
-			<div>Year</div>
-			<paper-interval-slider min="2000" max="2015" valueA="2007" valueB="2012" step="1" pin></paper-interval-slider>
+			<div horizontal layout>
+				<div>Year</div><div flex></div><div class="strVar">{{yearA}} - {{yearB}}</div>
+			</div>
+			<paper-interval-slider min="2000" max="2015" valueA="{{yearA}}" valueB="{{yearB}}" step="1" pin></paper-interval-slider>
 		</div>
 		<div vertical layout>
-			<div>Score</div>
-			<paper-interval-slider min="0" max="100" valueA="70" valueB="100" step="1" pin></paper-slider>
+			<div horizontal layout>
+				<div>Score</div><div flex></div><div class="strVar">{{scoreA}} - {{scoreB}}</div>
+			</div>
+			<paper-interval-slider min="0" max="100" valueA="{{scoreA}}" valueB="{{scoreB}}" step="1" pin></paper-slider>
 		</div>
-		<!-- <div horizontal layout>
-			<div>English Lyric Percentage</div>
-			<paper-interval-slider min="10" max="200" valueA="110" valueB="180" step="5" pin snaps></paper-interval-slider>
-		</div>
-		<div horizontal layout>
-			<div>sexiness</div>
-			<paper-interval-slider min="10" max="200" valueA="110" valueB="180" step="5" pin snaps></paper-interval-slider>
-		</div>
-		<div horizontal layout>
-			<div>Cheesiness</div>
-			<paper-slider min="10" max="200" value="110"></paper-slider>
-		</div>	 -->			
 	</core-menu>	
 </template>
 <script>
-	Polymer('left-menu', function() {
+	Polymer('left-menu', {
+		numA: 2,
+		numB: 5,
+		yearA: 2007,
+		yearB: 2014,
+		scoreA: 70,
+		scoreB: 100,
+
+		created: function() {
+
+		}
 
 	});
 </script>

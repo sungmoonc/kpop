@@ -1,11 +1,12 @@
 <link rel="import" href="../bower_components/core-image/core-image.html">
 
-<polymer-element name="video-card" attributes="cardWidth groups group groupId">
+<polymer-element name="video-card" attributes="cardWidth groups group groupId selectedGroup">
 <template>
 	<style>
 		:host {
 			width: {{cardWidth}}px; 
-			height: 180px;							
+			height: 180px;	
+			cursor: pointer;						
 		}
 
 		.card {	
@@ -21,7 +22,7 @@
 
 			border: 1px solid rgba(230,230,230,1);
 			border-radius: 5px;
-			box-shadow: 0px 3px 0px 0px rgba(220,220,220,1);
+			box-shadow: 0px 3px 0px 0px rgba(220,220,220,1);			
 		}
 
 		.card:hover {
@@ -35,38 +36,69 @@
 			
 		}
 
-		.card .group_title {				
-			font-size: 20px;
-			color: rgba(102,102,102,1);
-			margin-left: 30px;
-			margin-bottom: 10px;			
+		.card .song_title {				
+			position: absolute;
+			top: 50px;
+			left: 30px;
+			font-size: 38px;
+			color: rgba(255,255,255,1);			
 			white-space: normal;
 		}		
+
+		.card .singer {
+			position: absolute;
+			top: 100px;
+			left: 30px;
+			font-size: 24px;
+			color: rgba(255,255,255,1);
+			font-weight: bold;
+		}
 
 		.card a{			
 			text-decoration: none;
 		}				
+
+		#overlay {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.7);
+		}
 	</style>
-	<div id="card" class="card" on-tap="{{onCardTapped}}" hero-id="group-{{groupId}}" groupId="{{groupId}}" hero?="{{group === selectedGroup}}" vertical layout>
+	<div id="card" class="card" on-tap="{{onCardTapped}}" on-mouseover="{{onCardHovered}}" on-mouseout="{{onCardOuted}}" hero-id="group-{{groupId}}" groupId="{{groupId}}" hero?="{{group === selectedGroup}}" vertical layout>
 		<core-image sizing="cover" src="{{group.img}}" groupId="{{groupId}}"></core-image>
+		<div id="overlay" hidden>
+			<div class="song_title">{{group.title}}</div>
+			<div class="singer">{{group.singer}}</div>
+		</div>		
 		<!-- <core-item class="group_title gi_{{i}}" groupId="{{i}}">{{group.title}}</core-item> -->
 	</div>
 </template>	
 <script>
-	Polymer('video-card', {				
-		selectedGroup: [],
+	Polymer('video-card', {						
 		cardWidth: 320,	
 
-		created: function() {
-			this.selectedGroup = [];
+		publish: {
+			selectedGroup: []
+		},	
+
+		created: function() {			
 			this.cardWidth = 320;
 		},		
 
-		onCardTapped: function(event) {
-			this.group_id = event.target.getAttribute("groupId");
-			this.selectedGroup = this.groups[parseInt(this.group_id)];
+		onCardTapped: function(event) {						
+			this.selectedGroup = this.groups[parseInt(this.groupId)];
 			
 			this.fire('card-tapped');
+		},
+
+		onCardHovered: function(event) {
+			this.$.overlay.removeAttribute("hidden");
+		},
+
+		onCardOuted: function(event) {
+			this.$.overlay.setAttribute("hidden", null);
 		}
 
 	});

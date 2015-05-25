@@ -27,34 +27,50 @@
 			font-size: 21px;
 			color: rgb(128,128,128);
 			margin-top: 25px;
+			margin-left: 20px;
 		}
 
 		core-dropdown-menu {
+			margin-top: 10px;
+			margin-right: 10px;
 			width: 170px;
+			height: 60px;
 			font-size: 18px;
 			color: rgb(128,128,128);
+			background-color: rgb(237,237,237);
+		}
+
+		.dropdown {
+			background-color: rgb(48,64,79);
+  			border: 1px solid #ccc;
+  			border-radius: 3px;
+  			color: rgb(255,255,255);
+  			font-size: 13px;
+  			font-weight: bold;
 		}
 
 		list-cards {
 			position: absolute;
 			top: 110px;
+			left: 10px;
 			width: 100%;
 			height: 100%;
 		}
+
 	</style>
 	<div class="header-panel" horizontal layout>									
 		<div id="numResults">7160 results</div>
 		<div flex></div>
-		<core-dropdown-menu label="Sort">
+		<core-dropdown-menu label="SORT">
 		    <core-dropdown class="dropdown">
 		        <core-menu class="menu">
-		            <paper-item>Default</paper-item>
-		            <paper-item>Sexiness</paper-item>
-		            <paper-item>Cheesiness</paper-item>		    
-		            <paper-item>Approval Rating</paper-item>
-		            <paper-item>Youtube Views</paper-item>
-		            <paper-item>Most Recent First</paper-item>
-		            <paper-item>Oldest First</paper-item>
+		            <core-item>Default</core-item>
+		            <core-item>Sexiness</core-item>
+		            <core-item>Cheesiness</core-item>		    
+		            <core-item>Approval Rating</core-item>
+		            <core-item>Youtube Views</core-item>
+		            <core-item>Most Recent First</core-item>
+		            <core-item>Oldest First</core-item>
 		        </core-menu>
 		    </core-dropdown>
 		</core-dropdown-menu>	

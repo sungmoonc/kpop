@@ -26,6 +26,7 @@
 
 			body {
 				font-family: sans-serif;				
+				background-color: rgb(237,237,237);
 			}
 
 			#btnDrawer.close{
@@ -39,6 +40,7 @@
 				position: fixed;
 				top: 35px;
 				left: 10px;
+				z-index: 40000;
 			}
 
 			#leftPanel {							
@@ -61,47 +63,55 @@
 			#mainPanel {				
 				top: 0;
 				width: 100%;
-				height: 100%;
-				margin-left: 40px;
+				height: 100%;				
+				background-color: rgb(237,237,237);
+				z-index: 20000;
 			}
 
 			#mainPanel core-toolbar {
+				background-color: rgb(237,237,237);
 				height: 93px;
 				margin-top: 20px;
+				margin-left: 20px;
 			}
 
-			#mainPanel h2 {
+			#titleKpop {
 				font-size: 26px;
 				font-weight: bold;
 				font-style: italic;
 				color: rgb(48,64,79);				
 			}
 
+			#titleKpop.close {
+				position: absolute;
+				top: 20px;
+				left: 400px;				
+			}
+
+			#titleKpop.open {
+				margin-left: 10px;
+			}
+
+			core-field {
+				width: 138px;
+			}
+
 			.content {
-				background-color: #fff;
+				background-color: rgb(237,237,237);
 				height: 3000px;
 				padding: 20px;
 			}			
 
-			#shadowWrapper1 {
+			#shadowWrapper {
 				position: absolute;
 				left: 0;
 				top: 0;
 				width: 100%;
 				height: 100%;
-				background-color: rgba(0,0,0,.15);
+				background-color: rgba(0,0,0,.5);
 				z-index: 10000;	
 			}		
-
-			#shadowWrapper2 {
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0,0,0,.15);
-				z-index: 10000;	
-			}		
+			
 		</style>
 	</head>
 	<body unresolved>
@@ -112,14 +122,13 @@
 						<core-toolbar horizontal layout>
 							<h1>Filters</h1>													
 						</core-toolbar>
-						<left-menu></left-menu>											
-						<div id="shadowWrapper1" hidden></div>
+						<left-menu></left-menu>						
 					</core-header-panel>
 
 					<core-header-panel id="mainPanel">
 						<core-toolbar>
 							<div horizontal layout>
-								<h2>K-pop tv</h2>
+								<h2 id="titleKpop" class="open">K-pop tv</h2>
 								<div flex></div>
 								<core-field>
 									<paper-input label="search" flex></paper-input>
@@ -140,26 +149,29 @@
 						<div class="content">
 							<main-cards groups="{{groups}}" fireToggle="{{fireToggle}}" touch-action="auto"></main-cards>
 							<!-- <my-page groups="{{groups}}" fireToggle="{{fireToggle}}"></my-page> -->
-						</div>
-						<div id="shadowWrapper2" hidden></div>													
+						</div>						
 					</core-header-panel>					
-				</div>				
+				</div>		
+				<div id="shadowWrapper" hidden></div>		
 				<core-icon-button id="btnDrawer" class="close" icon="close"></core-icon-button>	
 			</section>			
 			<script>				
 				var isDrawerOpened = true;
 				var leftPanel = document.querySelector('#leftPanel');
-				var btnDrawer = document.querySelector('#btnDrawer');				
+				var btnDrawer = document.querySelector('#btnDrawer');
+				var titleKpop = document.querySelector('#titleKpop');				
 				btnDrawer.addEventListener('click', function() {										
 					if(isDrawerOpened){
 						leftPanel.setAttribute("hidden", null);
-						btnDrawer.className = "open";
+						btnDrawer.className = "open";						
 						btnDrawer.icon = "add";
+						titleKpop.className = "close";
 						isDrawerOpened = false;	
 					} else {
 						leftPanel.removeAttribute("hidden");
 						btnDrawer.className = "close";
 						btnDrawer.icon = "close";
+						titleKpop.className = "open";
 						isDrawerOpened = true;	
 					}					
 				});
@@ -167,28 +179,18 @@
 				var main_cards = document.querySelector('main-cards');
 				var my_page = document.querySelector('my-page');				
 
-				var shadowWrapper1 = document.querySelector("#shadowWrapper1");				
-				var shadowWrapper2 = document.querySelector("#shadowWrapper2");
-				shadowWrapper1.addEventListener("click", function() {
-					shadowWrapper1.setAttribute("hidden", null);
-					shadowWrapper2.setAttribute("hidden", null);
+				var shadowWrapper = document.querySelector("#shadowWrapper");				
+				shadowWrapper.addEventListener("click", function() {
+					shadowWrapper.setAttribute("hidden", null);					
 					main_cards.fireToggle = !main_cards.fireToggle;
 					my_page.fireToggle = !my_page.fireToggle;
-				});
-				shadowWrapper2.addEventListener("click", function() {
-					shadowWrapper1.setAttribute("hidden", null);
-					shadowWrapper2.setAttribute("hidden", null);
-					main_cards.fireToggle = !main_cards.fireToggle;
-					my_page.fireToggle = !my_page.fireToggle;
-				});
+				});				
 
 				main_cards.addEventListener('hide-content', function(e) {
-					shadowWrapper1.setAttribute("hidden", null);
-					shadowWrapper2.setAttribute("hidden", null);
+					shadowWrapper.setAttribute("hidden", null);					
 				});
 				main_cards.addEventListener('show-content', function(e) {
-					shadowWrapper1.removeAttribute("hidden");
-					shadowWrapper2.removeAttribute("hidden");
+					shadowWrapper.removeAttribute("hidden");					
 				});	
 				
 				// my_page.addEventListener('hide-content', function(e) {
