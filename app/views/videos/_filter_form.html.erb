@@ -1,0 +1,24 @@
+<%= form_tag do %>
+
+  <div class="filter"> <h1>Integer Filters</h1><br>
+    <p>For hotness, cheesiness, english_percentage, youtube_views, upvotes, downvotes</p>
+    Field: <input type="text" name="field" id="field"><br>
+    From: <input type="number" name="hotness[min]" id="from"><br>
+    To: <input type="number" name="hotness[max]" id="to"><br>
+  </div>
+
+  <div class="filter"> <h1>Boolean Filters</h1><br>
+    <p>For english_subtitle, official, licensed_content</p>
+    Field: <input type="text" name="field" id="field"><br>
+    Boolean: <input type="number" name="from" id="from"><br>
+    <input type="submit" value="submit" id="submit">
+  </div>
+
+  <div class="filter"> <h1>Category Filters</h1><br>
+    <p>For type, duration, definition, dimension, caption</p>
+    Field: <input type="text" name="field" id="field"><br>
+    Boolean: <input type="number" name="from" id="from"><br>
+    <input type="submit" value="submit" id="submit">
+  </div>
+
+<% end %>

@@ -32,6 +32,7 @@ function call_filter_integer(e) {
     $(".thumbnails").append(templatingFunction(context));
   })
 }
+
 $(document).on('page:change', function () {
   $(".hook--showmodal").on('click', function () {
     var url = $(this).attr("href");
@@ -71,11 +72,27 @@ $(document).on('page:change', function () {
   });
 
   //integer filtering
-  $("#submit").on('click', function (e) {
+  $(this).on('click', function (e) {
     call_filter_integer(e);
   });
 
   //boolean filtering
-  
+  $(this).on('click', function (e) {
+    e.preventDefault();
+
+    var source = $('#indv_video_template').html();
+    var templatingFunction = Handlebars.compile(source);
+    var context = {};
+
+    $.ajax({
+      url: '/filterby/' + $("#field").val() + '/' + $("#from").val() + '/' + $("#to").val(),
+      type: 'GET'
+    }).done(function (response) {
+      console.log(response)
+      context.videos = response;
+      $("ul.thumbnails").html("");
+      $(".thumbnails").append(templatingFunction(context));
+    })
+  });
 
 });
