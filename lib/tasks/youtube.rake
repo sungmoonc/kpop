@@ -33,8 +33,8 @@ def youtube_api(method, options)
   http = Curl.get(url)
 
 
-  p "This is parsed Json"
-  p JSON.parse(http.body_str)
+  # p "This is parsed Json"
+  JSON.parse(http.body_str)
 end
 
 

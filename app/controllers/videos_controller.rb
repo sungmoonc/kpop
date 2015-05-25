@@ -4,9 +4,9 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    # @videos = Video.where("title_korean LIKE '%M/V%' or title_korean LIKE '%Music Video%' or title_korean LIKE '%MV%'").order("youtube_views DESC").first(100)
+    @videos = Video.where("title_korean LIKE '%M/V%' or title_korean LIKE '%Music Video%' or title_korean LIKE '%MV%'").order("youtube_views DESC").first(100)
     # @videos = Video.where("title_korean LIKE '%teaser%' or title_korean LIKE '%티저%'").order("youtube_views DESC").first(100)
-    @videos = Video.where("title_korean LIKE '%안무%'").order("youtube_views DESC").first(100)
+    # @videos = Video.where("title_korean LIKE '%안무%'").order("youtube_views DESC").first(100)
   end
 
   # GET /videos/1
