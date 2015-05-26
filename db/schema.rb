@@ -25,13 +25,14 @@ ActiveRecord::Schema.define(version: 20150505062647) do
     t.integer  "hotness"
     t.integer  "cheesiness"
     t.integer  "english_percentage"
-    t.integer  "english_subtitle"
-    t.integer  "official"
+    t.boolean  "english_subtitle"
+    t.boolean  "official"
     t.integer  "youtube_views",      limit: 8
     t.string   "definition"
     t.string   "duration"
     t.string   "dimension"
     t.string   "caption"
+    t.string   "type"
     t.boolean  "licensed_content"
     t.date     "upload_date"
     t.integer  "upvotes",            limit: 8
