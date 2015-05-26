@@ -9,11 +9,12 @@
 		}
 
 		core-selector {			
-			margin: 10px;
+			margin-top: 10px;
+			margin-right: 15px;
 		}		
 
 		core-icon-button {			
-			margin: 10px;
+			margin-right: 5px;
 		}
 	</style>
 	<core-selector id="selector" selected="0" on-core-activate="{{levelBtnSelected}}">	
@@ -25,7 +26,10 @@
 <script>
 	Polymer('view-menu-box', {
 		selectedLevel: 0,
-		cardWidth: 320,
+
+		publish: {
+			cardWidth: 320
+		},	
 
 		created: function() {
 

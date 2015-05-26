@@ -6,9 +6,15 @@
   		<meta name="mobile-web-app-capable" content="yes">
   		<meta name="apple-mobile-web-app-capable" content="yes">
 		<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-		<link rel="import" href="bower_components/polymer/polymer.html">
-		<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">					
-		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+		<link rel="import" href="bower_components/polymer/polymer.html">					
+		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">	
+		<link rel="import" href="bower_components/core-icon-button/core-icon-button.html">	
+		<link rel="import" href="bower_components/core-menu-button/core-menu-button.html">
+		<link rel="import" href="bower_components/core-menu/core-menu.html">
+		<link rel="import" href="bower_components/core-item/core-item.html">
+		<link rel="import" href="bower_components/core-dropdown/core-dropdown.html">	
+		<link rel="import" href="bower_components/core-field/core-field.html">
+		<link rel="import" href="bower_components/paper-input/paper-input.html">
 		<link rel="import" href="my_components/main-cards.html">
 		<link rel="import" href="my_components/left-menu.html">	
 		<link rel="import" href="my_components/my-page.html">	
@@ -20,97 +26,183 @@
 
 			body {
 				font-family: sans-serif;				
+				background-color: rgb(237,237,237);
 			}
 
-			core-animated-pages {
-				width: 100%;
+			#btnDrawer.close{
+				position: fixed;
+				top: 35px;
+				left: 200px;
+				color: rgb(255,255,255);
+			}
+
+			#btnDrawer.open{
+				position: fixed;
+				top: 35px;
+				left: 10px;
+				z-index: 40000;
+			}
+
+			#leftPanel {							
+				width: 310px;
 				height: 100%;
+				background: rgb(48,64,79);
+				color: rgb(255,255,255);
+				z-index: 100;
 			}
 
-			core-scaffold {
-				position: absolute;
+			#leftPanel core-toolbar {
+				background: rgb(48,64,79);
+				height: 105px;
+			}
+
+			#leftPanel h1 {
+				margin-left: 20px;
+				font-size: 40px;
+				font-weight: normal;
+			}
+
+			#mainPanel {				
 				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
+				width: 100%;
+				height: 100%;				
+				background-color: rgb(237,237,237);
+				z-index: 20000;
+			}
+
+			#mainPanel core-toolbar {
+				background-color: rgb(237,237,237);
+				height: 105px;				
+				margin-left: 20px;
+			}
+
+			#titleKpop {
+				font-size: 26px;
+				font-weight: bold;
+				font-style: italic;
+				color: rgb(48,64,79);				
+			}
+
+			#titleKpop.close {
+				position: absolute;
+				top: 20px;
+				left: 400px;				
+			}
+
+			#titleKpop.open {
+				margin-left: 10px;
+			}
+
+			core-field {
+				width: 138px;
 			}
 
 			.content {
-				background-color: #fff;
+				background-color: rgb(237,237,237);
 				height: 3000px;
 				padding: 20px;
-			}
+			}			
 
-			core-scaffold[mode=cover]::shadow core-header-panel::shadow #mainContainer {
-				left: 120px;				
-			}
-
-			core-scaffold[mode=cover] .content {
-				margin: 20px 100px 20px 0;
-			}	
-
-			#shadowWrapper1 {
+			#shadowWrapper {
 				position: absolute;
 				left: 0;
 				top: 0;
 				width: 100%;
 				height: 100%;
-				background-color: rgba(0,0,0,.15);
+				background-color: rgba(0,0,0,.5);
 				z-index: 10000;	
 			}		
-
-			#shadowWrapper2 {
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0,0,0,.15);
-				z-index: 10000;	
-			}		
+			
 		</style>
 	</head>
 	<body unresolved>
 		<template id="temp_app" is="auto-binding">			
-			<section>
-				<core-scaffold>					
-					<core-header-panel navigation flex mode="seamed">
-						<left-menu></left-menu>											
-						<div id="shadowWrapper1" hidden></div>
+			<section>				
+				<div horizontal layout fit>
+					<core-header-panel id="leftPanel">
+						<core-toolbar horizontal layout>
+							<h1>Filters</h1>												
+
+						</core-toolbar>
+						<left-menu></left-menu>						
 					</core-header-panel>
 
-					<div tool>Top header</div>
+					<core-header-panel id="mainPanel">
+						<core-toolbar>
+							<div horizontal layout>
+								<h2 id="titleKpop" class="open">K-pop tv</h2>
+								<div flex></div>
+								<core-field>
+									<paper-input label="search" flex></paper-input>
+									<core-icon icon="search"></core-icon>
+								</core-field>
 
-					<div class="content">
-						<!-- <main-cards groups="{{groups}}" fireToggle="{{fireToggle}}" touch-action="auto"></main-cards> -->
-						<my-page groups="{{groups}}"></my-page>
-					</div>					
-					<div id="shadowWrapper2" hidden></div>
-				</core-scaffold>			
+								<!-- <core-menu-button>
+									<core-icon-button id="btnProfile" icon="menu"></core-icon-button>	
+									<core-dropdown class="dropProfile">
+										<core-menu>
+											<core-item>Profile</core-item>
+											<core-item>Logout</core-item>
+										</core-menu>
+									</core-dropdown>
+								</core-menu-button> -->
+							</div>
+						</core-toolbar>						
+						<div class="content">
+							<main-cards groups="{{groups}}" fireToggle="{{fireToggle}}" touch-action="auto"></main-cards>
+							<!-- <my-page groups="{{groups}}" fireToggle="{{fireToggle}}"></my-page> -->
+						</div>						
+					</core-header-panel>					
+				</div>		
+				<div id="shadowWrapper" hidden></div>		
+				<core-icon-button id="btnDrawer" class="close" icon="close"></core-icon-button>	
 			</section>			
-			<script>
+			<script>				
+				var isDrawerOpened = true;
+				var leftPanel = document.querySelector('#leftPanel');
+				var btnDrawer = document.querySelector('#btnDrawer');
+				var titleKpop = document.querySelector('#titleKpop');				
+				btnDrawer.addEventListener('click', function() {										
+					if(isDrawerOpened){
+						leftPanel.setAttribute("hidden", null);
+						btnDrawer.className = "open";						
+						btnDrawer.icon = "add";
+						titleKpop.className = "close";
+						isDrawerOpened = false;	
+					} else {
+						leftPanel.removeAttribute("hidden");
+						btnDrawer.className = "close";
+						btnDrawer.icon = "close";
+						titleKpop.className = "open";
+						isDrawerOpened = true;	
+					}					
+				});
+
 				var main_cards = document.querySelector('main-cards');
-				var shadowWrapper1 = document.querySelector("#shadowWrapper1");				
-				var shadowWrapper2 = document.querySelector("#shadowWrapper2");
-				shadowWrapper1.addEventListener("click", function() {
-					shadowWrapper1.setAttribute("hidden", null);
-					shadowWrapper2.setAttribute("hidden", null);
+				var my_page = document.querySelector('my-page');				
+
+				var shadowWrapper = document.querySelector("#shadowWrapper");				
+				shadowWrapper.addEventListener("click", function() {
+					shadowWrapper.setAttribute("hidden", null);					
 					main_cards.fireToggle = !main_cards.fireToggle;
-				});
-				shadowWrapper2.addEventListener("click", function() {
-					shadowWrapper1.setAttribute("hidden", null);
-					shadowWrapper2.setAttribute("hidden", null);
-					main_cards.fireToggle = !main_cards.fireToggle;
-				});
+					my_page.fireToggle = !my_page.fireToggle;
+				});				
 
 				main_cards.addEventListener('hide-content', function(e) {
-					shadowWrapper1.setAttribute("hidden", null);
-					shadowWrapper2.setAttribute("hidden", null);
+					shadowWrapper.setAttribute("hidden", null);					
 				});
 				main_cards.addEventListener('show-content', function(e) {
-					shadowWrapper1.removeAttribute("hidden");
-					shadowWrapper2.removeAttribute("hidden");
+					shadowWrapper.removeAttribute("hidden");					
 				});	
+				
+				// my_page.addEventListener('hide-content', function(e) {
+				// 	shadowWrapper1.setAttribute("hidden", null);
+				// 	shadowWrapper2.setAttribute("hidden", null);
+				// });
+				// my_page.addEventListener('show-content', function(e) {
+				// 	shadowWrapper1.removeAttribute("hidden");
+				// 	shadowWrapper2.removeAttribute("hidden");
+				// });									
 				
 			</script>	
 		</template>

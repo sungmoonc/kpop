@@ -2,8 +2,8 @@
 <link rel="import" href="../bower_components/core-item/core-item.html">
 <link rel="import" href="../bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="../bower_components/paper-interval-slider/paper-interval-slider.html">
-<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../bower_components/core-dropdown-menu/core-dropdown-menu.html">
+<link rel="import" href="../bower_components/core-dropdown/core-dropdown.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
 
@@ -11,108 +11,141 @@
 <template>
 	<style>
 		:host {
-
+			background: rgb(48,64,79);
 		}
 
-		core-menu div{
-			margin: 10px;
+		.menu_item {
+			margin: 20px;
 		}
-	</style>
-	<core-toolbar>Filters</core-toolbar>
+
+		:host /deep/ core-dropdown-menu {
+			box-sizing: border-box;		
+			width: 210px;	
+			height: 35px;
+			background-color: rgb(48,64,79);			
+			border: 1px solid rgb(255,255,255);
+			padding-left: 15px;
+			cursor: pointer;
+		}		
+
+		:host /deep/ core-dropdown {
+			box-sizing: border-box;
+			min-width: 210px;			
+			background-color: rgb(48,64,79);
+  			border: 1px solid #ccc;
+  			border-radius: 3px;
+		}		
+
+		.menu {
+			background: rgb(48,64,79);
+			width: 180px;
+		}
+
+		paper-interval-slider {
+			cursor: pointer;
+		}
+
+		paper-interval-slider::shadow #sliderBar::shadow #progress {
+			background-color: rgb(116,200,206);
+		}
+
+		paper-interval-slider::shadow .knobInner {
+			background-color: rgb(255,255,255);
+		}
+
+		paper-toggle-button {
+			margin-left: 22px;
+			margin-top: 11px;
+			cursor: pointer;
+		}		
+
+		paper-toggle-button::shadow .toggle-bar {			
+			background-color: rgb(142,151,165);
+		}
+
+		paper-toggle-button::shadow [checked] .toggle-bar {
+			background-color: rgb(116,200,206);
+		}
+
+		paper-toggle-button::shadow [checked] .toggle-button {
+			background-color: rgb(255,255,255);
+		}
+
+		.strVar {
+			font-size: 10px;
+			margin-top: 12px;
+		}
+	</style>	
 	<core-menu>
-		<div horizontal layout>
+		<div class="menu_item" vertical layout>
 			<div>Artist</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
+			<core-dropdown-menu label="All">
+			    <core-dropdown class="dropdown">
 			        <core-menu class="menu">
-			            <paper-item>All</paper-item>
-			            <paper-item>Girls' Generation</paper-item>
-			            <paper-item>Psy</paper-item>		     
+			            <core-item>All</core-item>
+			            <core-item>Girls' Generation</core-item>
+			            <core-item>Psy</core-item>		     
 			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
+			    </core-dropdown>
+			</core-dropdown-menu>
+		</div>		
+		<div class="menu_item" vertical layout>
+			<div horizontal layout>
+				<div>Number of Singers</div><div class="strVar">{{numA}} - {{numB}}</div>
+			</div>
+			<paper-interval-slider min="1" max="7" valueA="{{numA}}" valueB="{{numB}}" step="1" pin></paper-interval-slider>
 		</div>
-		<div horizontal layout>
-			<div>Gender</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
-			        <core-menu class="menu">
-			            <paper-item>All</paper-item>
-			            <paper-item>Female</paper-item>
-			            <paper-item>Male</paper-item>		     
-			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
-		</div>
-		<div horizontal layout>
-			<div>Number of Singers</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
-			        <core-menu class="menu">
-			            <paper-item>1</paper-item>
-			            <paper-item>2</paper-item>
-			            <paper-item>3</paper-item>
-			            <paper-item>4</paper-item>
-			            <paper-item>5</paper-item>
-			            <paper-item>6</paper-item>
-			            <paper-item>7+</paper-item>		     
-			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
-		</div>
-		<div horizontal layout>
+		<div class="menu_item" vertical layout>
 			<div>Video Type</div>
-			<paper-dropdown-menu label="All">
-			    <paper-dropdown class="dropdown">
+			<core-dropdown-menu label="All">
+			    <core-dropdown class="dropdown">
 			        <core-menu class="menu">
-			            <paper-item>All</paper-item>
-			            <paper-item>Music Video</paper-item>
-			            <paper-item>Live Performance</paper-item>
-			            <paper-item>Dance Practice</paper-item>			            
+			            <core-item>All</core-item>
+			            <core-item>Music Video</core-item>
+			            <core-item>Live Performance</core-item>
+			            <core-item>Dance Practice</core-item>			            
 			        </core-menu>
-			    </paper-dropdown>
-			</paper-dropdown-menu>
+			    </core-dropdown>
+			</core-dropdown-menu>
 		</div>
-		<div horizontal layout>
-			<div>English Subtitle Only</div>
+		<div class="menu_item" horizontal layout>
+			<div>English Subtitle</div>
 			<paper-toggle-button></paper-toggle-button>
 		</div>
-		<div horizontal layout>
-			<div>Official Video Only</div>
+		<div class="menu_item" horizontal layout>
+			<div>Official Video</div>
 			<paper-toggle-button></paper-toggle-button>
 		</div>
-		<div horizontal layout>
-			<div>HD Video Only</div>
+		<div class="menu_item" horizontal layout>
+			<div>HD Video</div>
 			<paper-toggle-button></paper-toggle-button>
+		</div>		
+		<div class="menu_item" vertical layout>
+			<div horizontal layout>
+				<div>Year</div><div flex></div><div class="strVar">{{yearA}} - {{yearB}}</div>
+			</div>
+			<paper-interval-slider min="2000" max="2015" valueA="{{yearA}}" valueB="{{yearB}}" step="1" pin></paper-interval-slider>
 		</div>
-		<div horizontal layout>
-			<div>Year Uploaded</div>
-			<paper-interval-slider min="10" max="200" valueA="110" valueB="180" step="5" pin snaps></paper-interval-slider>
+		<div class="menu_item" vertical layout>
+			<div horizontal layout>
+				<div>Score</div><div flex></div><div class="strVar">{{scoreA}} - {{scoreB}}</div>
+			</div>
+			<paper-interval-slider min="0" max="100" valueA="{{scoreA}}" valueB="{{scoreB}}" step="1" pin></paper-slider>
 		</div>
-		<div horizontal layout>
-			<div>English Lyric Percentage</div>
-			<paper-interval-slider min="10" max="200" valueA="110" valueB="180" step="5" pin snaps></paper-interval-slider>
-		</div>
-		<div horizontal layout>
-			<div>sexiness</div>
-			<paper-interval-slider min="10" max="200" valueA="110" valueB="180" step="5" pin snaps></paper-interval-slider>
-		</div>
-		<div horizontal layout>
-			<div>Cheesiness</div>
-			<paper-slider min="10" max="200" value="110"></paper-slider>
-		</div>
-		<div horizontal layout>
-			<div>Approval Rating</div>
-			<paper-slider min="10" max="200" value="110"></paper-slider>
-		</div>
-		<!-- <core-item icon="settings" label="item1"></core-item>
-		<paper-slider min="10" max="200" value="110"></paper-slider>
-		<core-item icon="settings" label="item2"></core-item>
-		<paper-interval-slider min="10" max="200" valueA="110" valueB="180" pin="true"></paper-interval-slider> -->
 	</core-menu>	
 </template>
 <script>
-	Polymer('left-menu', function() {
+	Polymer('left-menu', {
+		numA: 2,
+		numB: 5,
+		yearA: 2007,
+		yearB: 2014,
+		scoreA: 70,
+		scoreB: 100,
+
+		created: function() {
+
+		}
 
 	});
 </script>
