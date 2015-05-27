@@ -70,6 +70,12 @@ class VideosController < ApplicationController
     render json: @videos
   end
 
+  def sort_filter
+    sorted = params[:field] + " " + params[:order]
+    @videos = Video.order(sorted)
+    render json: @videos
+  end
+
   #filtering
 
   # def filter_by
