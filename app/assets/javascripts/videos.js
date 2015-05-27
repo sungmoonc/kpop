@@ -72,9 +72,9 @@ $(document).on('page:change', function () {
   });
 
   //integer filtering
-  $(this).on('click', function (e) {
-    call_filter_integer(e);
-  });
+  //$(this).on('click', function (e) {
+  //  call_filter_integer(e);
+  //});
 
   //boolean filtering
 
