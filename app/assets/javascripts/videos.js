@@ -3,35 +3,24 @@ function call_sort_by(e, field, order) {
   var source = $('#indv_video_template').html();
   var templatingFunction = Handlebars.compile(source);
   var context = {};
+  var requestData = {
+    sort_by: field,
+    sort_order: order
+  }
+
+  console.log(JSON.stringify(requestData));
 
   $.ajax({
-    url: '/sortby/'+ field + '/' + order,
-    type: 'GET'
+    url: '/videos',
+    type: 'GET',
+    data: JSON.stringify(requestData)
   }).done(function (response) {
+    console.log(response);
     context.videos = response;
     $("ul.thumbnails").html("");
     $(".thumbnails").append(templatingFunction(context));
   })
 }
-
-
-//function call_filter_integer(e) {
-//  e.preventDefault();
-//
-//  var source = $('#indv_video_template').html();
-//  var templatingFunction = Handlebars.compile(source);
-//  var context = {};
-//
-//  $.ajax({
-//    url: '/filterby/' + $("#field").val() + '/' + $("#from").val() + '/' + $("#to").val(),
-//    type: 'GET'
-//  }).done(function (response) {
-//    console.log(response)
-//    context.videos = response;
-//    $("ul.thumbnails").html("");
-//    $(".thumbnails").append(templatingFunction(context));
-//  })
-//}
 
 $(document).on('page:change', function () {
   $(".hook--showmodal").on('click', function () {
@@ -42,8 +31,6 @@ $(document).on('page:change', function () {
   $("#basicModal").on('hidden.bs.modal', function () {
     $("#iframe").attr('src', '');
   });
-
-  //$('#year').slider();
 
   //sorting
 
@@ -79,11 +66,5 @@ $(document).on('page:change', function () {
     call_sort_by(e, "rating", "desc");
   });
 
-  //integer filtering
-  $(this).on('click', function (e) {
-    call_filter_integer(e);
-  });
-
-  //boolean filtering
 
 });

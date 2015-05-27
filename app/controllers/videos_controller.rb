@@ -7,6 +7,7 @@ class VideosController < ApplicationController
     @videos = Video.where(nil)
     @videos = @videos.order(params[:sort_by] + " " + params[:sort_order]) if params[:sort_by].present?
     @videos = @videos.category(params[:category]) if params[:category].present?
+    @videos = @videos.first(100)
   end
 
 
@@ -64,22 +65,6 @@ class VideosController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  #sorting
-
-  def sort_by
-    sorted = params[:field] + " " + params[:order]
-    @videos = Video.order(sorted).first(100)
-    render json: @videos
-  end
-
-  #filtering
-
-  def filter_by_category
-    @videos = @videos.category(params[:category]) if params[:category].present?
-    render json: @videos
-  end
-
 
   private
   # Use callbacks to share common setup or constraints between actions.

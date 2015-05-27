@@ -19,7 +19,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :duration
       t.string :dimension
       t.string :caption
-      t.string :type
+      t.string :category
       t.boolean :licensed_content
       t.date :upload_date
       t.integer :upvotes, limit: 8
