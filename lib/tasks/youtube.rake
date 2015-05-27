@@ -4,9 +4,10 @@ YOUTUBE_IDS="100ayeon,15andOfficial,2am,2NE1,2pm,4minuteofficial,abentofficial,A
 
 def create_new_video(video, youtube_user_id)
   new_video = Video.new
-  puts "\t" + video["snippet"]["title"]
+  title_korean = video["snippet"]["title"]
+  puts "\t" + title_korean
   new_video.youtube_id = video["id"]
-  new_video.title_korean = video["snippet"]["title"]
+  new_video.title_korean = title_korean
   new_video.description = video["snippet"]["description"]
   new_video.thumbnail = video["snippet"]["thumbnails"]["medium"]["url"]
   new_video.upvotes = video["statistics"]["likeCount"]
@@ -19,7 +20,24 @@ def create_new_video(video, youtube_user_id)
   new_video.licensed_content = video["contentDetails"]["licensedContent"]
   new_video.youtube_user_id = youtube_user_id
   new_video.upload_date = video["snippet"]["publishedAt"]
-  new_video.category = "Music Video"
+
+  # Categorization added by Sungmoon. 5/26/2015
+  if /[Mm]usic ?[Vv]ideo|MV|M ?\/ ?V|\ubba4\uc9c1 ?\ube44\ub514\uc624|\ubba4 ?\ube44/i.match(title_korean)
+    puts " Music Video ---------------------------"
+    new_video.category = "Music Video"
+  end
+  if /teaser|\ud2f0\uc800/i.match(title_korean)
+    puts " Teaser ---------------------------"
+    new_video.category = "Teaser"
+  end
+  if /[Dd]ance ?[Pp]ractice|\uc548\ubb34/i.match(title_korean)
+    puts " Dance Practice ---------------------------"
+    new_video.category = "Dance Practice"
+  end
+  if /Making|\uba54\uc774\ud0b9/i.match(title_korean)
+    puts " Making ---------------------------"
+    new_video.category = "Making"
+  end
 
   new_video.save
 end

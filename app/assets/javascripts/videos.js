@@ -71,6 +71,14 @@ $(document).on('page:change', function () {
     call_sort_by(e, "upload_date", "desc");
   });
 
+  $(".ratingasc").on('click', function (e) {
+    call_sort_by(e, "rating", "asc");
+  });
+
+  $(".ratingdesc").on('click', function (e) {
+    call_sort_by(e, "rating", "desc");
+  });
+
   //integer filtering
   $(this).on('click', function (e) {
     call_filter_integer(e);

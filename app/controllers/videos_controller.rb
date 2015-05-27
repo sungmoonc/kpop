@@ -4,9 +4,9 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.where("title_korean LIKE '%M/V%' or title_korean LIKE '%Music Video%' or title_korean LIKE '%MV%'").order("youtube_views DESC").first(100)
-    # @videos = Video.where("title_korean LIKE '%teaser%' or title_korean LIKE '%티저%'").order("youtube_views DESC").first(100)
-    # @videos = Video.where("title_korean LIKE '%안무%'").order("youtube_views DESC").first(100)
+    @videos = Video.where(nil)
+    @videos = @videos.order(params[:sort_by] + " " + params[:sort_order]) if params[:sort_by].present?
+    @videos = @videos.category(params[:category]) if params[:category].present?
   end
 
 
@@ -69,16 +69,16 @@ class VideosController < ApplicationController
 
   def sort_by
     sorted = params[:field] + " " + params[:order]
-    @videos = Video.order(sorted)
+    @videos = Video.order(sorted).first(100)
     render json: @videos
   end
 
   #filtering
 
-  # def filter_by
-  #   @videos = Video.where("#{params[:field]} >= #{params[:from]} and #{params[:field]} <= #{params[:to]}")
-  #   render json: @videos
-  # end
+  def filter_by_category
+    @videos = @videos.category(params[:category]) if params[:category].present?
+    render json: @videos
+  end
 
 
   private
@@ -89,6 +89,6 @@ class VideosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :type, :licensed_content, :upload_date, :upvotes, :downvotes)
+    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :type, :licensed_content, :upload_date, :upvotes, :downvotes, :sort_by, :sort_order, :category)
   end
 end
