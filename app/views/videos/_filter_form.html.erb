@@ -1,48 +1,59 @@
-<%= form_tag do %>
+<%= form_tag("/videos/filters", name: 'filters') do %>
 
-  <div class="filter"><h3>Hotness</h3><br>
-    min: <input type="number" name="hotness[min]"><br>
-    max: <input type="number" name="hotness[max]"><br>
+  <div class="filter">
+    Sort by
+    <%= select_tag(:sort,
+                   options_for_select(
+                       [
+                           ['Upvote', 'upvotes'],
+                           ['Views', 'youtube_views'],
+                           ['Recent', 'upload_date'],
+                       ]))
+    %>
   </div>
 
-  <div class="filter"><h3>cheesiness</h3><br>
-    min: <input type="number" name="cheesiness[min]"><br>
-    max: <input type="number" name="cheesiness[max]"><br>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      Category
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Music Video</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Teaser</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dance Practice</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Live Performance</a></li>
+    </ul>
   </div>
 
-  <div class="filter"><h3>english_percentage</h3><br>
-    min: <input type="number" name="english_percentage[min]"><br>
-    max: <input type="number" name="english_percentage[max]"><br>
+  <div class="filter"><span class='filter_title'>Hotness</span>
+     <input type="number" name="hotness[min]" class="number_input" value=0 > -
+     <input type="number" name="hotness[max]" class="number_input" value=10>
   </div>
 
-  <div class="filter"><h3>youtube_views</h3><br>
-    min: <input type="number" name="youtube_views[min]"><br>
-    max: <input type="number" name="youtube_views[max]"><br>
+  <div class="filter"><span class='filter_title'>cheesiness</span>
+     <input type="number" name="cheesiness[min]" class="number_input" value=0> -
+     <input type="number" name="cheesiness[max]" class="number_input" value=10>
   </div>
 
-  <div class="filter"><h3>upvotes</h3><br>
-    min: <input type="number" name="upvotes[min]"><br>
-    max: <input type="number" name="upvotes[max]"><br>
+  <div class="filter"><span class='filter_title'>english_percentage</span>
+     <input type="number" name="english_percentage[min]" class="number_input" value=0> -
+     <input type="number" name="english_percentage[max]" class="number_input" value=100>
   </div>
 
-  <div class="filter"><h3>downvotes</h3><br>
-    min: <input type="number" name="downvotes[min]"><br>
-    max: <input type="number" name="downvotes[max]"><br>
+  <div class="filter">
+    <input type="checkbox" name="english_subtitle"> English subtitle<br>
+    <input type="checkbox" name="official">  Official       <br>
+    <input type="checkbox" name="licensed_content"> Licensed content
   </div>
 
-  <div class="filter"><br>
-    English_subtitle: <input type="checkbox" name="english_subtitle"><br>
-    official: <input type="checkbox" name="official"><br>
-    licensed_content: <input type="checkbox" name="licensed_content"><br>
+  <div class="filter">
+
+    Type: <input type="text" name="type">    <br>
+    Duration: <input type="text" name="duration">   <br>
+    dimension: <input type="text" name="dimension">  <br>
+    caption: <input type="text" name="caption">  <br>
   </div>
 
-  <div class="filter"><br>
-
-    Type: <input type="text" name="type"><br>
-    Duration: <input type="text" name="duration"><br>
-    dimension: <input type="text" name="dimension"><br>
-    caption: <input type="text" name="caption"><br><br>
-    <input type="submit" value="submit" id="submit">
-  </div>
+  <%= submit_tag("Apply") %>
 
 <% end %>

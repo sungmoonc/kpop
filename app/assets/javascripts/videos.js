@@ -1,12 +1,15 @@
-function call_sort_by(e, field, order) {
+function ajax_filters(e) {
+  // Apply all the filters
+
   e.preventDefault();
   var source = $('#indv_video_template').html();
   var templatingFunction = Handlebars.compile(source);
   var context = {};
 
   $.ajax({
-    url: '/sortby/'+ field + '/' + order,
-    type: 'GET'
+    url: '/videos/filters',
+    type: 'POST',
+    data: $(this).serialize()
   }).done(function (response) {
     context.videos = response;
     $("ul.thumbnails").html("");
@@ -14,24 +17,6 @@ function call_sort_by(e, field, order) {
   })
 }
 
-
-//function call_filter_integer(e) {
-//  e.preventDefault();
-//
-//  var source = $('#indv_video_template').html();
-//  var templatingFunction = Handlebars.compile(source);
-//  var context = {};
-//
-//  $.ajax({
-//    url: '/filterby/' + $("#field").val() + '/' + $("#from").val() + '/' + $("#to").val(),
-//    type: 'GET'
-//  }).done(function (response) {
-//    console.log(response)
-//    context.videos = response;
-//    $("ul.thumbnails").html("");
-//    $(".thumbnails").append(templatingFunction(context));
-//  })
-//}
 
 $(document).on('page:change', function () {
   $("ul.thumbnails").on('click', ".hook--showmodal", function () {
@@ -45,37 +30,9 @@ $(document).on('page:change', function () {
 
   //$('#year').slider();
 
-  //sorting
-
-  $(".upvoteasc").on('click', function (e) {
-    call_sort_by(e, "upvotes", "asc");
+  // Filters and sorting
+  $("form[name=filters]").on('submit', function (e) {
+    ajax_filters.call(this, e);
   });
-
-  $(".upvotedesc").on('click', function (e) {
-    call_sort_by(e, "upvotes", "desc");
-  });
-
-  $(".youtubeasc").on('click', function (e) {
-    call_sort_by(e, "youtube_views", "asc");
-  });
-
-  $(".youtubedesc").on('click', function (e) {
-    call_sort_by(e, "youtube_views", "desc");
-  });
-
-  $(".uploadasc").on('click', function (e) {
-    call_sort_by(e, "upload_date", "asc");
-  });
-
-  $(".uploaddesc").on('click', function (e) {
-    call_sort_by(e, "upload_date", "desc");
-  });
-
-  //integer filtering
-  $(this).on('click', function (e) {
-    call_filter_integer(e);
-  });
-
-  //boolean filtering
 
 });

@@ -62,27 +62,17 @@ class VideosController < ApplicationController
     end
   end
 
-  #sorting
-
-  def sort_by
-    sorted = params[:field] + " " + params[:order]
-    @videos = Video.order(sorted)
+  def filters
+    filter_string = get_filter_range_string("hotness", "cheesiness", "english_percentage")
+    @videos = Video.where(filter_string).order("#{params[:sort]} desc")
     render json: @videos
   end
 
-  def sort_filter
-    sorted = params[:field] + " " + params[:order]
-    @videos = Video.order(sorted)
-    render json: @videos
+  def get_filter_range_string(*filters)
+    filters.map do |filter|
+      "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
+    end.join(" and ")
   end
-
-  #filtering
-
-  # def filter_by
-  #   @videos = Video.where("#{params[:field]} >= #{params[:from]} and #{params[:field]} <= #{params[:to]}")
-  #   render json: @videos
-  # end
-
 
   private
   # Use callbacks to share common setup or constraints between actions.
