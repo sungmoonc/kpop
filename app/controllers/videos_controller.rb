@@ -66,10 +66,23 @@ class VideosController < ApplicationController
     end
   end
 
+  def filters
+    filter_string = get_filter_range_string("hotness", "cheesiness", "english_percentage")
+    @videos = Video.where(filter_string).order("#{params[:sort]} desc")
+    render json: @videos
+  end
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_video
     @video = Video.find(params[:id])
+  end
+
+  def get_filter_range_string(*filters)
+    filters.map do |filter|
+      "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
+    end.join(" and ")
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,4 +1,6 @@
-function call_sort_by(e, field, order) {
+function ajax_filters(e) {
+  // Apply all the filters
+
   e.preventDefault();
   var source = $('#indv_video_template').html();
   var templatingFunction = Handlebars.compile(source);
@@ -11,9 +13,9 @@ function call_sort_by(e, field, order) {
   console.log(JSON.stringify(requestData));
 
   $.ajax({
-    url: '/videos',
-    type: 'GET',
-    data: JSON.stringify(requestData)
+    url: '/videos/filters',
+    type: 'POST',
+    data: $(this).serialize()
   }).done(function (response) {
     console.log(response);
     context.videos = response;
@@ -23,7 +25,7 @@ function call_sort_by(e, field, order) {
 }
 
 $(document).on('page:change', function () {
-  $(".hook--showmodal").on('click', function () {
+  $("ul.thumbnails").on('click', ".hook--showmodal", function () {
     var url = $(this).attr("href");
     $("#iframe").attr('src', url);
   });
@@ -32,39 +34,10 @@ $(document).on('page:change', function () {
     $("#iframe").attr('src', '');
   });
 
-  //sorting
+  //$('#year').slider();
 
-  $(".upvoteasc").on('click', function (e) {
-    call_sort_by(e, "upvotes", "asc");
+  // Filters and sorting
+  $("form[name=filters]").on('submit', function (e) {
+    ajax_filters.call(this, e);
   });
-
-  $(".upvotedesc").on('click', function (e) {
-    call_sort_by(e, "upvotes", "desc");
-  });
-
-  $(".youtubeasc").on('click', function (e) {
-    call_sort_by(e, "youtube_views", "asc");
-  });
-
-  $(".youtubedesc").on('click', function (e) {
-    call_sort_by(e, "youtube_views", "desc");
-  });
-
-  $(".uploadasc").on('click', function (e) {
-    call_sort_by(e, "upload_date", "asc");
-  });
-
-  $(".uploaddesc").on('click', function (e) {
-    call_sort_by(e, "upload_date", "desc");
-  });
-
-  $(".ratingasc").on('click', function (e) {
-    call_sort_by(e, "rating", "asc");
-  });
-
-  $(".ratingdesc").on('click', function (e) {
-    call_sort_by(e, "rating", "desc");
-  });
-
-
 });

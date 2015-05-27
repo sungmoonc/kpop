@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 20150511033305) do
     t.string   "youtube_user_id"
     t.string   "category"
     t.text     "description"
-    t.integer  "hotness"
-    t.integer  "cheesiness"
-    t.integer  "english_percentage"
-    t.boolean  "english_subtitle"
-    t.boolean  "official"
+    t.integer  "hotness",                      default: 0
+    t.integer  "cheesiness",                   default: 0
+    t.integer  "english_percentage",           default: 0
+    t.boolean  "english_subtitle",             default: false
+    t.boolean  "official",                     default: false
     t.integer  "youtube_views",      limit: 8
     t.string   "definition"
     t.string   "duration"
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 20150511033305) do
     t.date     "upload_date"
     t.integer  "upvotes",            limit: 8
     t.integer  "downvotes",          limit: 8
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
 end

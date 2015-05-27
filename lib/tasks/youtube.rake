@@ -14,7 +14,10 @@ def create_new_video(video, youtube_user_id)
   new_video.downvotes = video["statistics"]["dislikeCount"]
   new_video.youtube_views = video["statistics"]["viewCount"]
   new_video.definition = video["contentDetails"]["definition"]
+
+  #duration parsing
   new_video.duration = video["contentDetails"]["duration"]
+      # /PT(([0-9]+)H)?(([0-9]+)M)?([0-9]+)S/.match(video["contentDetails"]["duration"])
   new_video.dimension = video["contentDetails"]["dimension"]
   new_video.caption = video["contentDetails"]["caption"]
   new_video.licensed_content = video["contentDetails"]["licensedContent"]
