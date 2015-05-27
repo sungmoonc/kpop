@@ -34,7 +34,7 @@ function call_sort_by(e, field, order) {
 //}
 
 $(document).on('page:change', function () {
-  $(".hook--showmodal").on('click', function () {
+  $("ul.thumbnails").on('click', ".hook--showmodal", function () {
     var url = $(this).attr("href");
     $("#iframe").attr('src', url);
   });
