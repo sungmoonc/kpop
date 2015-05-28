@@ -6,7 +6,7 @@
     </div>
 
     <div class="thumbnail_title">
-      <%= video.title_korean %>
+      <%= video.title_korean %> <%= video.youtube_views %> Views, <%= video.upvotes * 100 / (video.upvotes + video.downvotes) %>%
     </div>
     <% if video.title_english %>
       <div class="thumbnail_title_eng">

@@ -68,7 +68,7 @@ class VideosController < ApplicationController
 
   def filters
     filter_string = get_filter_range_string("hotness", "cheesiness", "english_percentage")
-    @videos = Video.where(filter_string).order("#{params[:sort]} desc")
+    @videos = Video.where(filter_string).order("#{params[:sort]} desc").first(100)
     render json: @videos
   end
 

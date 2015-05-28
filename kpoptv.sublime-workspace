@@ -40,18 +40,13 @@
 	"buffers":
 	[
 		{
-			"file": "lib/tasks/youtube.rake",
+			"contents": "",
+			"file": "/Users/sungmooncho/Dropbox/Coding/liner/getting_started.html",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 5320,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/controllers/videos_controller.rb",
-			"settings":
-			{
-				"buffer_size": 2579,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		}
@@ -84,6 +79,14 @@
 	},
 	"file_history":
 	[
+		"/Users/sungmooncho/Dropbox/Coding/kpop/app/models/video.rb",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/app/views/videos/_filter_form.html.erb",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/app/controllers/videos_controller.rb",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/app/assets/javascripts/videos.js",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/app/views/videos/index.html.erb",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/lib/tasks/youtube.rake",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/db/migrate/20150505062647_create_videos.rb",
+		"/Users/sungmooncho/Dropbox/Coding/kpop/config/environments/production.rb",
 		"/Users/sungmooncho/Dropbox/Coding/textfile",
 		"/Users/sungmooncho/Dropbox/Coding/send_mail.py",
 		"/Users/sungmooncho/Dropbox/Airbnb/831 Portwalk/Welcome Mail",
@@ -120,6 +123,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"action_view",
 			"p ",
 			"routes.rb",
 			"sexy k-pop",
@@ -142,23 +146,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lib/tasks/youtube.rake",
+					"file": "/Users/sungmooncho/Dropbox/Coding/liner/getting_started.html",
 					"settings":
 					{
-						"buffer_size": 5320,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2918,
-								2918
+								0,
+								0
 							]
 						],
 						"settings":
@@ -166,40 +170,7 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 1.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/controllers/videos_controller.rb",
-					"settings":
-					{
-						"buffer_size": 2579,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1200,
-								1200
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -274,6 +245,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 215.0,
+	"side_bar_width": 300.0,
 	"status_bar_visible": true
 }

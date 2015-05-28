@@ -5,12 +5,6 @@ function ajax_filters(e) {
   var source = $('#indv_video_template').html();
   var templatingFunction = Handlebars.compile(source);
   var context = {};
-  var requestData = {
-    sort_by: field,
-    sort_order: order
-  }
-
-  console.log(JSON.stringify(requestData));
 
   $.ajax({
     url: '/videos/filters',

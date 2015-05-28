@@ -1,7 +1,7 @@
 <%= form_tag("/videos/filters", name: 'filters') do %>
 
   <div class="filter">
-    Sort by
+    Sort by<br>
     <%= select_tag(:sort,
                    options_for_select(
                        [
@@ -18,10 +18,10 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Music Video</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Teaser</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dance Practice</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Live Performance</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="1" href="#">Music Video</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="2" href="#">Teaser</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="3" href="#">Dance Practice</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="4" href="#">Live Performance</a></li>
   </ul>
 </div>
 
