@@ -5,6 +5,29 @@ YOUTUBE_IDS="100ayeon,15andOfficial,2am,2NE1,2pm,4minuteofficial,abentofficial,A
 
 YOUTUBE_IDS="ZEA2011"
 
+def category_parsing(title, new_video)
+  if /[Mm]usic ?[Vv]ideo|MV|M ?\/ ?V|\ubba4\uc9c1 ?\ube44\ub514\uc624|\ubba4 ?\ube44/i.match(title)
+      puts " Music Video ---------------------------"
+      new_video.category = "Music Video"
+  end
+  if /teaser|\ud2f0\uc800/i.match(title)
+    puts " Teaser ---------------------------"
+    new_video.category = "Teaser"
+  end
+  if /[Dd]ance ?[Pp]ractice|\uc548\ubb34/i.match(title)
+    puts " Dance Practice ---------------------------"
+    new_video.category = "Dance Practice"
+  end
+  if /Making|\uba54\uc774\ud0b9/i.match(title)
+    puts " Making ---------------------------"
+    new_video.category = "Making"
+  end
+  new_video.category = "other"
+
+
+
+end
+
 def create_new_video(video, youtube_user_id)
   new_video = Video.new
   puts "\t" + video["snippet"]["title"]
@@ -18,8 +41,8 @@ def create_new_video(video, youtube_user_id)
   new_video.definition = video["contentDetails"]["definition"]
 
   #duration parsing
-  new_video.duration = video["contentDetails"]["duration"]
-      # /PT(([0-9]+)H)?(([0-9]+)M)?([0-9]+)S/.match(video["contentDetails"]["duration"])
+  new_video.duration = video["contentDetails"]["duration"].gsub("PT", "").gsub("H", ":").gsub("M", ":").gsub("S", "")
+  # /PT(([0-9]+)H)?(([0-9]+)M)?([0-9]+)S/.match(video["contentDetails"]["duration"])
 
   new_video.dimension = video["contentDetails"]["dimension"]
   new_video.caption = video["contentDetails"]["caption"]
@@ -31,6 +54,7 @@ def create_new_video(video, youtube_user_id)
   new_video.hotness = rand(0..10)
   new_video.cheesiness = rand(0..10)
   new_video.english_percentage = rand(0..100)
+  category_parsing(video["snippet"]["title"], new_video)
 
   new_video.save
 end
