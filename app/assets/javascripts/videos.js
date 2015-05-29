@@ -5,6 +5,7 @@ function ajax_filters(e) {
   var source = $('#indv_video_template').html();
   var templatingFunction = Handlebars.compile(source);
   var context = {};
+  debugger
 
   $.ajax({
     url: '/videos/filters',
@@ -32,6 +33,7 @@ $(document).on('page:change', function () {
 
   // Filters and sorting
   $("form[name=filters]").on('submit', function (e) {
+    e.preventDefault();
     ajax_filters.call(this, e);
   });
 

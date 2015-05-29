@@ -20,12 +20,17 @@ def create_new_video(video, youtube_user_id)
   #duration parsing
   new_video.duration = video["contentDetails"]["duration"]
       # /PT(([0-9]+)H)?(([0-9]+)M)?([0-9]+)S/.match(video["contentDetails"]["duration"])
+
   new_video.dimension = video["contentDetails"]["dimension"]
   new_video.caption = video["contentDetails"]["caption"]
   new_video.licensed_content = video["contentDetails"]["licensedContent"]
   new_video.youtube_user_id = youtube_user_id
   new_video.upload_date = video["snippet"]["publishedAt"]
 
+  #randomly assign hotness, cheesiness, and english_percentage value
+  new_video.hotness = rand(0..10)
+  new_video.cheesiness = rand(0..10)
+  new_video.english_percentage = rand(0..100)
 
   new_video.save
 end
