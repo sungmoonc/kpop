@@ -3,20 +3,22 @@ YOUTUBE_IDS="100ayeon,15andOfficial,2am,2NE1,2pm,4minuteofficial,abentofficial,A
 
 YOUTUBE_IDS="ZEA2011"
 
-CATEGORY_STRINGS = {
-    :musicvideo => ["music video", "뮤비", "뮤직비디오", "뮤직 비디오", "mv", "m/v"],
-    :teaser => ["teaser", "티저"],
-    :dancepractice => ["dance practice", "안무"],
-    :making => ["making", "메이킹"]
-}
+def regexify(needles)
+  Regexp.new(needles.join("|"), "i")
+end
+
+CATEGORY_STRINGS = [
+    [:teaser, regexify(["teaser", "티저"])],
+    [:dancepractice, regexify(["dance practice", "안무"])],
+    [:making, regexify(["making", "메이킹"])],
+    [:musicvideo, regexify(["music video", "뮤비", "뮤직비디오", "뮤직 비디오", "mv", "m/v"])]
+]
 
 def category_parsing(title)
-  CATEGORY_STRINGS.each_key do |category|
-    CATEGORY_STRINGS[category].each do |string|
-      title.include?(string)
-      category
-    end
+  CATEGORY_STRINGS.each do |category|
+    return category[0] if category[1].match(title)
   end
+  :other
 end
 
 def duration_to_seconds(duration)
