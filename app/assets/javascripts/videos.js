@@ -36,12 +36,12 @@ $(document).on('page:change', function () {
     ajax_filters.call(this, e);
   });
 
-  // apply each filters
+   //apply each filters
   $("form[name=filters]").on('click', function (e) {
     ajax_filters.call(this, e);
   });
 
-  $("form[name=filters]").on('onChange', function (e) {
+  $("form[name=filters]").on('change', function (e) {
     ajax_filters.call(this, e);
   });
 

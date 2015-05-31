@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.order("RANDOM()").first(100)
+    @videos = Video.order(youtube_views: :desc).first(100)
   end
 
 
@@ -63,8 +63,9 @@ class VideosController < ApplicationController
   end
 
   def filters
-    filter_string = get_filter_range_string("hotness", "cheesiness", "english_percentage")
-    @videos = Video.where(filter_string).order("#{params[:sort]} desc")
+    integer_filter_string = get_filter_range_string("hotness", "cheesiness", "english_percentage")
+    boolean_filter_string = "english_subtitle"
+    @videos = Video.where(integer_filter_string).order("#{params[:sort]} desc")
     render json: @videos
   end
 
@@ -80,6 +81,7 @@ class VideosController < ApplicationController
       "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
     end.join(" and ")
   end
+
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params

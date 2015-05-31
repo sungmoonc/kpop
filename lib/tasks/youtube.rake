@@ -53,6 +53,10 @@ def create_new_video(video, youtube_user_id)
   new_video.hotness = rand(0..10)
   new_video.cheesiness = rand(0..10)
   new_video.english_percentage = rand(0..100)
+  new_video.english_subtitle = [true, false].sample
+  new_video.official = [true, false].sample
+  new_video.licensed_content = [true, false].sample
+
   new_video.category = category_parsing(video["snippet"]["title"])
 
   new_video.save
