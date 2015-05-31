@@ -1,5 +1,3 @@
-#require 'google/api_client'
-
 YOUTUBE_IDS="100ayeon,15andOfficial,2am,2NE1,2pm,4minuteofficial,abentofficial,AceOfAngels8,ALi091008,alphaentkorea,amoebakorea,amusekr,apinkTV,applegirl002,b2ment,b2mysofficial,babysoulhome,beastofficial,BIGBANG,BoAsmtown,BoysRepublicOfficial,Brandnewmusickorea,BrandnewStardom,bravefamily,brianjoomusic,cclownofficial,chB1A4,chHelloVenus,CJENMMUSIC,CJESJYJ,cnblue,coremidas,crayonpopvideo,DBusinessENT,dlineartmedia,DMTNofficial,drunkentiger,DSP,dspAJAX,DSPKara,entertainmentCUBE,EXCELLENTENTofficial,EXOK,EXOM,fcuz0108,FNCMUSICofficial,fncohwonbin,ftisland,fxsmtown,girlsday5,GIRLSGENERATION,GLAMofficialvideo,gnaofficial,GoodFellasTVch1,happyfaceent,HISTORYloen,ibighit,infinitehome,IVYofficialChannel,jaybumaom0425,jaykentertainment,Jellyfishenter,jewelry0127,JJprojectOfficial,joojype,jtunecamp,jypark,jypentertainment,kimhyunjoong606,LadiesCode,lbdemion,leehyoriofficial,LOENARTIST,LOENENT,loenFIESTAR,loenIU,loenSUNNYHILL,loenZIA,mapthesoul,MIBOfficial,missA,mnet,MrJangwoohyuk,neganetwork,NeuroNTV,NEWPLANETwebmaster,NextarEntertainment,NineMusesCh,officialBEG,officialbtob,OfficialEpikHigh,OfficialGDRAGON,OfficialJUNIEL,officialLC9,OfficialLEEHI,officialLUNAFLY,officialpsy,officialroykim,OfficialSe7en,OfficialSEUNGRI,OfficialSEUNGYOON,OfficialTheRainbow,OfficialTMent,OFFICIALYNB,OFFROAD0924,onewayonesound,OPENWORLDent,parkjiyooncreative,pastelmusic,pledis17,pledisartist,pledisnuest,PolarisMusicOfficial,princeJKS,PUREENTER,RealTinyG,RealVIXX,RockinKOREAent,royalpiratesband,SHINee,SHINHWACOMPANY,SHINHWACOMPANY,sment,SMTOWN,soundholicENT,spicaofficial,Starempireofficial,starshipTV,SUPERJUNIOR,supervocaltomtom,TAILLRUNSMEDIA,TeenzOnTop,TheAziatix,TheCANENT,TheMRMRofficial,TheRealChocolat,TimeZOfficial2012,Top100percent,TOPmediaStar,Trophyentertainment1,Troublemakerofficial,TSENT2008,TVXQ,ukiss2008,wondergirls,woolliment,YeDangCompany,ygentertainment,ygtablo,YGTAEYANG,YMCent,ZEA2011"
 
 
@@ -23,9 +21,6 @@ def category_parsing(title, new_video)
     new_video.category = "Making"
   end
   new_video.category = "other"
-
-
-
 end
 
 def create_new_video(video, youtube_user_id)
@@ -72,6 +67,9 @@ def youtube_api(method, options)
   p JSON.parse(http.body_str)
 end
 
+def hello
+  'hello'
+end
 
 youtube_ids = YOUTUBE_IDS.split(",")
 
@@ -118,7 +116,6 @@ end
 namespace :youtube do
   desc "TODO"
   task fetch: :environment do
-
     youtube_ids.each do |entertainment|
       puts entertainment
       user_upload_channel = get_user_upload_channel_id(entertainment)
