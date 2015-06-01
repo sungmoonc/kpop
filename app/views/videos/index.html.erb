@@ -2,7 +2,7 @@
 
 <div id="main-container" class="container-fluid">
   <div class="row">
-    <div id="sidebar" class="col-xs-3">
+    <div id="sidebar" class="col-md-3">
 
 
       <%= render 'filter_form' %>
@@ -22,8 +22,8 @@
       </div>
     </div>
 
-    <div id="main-content" class="col-xs-9">
-      <ul class="thumbnails">
+    <div id="main-content" class="col-md-9">
+       <ul class="thumbnails">
         <% @videos.each do |video| %>
           <%= render 'each_video', :video => video %>
         <% end %>

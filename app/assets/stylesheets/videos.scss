@@ -39,8 +39,8 @@ body {
 ul.thumbnails {
   list-style-type: none;
   li {
-    width: 440px;
-    padding: 20px;
+    width: 800px;
+    padding-bottom: 20px;
     display: inline-block;
     vertical-align: top;
 
@@ -49,13 +49,13 @@ ul.thumbnails {
       height: 220px;
       overflow: hidden;
     }
+
     .thumbnail_title_eng {
       color: #aaaaaa;
     }
     img {
       position: relative;
       width: 400px;
-      top: -40px
     }
 
   }

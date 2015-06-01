@@ -24,6 +24,7 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
+    @videos = Video.first(100)
   end
 
   # POST /videos

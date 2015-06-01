@@ -42,6 +42,12 @@ def create_new_video(video, youtube_user_id)
     new_video.category = "Making"
   end
 
+  # artist = title_korean[/[a-z0-9]\w+(?=\ ?- ?)/i]
+  artist = title_korean[/(2NE1|Psy|Hyuna|G-Dragon|SNSD|Girl's Generation)/i]
+  if artist
+    puts " Artist: " + (new_video.artist = artist.capitalize)
+  end
+
   new_video.save
 end
 

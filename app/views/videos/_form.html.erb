@@ -12,108 +12,109 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :youtube_id %><br>
-    <%= f.text_field :youtube_id %>
+    <%= f.label :youtube_id%>
+    <%= f.text_field :youtube_id, input_html: {maxlength: 30, style: 'width: 30px'} %>
   </div>
 
   <div class="field">
-    <%= f.label :thumbnail%><br>
+    <%= f.label :thumbnail%>
     <%= f.text_field :thumbnail%>
   </div>
 
   <div class="field">
-    <%= f.label :artist %><br>
+    <%= f.label :artist %>
     <%= f.text_field :artist %>
   </div>
 
   <div class="field">
-    <%= f.label :youtube_user_id %><br>
+    <%= f.label :youtube_user_id %>
     <%= f.text_field :youtube_user_id %>
   </div>
 
   <div class="field">
-    <%= f.label :title_korean %><br>
+    <%= f.label :title_korean %>
     <%= f.text_field :title_korean %>
   </div>
   <div class="field">
-    <%= f.label :title_english %><br>
+    <%= f.label :title_english %>
     <%= f.text_field :title_english %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
 
   <div class="field">
-    <%= f.label :hotness %><br>
+    <%= f.label :hotness %>
     <%= f.number_field :hotness %>
   </div>
   <div class="field">
-    <%= f.label :cheesiness %><br>
+    <%= f.label :cheesiness %>
     <%= f.number_field :cheesiness %>
   </div>
   <div class="field">
-    <%= f.label :english_percentage %><br>
+    <%= f.label :english_percentage %>
     <%= f.number_field :english_percentage %>
   </div>
   <div class="field">
-    <%= f.label :english_subtitle %><br>
+    <%= f.label :english_subtitle %>
     <%= f.number_field :english_subtitle %>
   </div>
   <div class="field">
-    <%= f.label :official %><br>
+    <%= f.label :official %>
     <%= f.number_field :official %>
   </div>
   <div class="field">
-    <%= f.label :youtube_views %><br>
+    <%= f.label :youtube_views %>
     <%= f.number_field :youtube_views %>
   </div>
 
   <div class="field">
-    <%= f.label :definition %><br>
+    <%= f.label :definition %>
     <%= f.text_field :definition %>
   </div>
 
   <div class="field">
-    <%= f.label :duration %><br>
+    <%= f.label :duration %>
     <%= f.text_field :duration %>
   </div>
 
   <div class="field">
-    <%= f.label :dimension %><br>
+    <%= f.label :dimension %>
     <%= f.text_field :dimension %>
   </div>
 
   <div class="field">
-    <%= f.label :caption %><br>
+    <%= f.label :caption %>
     <%= f.text_field :caption %>
   </div>
 
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.label :category %>
+    <%= f.text_field :category %>
   </div>
 
   <div class="field">
-    <%= f.label :licensed_content %><br>
+    <%= f.label :licensed_content %>
     <%= f.check_box :licensed_content %>
   </div>
 
   <div class="field">
-    <%= f.label :upvotes %><br>
+    <%= f.label :upvotes %>
     <%= f.number_field :upvotes %>
   </div>
   <div class="field">
-    <%= f.label :downvotes %><br>
+    <%= f.label :downvotes %>
     <%= f.number_field :downvotes %>
   </div>
 
   <div class="field">
-    <%= f.label :upload_date %><br>
+    <%= f.label :upload_date %>
     <%= f.date_field :upload_date, :value => Time.now.strftime('%Y-%m-%d')  %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

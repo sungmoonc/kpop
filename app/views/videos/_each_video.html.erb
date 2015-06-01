@@ -4,14 +4,21 @@
 
       <%= image_tag video.thumbnail %>
     </div>
+  </a>
 
     <div class="thumbnail_title">
-      <%= video.title_korean %> <%= video.youtube_views %> Views, <%= video.upvotes * 100 / (video.upvotes + video.downvotes) %>%
+      <%= video.artist %> | <%= video.title_korean %> | <%= video.youtube_views %> Views | <%= video.upvotes * 100 / (video.upvotes + video.downvotes) %>%
     </div>
     <% if video.title_english %>
       <div class="thumbnail_title_eng">
         <%= video.title_english %>
       </div>
     <% end %>
-  </a>
+      <tbody>
+        <tr>
+        <td><%= link_to 'Show', video %></td>
+        <td><%= link_to 'Edit', edit_video_path(video) %></td>
+        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    </tbody>
 </li>

@@ -1,4 +1,9 @@
+<h1>Video</h1>
 <p id="notice"><%= notice %></p>
+    <div class="thumbnail_image">
+
+      <%= image_tag @video.thumbnail %>
+    </div>
 <p>
   <strong>Youtube_id:</strong>
   <%= @video.youtube_id %>
@@ -91,8 +96,8 @@
 </p>
 
 <p>
-  <strong>type:</strong>
-  <%= @video.type %>
+  <strong>category:</strong>
+  <%= @video.category %>
 </p>
 
 <p>
