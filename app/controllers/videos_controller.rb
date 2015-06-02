@@ -64,12 +64,13 @@ class VideosController < ApplicationController
 
   def filters
     integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
-
     boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content")
+    category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
     @videos = Video
       .where(integer_filters.join(" and "))
       .where(boolean_filters)
+      .where(category)
       .order("#{params[:sort]} desc")
 
     render json: @videos

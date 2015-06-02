@@ -15,32 +15,47 @@
 
 
   <div class="filter"><span class='filter_title'>Hotness</span>
-     <input type="number" name="hotness[min]" class="number_input" value=0 > -
-     <input type="number" name="hotness[max]" class="number_input" value=10>
+    <input type="number" name="hotness[min]" class="number_input" value=0> -
+    <input type="number" name="hotness[max]" class="number_input" value=10>
   </div>
 
   <div class="filter"><span class='filter_title'>cheesiness</span>
-     <input type="number" name="cheesiness[min]" class="number_input" value=0> -
-     <input type="number" name="cheesiness[max]" class="number_input" value=10>
+    <input type="number" name="cheesiness[min]" class="number_input" value=0> -
+    <input type="number" name="cheesiness[max]" class="number_input" value=10>
   </div>
 
   <div class="filter"><span class='filter_title'>english_percentage</span>
-     <input type="number" name="english_percentage[min]" class="number_input" value=0> -
-     <input type="number" name="english_percentage[max]" class="number_input" value=100>
+    <input type="number" name="english_percentage[min]" class="number_input" value=0> -
+    <input type="number" name="english_percentage[max]" class="number_input" value=100>
   </div>
 
   <div class="filter">
     <input type="checkbox" name="english_subtitle"> English subtitle<br>
-    <input type="checkbox" name="official">  Official       <br>
+    <input type="checkbox" name="official"> Official <br>
     <input type="checkbox" name="licensed_content"> Licensed content
   </div>
 
   <div class="filter">
 
-    Category: <input type="text" name="category">    <br>
-    Duration: <input type="text" name="duration">   <br>
-    dimension: <input type="text" name="dimension">  <br>
-    caption: <input type="text" name="caption">  <br>
+    Category:
+    <%= select_tag(:category,
+                   options_for_select(
+                       [
+                           ['All', 'all'],
+                           ['Teaser', 'teaser'],
+                           ['Dance Practice', 'dancepractice'],
+                           ['Making Film', 'making'],
+                           ['Music Videos', 'musicvideo'],
+                           ['Other', 'other']
+                       ]
+                   )
+        )
+    %>
+
+    <br>
+    Duration: <input type="text" name="duration"> <br>
+    dimension: <input type="text" name="dimension"> <br>
+    caption: <input type="text" name="caption"> <br>
   </div>
 
   <%= submit_tag("Apply") %>
