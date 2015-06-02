@@ -63,9 +63,15 @@ class VideosController < ApplicationController
   end
 
   def filters
-    integer_filter_string = get_filter_range_string("hotness", "cheesiness", "english_percentage")
-    boolean_filter_string = "english_subtitle"
-    @videos = Video.where(integer_filter_string).order("#{params[:sort]} desc")
+    integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
+
+    boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content")
+
+    @videos = Video
+      .where(integer_filters.join(" and "))
+      .where(boolean_filters)
+      .order("#{params[:sort]} desc")
+
     render json: @videos
   end
 
@@ -76,12 +82,21 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
   end
 
-  def get_filter_range_string(*filters)
+  def get_range_filters(*filters)
     filters.map do |filter|
       "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
-    end.join(" and ")
+    end
   end
 
+  def get_boolean_filters(*filters)
+    output = {}
+    filters.select do |filter|
+      params[filter] == "on"
+    end.each do |filter|
+      output[filter] = true
+    end
+    output
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params

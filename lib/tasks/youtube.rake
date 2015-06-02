@@ -70,14 +70,10 @@ def youtube_api(method, options)
   url = "https://www.googleapis.com/youtube/v3/#{method}?" + options_string + "&key=#{DEVELOPER_KEY}"
   http = Curl.get(url)
 
-
-  p "This is parsed Json"
-  p JSON.parse(http.body_str)
+  JSON.parse(http.body_str)
 end
 
-def hello
-  'hello'
-end
+
 
 youtube_ids = YOUTUBE_IDS.split(",")
 
