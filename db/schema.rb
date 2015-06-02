@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150511033305) do
     t.boolean  "official",                     default: false
     t.integer  "youtube_views",      limit: 8
     t.string   "definition"
-    t.string   "duration"
+    t.integer  "duration"
     t.string   "dimension"
     t.string   "caption"
     t.string   "category"

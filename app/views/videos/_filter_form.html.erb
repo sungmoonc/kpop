@@ -5,8 +5,8 @@
     <%= select_tag(:sort,
                    options_for_select(
                        [
-                           ['Upvote', 'upvotes'],
                            ['Views', 'youtube_views'],
+                           ['Upvote', 'upvotes'],
                            ['Recent', 'upload_date'],
                        ]))
     %>
@@ -37,7 +37,7 @@
 
   <div class="filter">
 
-    Type: <input type="text" name="category">    <br>
+    Category: <input type="text" name="category">    <br>
     Duration: <input type="text" name="duration">   <br>
     dimension: <input type="text" name="dimension">  <br>
     caption: <input type="text" name="caption">  <br>
