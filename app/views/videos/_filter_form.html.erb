@@ -53,9 +53,19 @@
     %>
 
     <br>
-    Duration: <input type="text" name="duration"> <br>
-    dimension: <input type="text" name="dimension"> <br>
-    caption: <input type="text" name="caption"> <br>
+    dimension:
+    <%= select_tag(:dimension,
+                   options_for_select(
+                       [
+                           ['All', 'all'],
+                           ['2D', '2D'],
+                           ['3D', '3D']
+                        ]
+                   )
+        )
+    %>
+
+    <br>
   </div>
 
   <%= submit_tag("Apply") %>
