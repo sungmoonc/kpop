@@ -38,24 +38,25 @@
   <div class="filter">
 
     Category:
-    <%= select_tag(:category,
-                   options_for_select(
-                       [
-                           ['All', 'all'],
-                           ['Teaser', 'teaser'],
-                           ['Dance Practice', 'dancepractice'],
-                           ['Making Film', 'making'],
-                           ['Music Videos', 'musicvideo'],
-                           ['Other', 'other']
-                       ]
-                   )
+    <%= select_tag(
+            :category,
+            options_for_select(
+                [
+                    ['All', 'all'],
+                    ['Teaser', 'teaser'],
+                    ['Dance Practice', 'dancepractice'],
+                    ['Making Film', 'making'],
+                    ['Music Videos', 'musicvideo'],
+                    ['Other', 'other']
+                ]
+            )
         )
     %>
 
     <br>
     Duration: <input type="text" name="duration"> <br>
-    dimension: <input type="text" name="dimension"> <br>
-    caption: <input type="text" name="caption"> <br>
+    Dimension: <input type="text" name="dimension"> <br>
+    Caption: <input type="text" name="caption"> <br>
   </div>
 
   <%= submit_tag("Apply") %>
