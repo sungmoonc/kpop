@@ -21,10 +21,10 @@
 
     <div id="main-content" class="col-xs-9">
       <ul class="thumbnails">
-        <% @videos.each do |video| %>
-          <%= render 'each_video', :video => video %>
-        <% end %>
       </ul>
+
+      <div id="infinite-scrolling">
+      </div>
 
     </div>
   </div>

@@ -1,20 +1,23 @@
-function ajax_filters(e) {
+function ajax_filters() {
   // Apply all the filters
   var source = $('#indv_video_template').html();
   var templatingFunction = Handlebars.compile(source);
   var context = {};
 
+  var form = $("form[name=filters]");
+
   $.ajax({
     url: '/videos/filters',
     type: 'POST',
-    data: $(this).serialize()
+    data: form.serialize()
   }).done(function (response) {
     context.videos = response;
-    $("ul.thumbnails").html("");
+    if (form.find("#page").val() == "1") {
+      $("ul.thumbnails").html("");
+    }
     $(".thumbnails").append(templatingFunction(context));
   })
 }
-
 
 $(document).on('page:change', function () {
   $("ul.thumbnails").on('click', ".hook--showmodal", function () {
@@ -26,23 +29,31 @@ $(document).on('page:change', function () {
     $("#iframe").attr('src', '');
   });
 
-  //$('#year').slider();
-
   // Filters and sorting
   //apply all filters at once
+  var form = $("form[name=filters]");
 
-  $("form[name=filters]").on('submit', function (e) {
+  form.on('submit', function (e) {
     e.preventDefault();
-    ajax_filters.call(this, e);
+    ajax_filters.call(this);
   });
 
-   //apply each filters
-  $("form[name=filters]").on('click', function (e) {
-    ajax_filters.call(this, e);
+  form.on('change', function () {
+    form.find("#page").val(1);
+    ajax_filters.call(this);
   });
 
-  $("form[name=filters]").on('change', function (e) {
-    ajax_filters.call(this, e);
-  });
+  // Infinite scroll
+  if ($('#infinite-scrolling').size() > 0) {
+    $(window).on('scroll', function(e) {
+      if ($(window).scrollTop() > $(document).height() - $(window).height() - 20)  {
+        form.find("#page").val(parseInt(form.find("#page").val()) + 1);
+        form.submit();
+      }
+    })
+  }
+
+  // Initial load
+  form.submit();
 
 });

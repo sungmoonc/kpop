@@ -1,5 +1,7 @@
 <%= form_tag("/videos/filters", name: 'filters') do %>
 
+  <input id="page" name="page" value=1>
+
   <div class="filter">
     Sort by
     <%= select_tag(:sort,
@@ -11,8 +13,6 @@
                        ]))
     %>
   </div>
-
-
 
   <div class="filter"><span class='filter_title'>Hotness</span>
     <input type="number" name="hotness[min]" class="number_input" value=0> -
@@ -68,7 +68,4 @@
 
     <br>
   </div>
-
-  <%= submit_tag("Apply") %>
-
 <% end %>
