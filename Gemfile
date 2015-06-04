@@ -38,6 +38,7 @@ gem 'jquery-ui-rails'
 #gem 'google-api-client'
 
 gem 'curb'
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

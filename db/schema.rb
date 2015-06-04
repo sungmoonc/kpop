@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511033305) do
+ActiveRecord::Schema.define(version: 20150604042123) do
 
   create_table "artist_videos", force: :cascade do |t|
     t.integer  "artist_id"
@@ -43,11 +43,20 @@ ActiveRecord::Schema.define(version: 20150511033305) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "videos", force: :cascade do |t|
     t.string   "youtube_id"
@@ -60,9 +69,9 @@ ActiveRecord::Schema.define(version: 20150511033305) do
     t.integer  "hotness",                      default: 0
     t.integer  "cheesiness",                   default: 0
     t.integer  "english_percentage",           default: 0
-    t.integer  "english_subtitle",             default: 0
-    t.integer  "official",                     default: 0
-    t.integer  "licensed_content",             default: 0
+    t.boolean  "english_subtitle",             default: false
+    t.boolean  "official",                     default: false
+    t.boolean  "licensed_content",             default: false
     t.integer  "youtube_views",      limit: 8
     t.string   "definition"
     t.integer  "duration"
@@ -72,8 +81,8 @@ ActiveRecord::Schema.define(version: 20150511033305) do
     t.date     "upload_date"
     t.integer  "upvotes",            limit: 8
     t.integer  "downvotes",          limit: 8
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
 end
