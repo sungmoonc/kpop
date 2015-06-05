@@ -4,8 +4,9 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.order("RANDOM()").first(100)
+    @videos = Video.order(youtube_views: :desc).first(100)
   end
+
 
   # GET /videos/1
   # GET /videos/1.json
@@ -61,14 +62,20 @@ class VideosController < ApplicationController
     end
   end
 
-  #filter
-  def by_youtube_views
-    @videos = Video.order(youtube_views: :desc)
+  def filters
+    integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
+    boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content")
+    category = "category = '#{params[:category]}'" unless params[:category] == "all"
+
+    @videos = Video
+      .where(integer_filters.join(" and "))
+      .where(boolean_filters)
+      .where(category)
+      .order("#{params[:sort]} desc")
+
+    render json: @videos
   end
 
-  # def by_youtube_user_id(user_id)
-  #   @videos = Video.where(params[:youtube_user_id])
-  # end
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -76,8 +83,24 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
   end
 
+  def get_range_filters(*filters)
+    filters.map do |filter|
+      "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
+    end
+  end
+
+  def get_boolean_filters(*filters)
+    output = {}
+    filters.select do |filter|
+      params[filter] == "on"
+    end.each do |filter|
+      output[filter] = true
+    end
+    output
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :upvotes, :downvotes)
+    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, :upload_date, :upvotes, :downvotes)
   end
 end

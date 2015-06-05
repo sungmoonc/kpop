@@ -8,12 +8,18 @@ class CreateVideos < ActiveRecord::Migration
       t.string :title_english
       t.string :youtube_user_id
       t.text :description
-      t.integer :hotness
-      t.integer :cheesiness
-      t.integer :english_percentage
-      t.integer :english_subtitle
-      t.integer :official
+      t.integer :hotness, :default => 0
+      t.integer :cheesiness, :default => 0
+      t.integer :english_percentage, :default => 0
+      t.boolean :english_subtitle, :default => false
+      t.boolean :official, :default => false
+      t.boolean :licensed_content, :default => false
       t.integer :youtube_views, limit: 8
+      t.string :definition
+      t.integer :duration
+      t.string :dimension
+      t.string :caption
+      t.string :category
       t.date :upload_date
       t.integer :upvotes, limit: 8
       t.integer :downvotes, limit: 8

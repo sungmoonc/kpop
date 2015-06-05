@@ -3,11 +3,7 @@
 <div id="main-container" class="container-fluid">
   <div class="row">
     <div id="sidebar" class="col-xs-3">
-      <h1>Filters</h1>
-
-      year
-      <div id="year" class="filter-slider"></div>
-
+      <%= render 'filter_form' %>
     </div>
 
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -26,24 +22,7 @@
     <div id="main-content" class="col-xs-9">
       <ul class="thumbnails">
         <% @videos.each do |video| %>
-          <li class="each_thumbnail">
-            <a href="https://www.youtube.com/embed/<%= video.youtube_id %>" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
-            <div class="thumbnail_image">
-
-              <%= image_tag video.thumbnail %>
-            </div>
-
-            <div class="thumbnail_title">
-              <%= video.title_korean %>
-            </div>
-            <% if video.title_english %>
-              <div class="thumbnail_title_eng">
-                <%= video.title_english %>
-              </div>
-            </a>
-            <% end %>
-
-          </li>
+          <%= render 'each_video', :video => video %>
         <% end %>
       </ul>
 
@@ -52,16 +31,5 @@
 </div>
 
 
-<script type="text/javascript">
-$(document).ready(function(){
- $(".hook--showmodal").on('click', function(){
-  var url= $(this).attr("href")
-    $("#iframe").attr('src', url);
-     })
 
-  $("#basicModal").on('hidden.bs.modal', function(){
-    $("#iframe").attr('src', '');
-  })
-});
-</script>
-
+<%= render partial: "each_video_handlebar"%>

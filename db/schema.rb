@@ -11,7 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505062647) do
+ActiveRecord::Schema.define(version: 20150511033305) do
+
+  create_table "artist_videos", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.integer  "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string   "name"
+    t.string   "gender"
+    t.string   "wiki_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "collections_videos", force: :cascade do |t|
+    t.integer  "collection_id"
+    t.integer  "video_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "videos", force: :cascade do |t|
     t.string   "youtube_id"
@@ -21,17 +57,23 @@ ActiveRecord::Schema.define(version: 20150505062647) do
     t.string   "title_english"
     t.string   "youtube_user_id"
     t.text     "description"
-    t.integer  "hotness"
-    t.integer  "cheesiness"
-    t.integer  "english_percentage"
-    t.integer  "english_subtitle"
-    t.integer  "official"
+    t.integer  "hotness",                      default: 0
+    t.integer  "cheesiness",                   default: 0
+    t.integer  "english_percentage",           default: 0
+    t.integer  "english_subtitle",             default: 0
+    t.integer  "official",                     default: 0
+    t.integer  "licensed_content",             default: 0
     t.integer  "youtube_views",      limit: 8
+    t.string   "definition"
+    t.integer  "duration"
+    t.string   "dimension"
+    t.string   "caption"
+    t.string   "category"
     t.date     "upload_date"
     t.integer  "upvotes",            limit: 8
     t.integer  "downvotes",          limit: 8
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
 end
