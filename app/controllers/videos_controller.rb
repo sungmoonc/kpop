@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.order(youtube_views: :desc).first(100)
+
   end
 
 
@@ -68,6 +68,7 @@ class VideosController < ApplicationController
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
     @videos = Video
+      .paginate(page: params[:page], per_page: 10)
       .where(integer_filters.join(" and "))
       .where(boolean_filters)
       .where(category)
