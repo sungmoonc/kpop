@@ -63,12 +63,14 @@ class VideosController < ApplicationController
   end
 
   def filters
+    search_filters = get_search_filters("title_korean", "title_english", "youtube_user_id", "description")
     integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
-    boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content")
+    boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content", "caption")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
     @videos = Video
       .paginate(page: params[:page], per_page: 10)
+      .where(search_filters.join(" or "))
       .where(integer_filters.join(" and "))
       .where(boolean_filters)
       .where(category)
@@ -82,6 +84,14 @@ class VideosController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_video
     @video = Video.find(params[:id])
+  end
+
+  def get_search_filters(*filters)
+    return [] if params[:search].size == 0
+
+    filters.map do |filter|
+      "#{filter} like '%#{params[:search]}%'"
+    end
   end
 
   def get_range_filters(*filters)

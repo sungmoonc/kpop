@@ -23,6 +23,13 @@ $(document).on('page:change', function () {
   $("ul.thumbnails").on('click', ".hook--showmodal", function () {
     var url = $(this).attr("href");
     $("#iframe").attr('src', url);
+
+    var popup_details = $(this).parent().find(".popup");
+    var htmls = $.map(popup_details, function(val, i) {
+      return "<div class='popup-desc'>" + val.innerHTML + "</div>";
+    });
+
+    $("#popup_details").html(htmls.join(""));
   });
 
   $("#basicModal").on('hidden.bs.modal', function () {
@@ -42,6 +49,12 @@ $(document).on('page:change', function () {
     form.find("#page").val(1);
     ajax_filters.call(this);
   });
+
+  form.on('keyup', function () {
+    form.find("#page").val(1);
+    ajax_filters.call(this);
+  });
+
 
   // Infinite scroll
   if ($('#infinite-scrolling').size() > 0) {
