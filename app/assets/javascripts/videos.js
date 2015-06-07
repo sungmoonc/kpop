@@ -11,6 +11,7 @@ function ajax_filters() {
     type: 'POST',
     data: form.serialize()
   }).done(function (response) {
+    console.log(response);
     context.videos = response;
     if (form.find("#page").val() == "1") {
       $("ul.thumbnails").html("");
