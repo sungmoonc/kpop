@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20150604042123) do
     t.string   "definition"
     t.integer  "duration"
     t.string   "dimension"
-    t.string   "caption"
+    t.boolean  "caption",                      default: false
     t.string   "category"
     t.date     "upload_date"
     t.integer  "upvotes",            limit: 8

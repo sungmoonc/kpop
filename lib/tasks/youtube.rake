@@ -42,9 +42,9 @@ def create_new_video(video, youtube_user_id)
   new_video.downvotes = video["statistics"]["dislikeCount"]
   new_video.youtube_views = video["statistics"]["viewCount"]
   new_video.definition = video["contentDetails"]["definition"]
-  new_video.duration =  duration_to_seconds(video["contentDetails"]["duration"])
+  new_video.duration = duration_to_seconds(video["contentDetails"]["duration"])
   new_video.dimension = video["contentDetails"]["dimension"]
-  new_video.caption = video["contentDetails"]["caption"]
+  new_video.caption = video["contentDetails"]["caption"] == "true" ? true : false
   new_video.licensed_content = video["contentDetails"]["licensedContent"]
   new_video.youtube_user_id = youtube_user_id
   new_video.upload_date = video["snippet"]["publishedAt"]
@@ -74,7 +74,6 @@ def youtube_api(method, options)
 end
 
 
-
 youtube_ids = YOUTUBE_IDS.split(",")
 
 DEVELOPER_KEY = ENV["YOUTUBE_KEY"]
@@ -82,25 +81,25 @@ DEVELOPER_KEY = ENV["YOUTUBE_KEY"]
 def get_user_upload_video_ids(upload_channel, next_page_token)
   next_page_token = nil if next_page_token == "init"
 
-  video_ids = youtube_api("playlistItems", { playlistId: upload_channel,
-                                             part: 'contentDetails',
-                                             pageToken: next_page_token,
-                                             maxResults: 50 })
+  video_ids = youtube_api("playlistItems", {playlistId: upload_channel,
+                                            part: 'contentDetails',
+                                            pageToken: next_page_token,
+                                            maxResults: 50})
   nextPageToken = video_ids["nextPageToken"]
 
   video_ids = video_ids["items"].map do |item|
     item["contentDetails"]["videoId"]
   end
 
-  { nextPageToken: nextPageToken, video_ids: video_ids }
+  {nextPageToken: nextPageToken, video_ids: video_ids}
 end
 
 def get_user_upload_channel_id(entertainment)
   channels = youtube_api("channels", {
-    part: "contentDetails",
-    forUsername: entertainment,
-    maxResults: 50
-  })
+                                       part: "contentDetails",
+                                       forUsername: entertainment,
+                                       maxResults: 50
+                                   })
 
   begin
     channels["items"].first["contentDetails"]["relatedPlaylists"]["uploads"]
@@ -111,10 +110,10 @@ end
 
 def get_video_details(video_ids)
   youtube_api("videos", {
-    :id => video_ids.join(","),
-    :part => 'snippet,statistics,contentDetails',
-    :maxResults => 50
-  })["items"]
+                          :id => video_ids.join(","),
+                          :part => 'snippet,statistics,contentDetails',
+                          :maxResults => 50
+                      })["items"]
 end
 
 namespace :youtube do
