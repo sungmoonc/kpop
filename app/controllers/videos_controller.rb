@@ -4,10 +4,6 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.where(nil)
-    @videos = @videos.order(params[:sort_by] + " " + params[:sort_order]) if params[:sort_by].present?
-    @videos = @videos.category(params[:category]) if params[:category].present?
-    @videos = @videos.first(100)
   end
 
 
@@ -68,8 +64,17 @@ class VideosController < ApplicationController
   end
 
   def filters
-    filter_string = get_filter_range_string("hotness", "cheesiness", "english_percentage")
-    @videos = Video.where(filter_string).order("#{params[:sort]} desc").first(100)
+    integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
+    boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content")
+    category = "category = '#{params[:category]}'" unless params[:category] == "all"
+
+    @videos = Video
+      .paginate(page: params[:page], per_page: 10)
+      .where(integer_filters.join(" and "))
+      .where(boolean_filters)
+      .where(category)
+      .order("#{params[:sort]} desc")
+
     render json: @videos
   end
 
@@ -80,14 +85,24 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
   end
 
-  def get_filter_range_string(*filters)
+  def get_range_filters(*filters)
     filters.map do |filter|
       "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
-    end.join(" and ")
+    end
+  end
+
+  def get_boolean_filters(*filters)
+    output = {}
+    filters.select do |filter|
+      params[filter] == "on"
+    end.each do |filter|
+      output[filter] = true
+    end
+    output
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :type, :licensed_content, :upload_date, :upvotes, :downvotes, :sort_by, :sort_order, :category)
+    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, :upload_date, :upvotes, :downvotes)
   end
 end

@@ -1,60 +1,71 @@
 <%= form_tag("/videos/filters", name: 'filters') do %>
 
+  <input id="page" name="page" value=1>
+
   <div class="filter">
     Sort by<br>
     <%= select_tag(:sort,
                    options_for_select(
                        [
-                           ['Upvote', 'upvotes'],
                            ['Views', 'youtube_views'],
+                           ['Upvote', 'upvotes'],
                            ['Recent', 'upload_date'],
                        ]))
     %>
   </div>
 
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-    Category
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="1" href="#">Music Video</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="2" href="#">Teaser</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="3" href="#">Dance Practice</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="4" href="#">Live Performance</a></li>
-  </ul>
-</div>
-
-
   <div class="filter"><span class='filter_title'>Hotness</span>
-     <input type="number" name="hotness[min]" class="number_input" value=0 > -
-     <input type="number" name="hotness[max]" class="number_input" value=10>
+    <input type="number" name="hotness[min]" class="number_input" value=0> -
+    <input type="number" name="hotness[max]" class="number_input" value=10>
   </div>
 
   <div class="filter"><span class='filter_title'>cheesiness</span>
-     <input type="number" name="cheesiness[min]" class="number_input" value=0> -
-     <input type="number" name="cheesiness[max]" class="number_input" value=10>
+    <input type="number" name="cheesiness[min]" class="number_input" value=0> -
+    <input type="number" name="cheesiness[max]" class="number_input" value=10>
   </div>
 
   <div class="filter"><span class='filter_title'>english_percentage</span>
-     <input type="number" name="english_percentage[min]" class="number_input" value=0> -
-     <input type="number" name="english_percentage[max]" class="number_input" value=100>
+    <input type="number" name="english_percentage[min]" class="number_input" value=0> -
+    <input type="number" name="english_percentage[max]" class="number_input" value=100>
   </div>
 
   <div class="filter">
     <input type="checkbox" name="english_subtitle"> English subtitle<br>
-    <input type="checkbox" name="official">  Official       <br>
+    <input type="checkbox" name="official"> Official <br>
     <input type="checkbox" name="licensed_content"> Licensed content
   </div>
 
   <div class="filter">
 
-    Type: <input type="text" name="type">    <br>
-    Duration: <input type="text" name="duration">   <br>
-    dimension: <input type="text" name="dimension">  <br>
-    caption: <input type="text" name="caption">  <br>
+    Category:
+    <%= select_tag(
+            :category,
+            options_for_select(
+                [
+                    ['All', 'all'],
+                    ['Teaser', 'teaser'],
+                    ['Dance Practice', 'dancepractice'],
+                    ['Making Film', 'making'],
+                    ['Music Videos', 'musicvideo'],
+                    ['Other', 'other']
+                ]
+            )
+        )
+    %>
+
+    <br>
+    dimension:
+    <%= select_tag(:dimension,
+                   options_for_select(
+                       [
+                           ['All', 'all'],
+                           ['2D', '2D'],
+                           ['3D', '3D']
+                        ]
+                   )
+        )
+    %>
+
+    <br>
   </div>
-
-  <%= submit_tag("Apply") %>
-
 <% end %>

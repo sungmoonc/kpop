@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527204147) do
+ActiveRecord::Schema.define(version: 20150604042123) do
 
   create_table "artist_videos", force: :cascade do |t|
     t.integer  "artist_id"
@@ -44,9 +44,12 @@ ActiveRecord::Schema.define(version: 20150527204147) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
+<<<<<<< HEAD
     t.string   "password"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+=======
+>>>>>>> backend
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -75,12 +78,17 @@ ActiveRecord::Schema.define(version: 20150527204147) do
     t.integer  "english_percentage",           default: 0
     t.boolean  "english_subtitle",             default: false
     t.boolean  "official",                     default: false
+    t.boolean  "licensed_content",             default: false
     t.integer  "youtube_views",      limit: 8
     t.string   "definition"
-    t.string   "duration"
+    t.integer  "duration"
     t.string   "dimension"
     t.string   "caption"
+<<<<<<< HEAD
     t.boolean  "licensed_content"
+=======
+    t.string   "category"
+>>>>>>> backend
     t.date     "upload_date"
     t.integer  "upvotes",            limit: 8
     t.integer  "downvotes",          limit: 8

@@ -2,11 +2,9 @@
 
 <div id="main-container" class="container-fluid">
   <div class="row">
-    <div id="sidebar" class="col-md-3">
-
-
+    <div id="sidebar" class="col-xs-3">
       <%= render 'filter_form' %>
-
+      <%= render 'users/user_widget' %>
     </div>
 
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -22,12 +20,12 @@
       </div>
     </div>
 
-    <div id="main-content" class="col-md-9">
-       <ul class="thumbnails">
-        <% @videos.each do |video| %>
-          <%= render 'each_video', :video => video %>
-        <% end %>
+    <div id="main-content" class="col-xs-9">
+      <ul class="thumbnails">
       </ul>
+
+      <div id="infinite-scrolling">
+      </div>
 
     </div>
   </div>
