@@ -1,3 +1,111 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#main-content {
+	background-color: rgb(237,237,237);
+}
+
+.top_bar {	
+	height: 105px;				
+	margin-left: 20px;
+}
+
+.top_bar .titleKpop {
+	font-size: 26px;
+	font-weight: bold;
+	font-style: italic;
+	color: rgb(48,64,79);
+}
+
+.top_bar hr {	
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.header_panel {	
+	width: 100%;
+	height: 100px;			
+}
+
+.header_panel .numResults {
+	font-size: 21px;
+	color: rgb(128,128,128);
+	margin-top: 25px;
+	margin-left: 20px;
+}
+
+.header_panel .dropdown .btnSort{
+	margin-top: 10px;
+	margin-right: 10px;
+	width: 170px;
+	height: 50px;
+	font-size: 18px;
+	color: rgb(128,128,128);
+	background-color: rgb(237,237,237);
+}
+
+.header_panel .dropdown .dropdown-menu {
+	background-color: rgb(48,64,79);
+	border: 1px solid #ccc;
+	border-radius: 3px;	
+}
+
+.header_panel .dropdown .dropdown-menu a {
+	color: rgb(255,255,255);
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.header_panel .dropdown .dropdown-menu a:hover {
+	color: rgb(0,0,0);
+} 
+
+.cards {
+	margin: 0 auto;
+ 	width: 100%;          
+}
+
+.box {
+	display: inline-block;
+	margin: 10px;
+	width: 320px;
+	height: 180px;	
+	border: 1px solid rgba(230,230,230,1);
+	border-radius: 5px;
+	box-shadow: 0px 3px 0px 0px rgba(220,220,220,1);	
+	text-align: center;
+}
+
+.box:hover {
+	border-color: rgba(205,205,205,1);
+	box-shadow: 0px 3px 0px 0px rgba(205,205,205,1);
+}
+
+.box img {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.box .overlay {
+	display: none;
+
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.7);
+	border-radius: 5px;
+}
+
+.box .overlay .song_title {
+	position: absolute;
+	top: 50px;
+	left: 20px;
+	font-size: 24px;
+	color: rgba(255,255,255,1);			
+	white-space: normal;
+}

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'main/index'
+  get 'main/index2'
 
   resources :videos
   # The priority is based upon order of creation: first created -> highest priority.

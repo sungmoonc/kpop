@@ -11,9 +11,25 @@
  * file per style scope.
  *
  *= require jquery-ui
+ *= require 'masonry/transitions'
+
  *= require_tree .
  *= require_self
  */
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.cards {
+	margin: 0 auto;
+ 	width: 100%;          
+}
+
+.box {
+	display: inline-block;
+	margin: 10px;
+	width: 350px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+	border-radius: 7px;
+	text-align: center;
+}
