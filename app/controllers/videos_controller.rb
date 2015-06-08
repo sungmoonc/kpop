@@ -63,7 +63,7 @@ class VideosController < ApplicationController
   end
 
   def filters
-    integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
+    integer_filters = get_range_filters(params, "hotness", "cheesiness", "english_percentage", params)
     boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
@@ -84,13 +84,13 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
   end
 
-  def get_range_filters(*filters)
+  def get_range_filters(params, *filters)
     filters.map do |filter|
       "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
     end
   end
 
-  def get_boolean_filters(*filters)
+  def get_boolean_filters(params, *filters)
     output = {}
     filters.select do |filter|
       params[filter] == "on"
