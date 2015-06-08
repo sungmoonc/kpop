@@ -3,6 +3,10 @@
   <input id="page" name="page" value=1 type="hidden">
 
   <div class="filter">
+    <input name="search" placeholder = "Search here..">
+  </div>
+
+  <div class="filter">
     Sort by
     <%= select_tag(:sort,
                    options_for_select(
@@ -19,19 +23,20 @@
     <input type="number" name="hotness[max]" class="number_input" value=10>
   </div>
 
-  <div class="filter"><span class='filter_title'>cheesiness</span>
+  <div class="filter"><span class='filter_title'>Cheesiness</span>
     <input type="number" name="cheesiness[min]" class="number_input" value=0> -
     <input type="number" name="cheesiness[max]" class="number_input" value=10>
   </div>
 
-  <div class="filter"><span class='filter_title'>english_percentage</span>
+  <div class="filter"><span class='filter_title'>English percentage</span>
     <input type="number" name="english_percentage[min]" class="number_input" value=0> -
     <input type="number" name="english_percentage[max]" class="number_input" value=100>
   </div>
 
   <div class="filter">
-    <input type="checkbox" name="english_subtitle"> English subtitle<br>
+    <input type="checkbox" name="english_subtitle"> English Subtitle<br>
     <input type="checkbox" name="official"> Official <br>
+    <input type="checkbox" name="caption"> Caption <br>
     <input type="checkbox" name="licensed_content"> Licensed content
   </div>
 
@@ -54,7 +59,7 @@
     %>
 
     <br>
-    dimension:
+    Dimension:
     <%= select_tag(:dimension,
                    options_for_select(
                        [
