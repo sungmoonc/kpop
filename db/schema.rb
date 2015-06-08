@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20150604042123) do
     t.boolean  "caption",                      default: false
     t.string   "category"
     t.date     "upload_date"
+    t.integer  "approval_rating",              default: 0
+    t.integer  "upvotes_per_views",            default: 0
     t.integer  "upvotes",            limit: 8
     t.integer  "downvotes",          limit: 8
     t.datetime "created_at",                                   null: false
