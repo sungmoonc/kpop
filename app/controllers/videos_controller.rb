@@ -64,7 +64,7 @@ class VideosController < ApplicationController
 
   def filters
     search_filters = get_search_filters("title_korean", "title_english", "youtube_user_id", "description")
-    integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
+    integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage", "approval_rating")
     boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content", "caption")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
@@ -88,7 +88,6 @@ class VideosController < ApplicationController
 
   def get_search_filters(*filters)
     return [] if params[:search].size == 0
-
     filters.map do |filter|
       "#{filter} like '%#{params[:search]}%'"
     end
@@ -112,6 +111,6 @@ class VideosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, :upload_date, :upvotes, :downvotes)
+    params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, :approval_rating, :upvotes_per_views, :likes, :upload_date, :upvotes, :downvotes)
   end
 end

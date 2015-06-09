@@ -6,10 +6,10 @@ def regexify(needles)
 end
 
 CATEGORY_STRINGS = [
+    [:musicvideo, regexify(["music video", "뮤비", "뮤직비디오", "뮤직 비디오", "mv", "m/v"])]
     [:teaser, regexify(["teaser", "티저"])],
     [:dancepractice, regexify(["dance practice", "안무"])],
     [:making, regexify(["making", "메이킹"])],
-    [:musicvideo, regexify(["music video", "뮤비", "뮤직비디오", "뮤직 비디오", "mv", "m/v"])]
 ]
 
 def category_parsing(title)
