@@ -63,10 +63,9 @@ class VideosController < ApplicationController
   end
 
   def filters
-    p 'these are params', params
     search_filters = get_search_filters("title_korean", "title_english", "youtube_user_id", "description")
-    integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
-    boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content", "caption")
+    integer_filters = get_range_filters(params, "hotness", "cheesiness", "english_percentage")
+    boolean_filters = get_boolean_filters(params, "english_subtitle", "official", "licensed_content")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
     @videos = Video
@@ -82,6 +81,7 @@ class VideosController < ApplicationController
 
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_video
     @video = Video.find(params[:id])
@@ -95,13 +95,13 @@ class VideosController < ApplicationController
     end
   end
 
-  def get_range_filters(*filters)
+  def get_range_filters(params, *filters)
     filters.map do |filter|
       "#{filter} >= #{params[filter][:min]} and #{filter} <= #{params[filter][:max]}"
     end
   end
 
-  def get_boolean_filters(*filters)
+  def get_boolean_filters(params, *filters)
     output = {}
     filters.select do |filter|
       params[filter] == "on"
