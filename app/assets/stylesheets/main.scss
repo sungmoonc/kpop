@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#sidebar {
+	background: rgb(48,64,79);
+	height: 1000px;
+}
+
+.menu_item {
+	margin: 20px;
+}
+
+
 #main-content {
 	background-color: rgb(237,237,237);
 }
