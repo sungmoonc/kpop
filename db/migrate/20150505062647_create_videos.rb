@@ -21,7 +21,7 @@ class CreateVideos < ActiveRecord::Migration
       t.boolean :caption, :default => false
       t.string :category
       t.date :upload_date
-      t.integer :approval_rating, :default => 0
+      t.decimal :approval_rating, :default => 0
       t.integer :upvotes_per_views, :default => 0
       t.integer :likes, :default => 0
       t.integer :upvotes, limit: 8

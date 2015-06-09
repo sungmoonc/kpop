@@ -6,10 +6,10 @@ def regexify(needles)
 end
 
 CATEGORY_STRINGS = [
-    [:musicvideo, regexify(["music video", "뮤비", "뮤직비디오", "뮤직 비디오", "mv", "m/v"])]
     [:teaser, regexify(["teaser", "티저"])],
     [:dancepractice, regexify(["dance practice", "안무"])],
     [:making, regexify(["making", "메이킹"])],
+    [:musicvideo, regexify(["music video", "뮤비", "뮤직비디오", "뮤직 비디오", "mv", "m/v"])]
 ]
 
 def category_parsing(title)
@@ -54,10 +54,20 @@ def create_new_video(video, youtube_user_id)
   new_video.english_subtitle = [true, false].sample
   new_video.official = [true, false].sample
   new_video.licensed_content = [true, false].sample
-
+  new_video.approval_rating = approval_rating(new_video.upvotes, new_video.downvotes)
+  new_video.upvotes_per_views = upvotes_per_views(new_video.upvotes, new_video.youtube_views)
   new_video.category = category_parsing(video["snippet"]["title"])
 
   new_video.save
+end
+
+
+def approval_rating(up, down)
+  ((up/(up + down +1).to_f) * 100).round(2)
+end
+
+def upvotes_per_views(up, views)
+  ((up/(views + 1).to_f) * 100).round(2)
 end
 
 def youtube_api(method, options)
