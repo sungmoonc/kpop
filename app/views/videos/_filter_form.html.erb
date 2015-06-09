@@ -14,6 +14,9 @@
                            ['Views', 'youtube_views'],
                            ['Upvote', 'upvotes'],
                            ['Recent', 'upload_date'],
+                           ['Hotness', 'hotness'],
+                           ['Cheesiness', 'cheesiness'],
+                           ['Approval Rating', 'approval_rating']
                        ]))
     %>
   </div>
@@ -31,6 +34,11 @@
   <div class="filter"><span class='filter_title'>English percentage</span>
     <input type="number" name="english_percentage[min]" class="number_input" value=0> -
     <input type="number" name="english_percentage[max]" class="number_input" value=100>
+  </div>
+
+  <div class="filter"><span class='filter_title'>Approval Rating</span>
+    <input type="number" name="approval_rating[min]" class="number_input" value=0> -
+    <input type="number" name="approval_rating[max]" class="number_input" value=100>
   </div>
 
   <div class="filter">

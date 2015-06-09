@@ -1,8 +1,6 @@
 YOUTUBE_IDS="100ayeon,15andOfficial,2am,2NE1,2pm,4minuteofficial,abentofficial,AceOfAngels8,ALi091008,alphaentkorea,amoebakorea,amusekr,apinkTV,applegirl002,b2ment,b2mysofficial,babysoulhome,beastofficial,BIGBANG,BoAsmtown,BoysRepublicOfficial,Brandnewmusickorea,BrandnewStardom,bravefamily,brianjoomusic,cclownofficial,chB1A4,chHelloVenus,CJENMMUSIC,CJESJYJ,cnblue,coremidas,crayonpopvideo,DBusinessENT,dlineartmedia,DMTNofficial,drunkentiger,DSP,dspAJAX,DSPKara,entertainmentCUBE,EXCELLENTENTofficial,EXOK,EXOM,fcuz0108,FNCMUSICofficial,fncohwonbin,ftisland,fxsmtown,girlsday5,GIRLSGENERATION,GLAMofficialvideo,gnaofficial,GoodFellasTVch1,happyfaceent,HISTORYloen,ibighit,infinitehome,IVYofficialChannel,jaybumaom0425,jaykentertainment,Jellyfishenter,jewelry0127,JJprojectOfficial,joojype,jtunecamp,jypark,jypentertainment,kimhyunjoong606,LadiesCode,lbdemion,leehyoriofficial,LOENARTIST,LOENENT,loenFIESTAR,loenIU,loenSUNNYHILL,loenZIA,mapthesoul,MIBOfficial,missA,mnet,MrJangwoohyuk,neganetwork,NeuroNTV,NEWPLANETwebmaster,NextarEntertainment,NineMusesCh,officialBEG,officialbtob,OfficialEpikHigh,OfficialGDRAGON,OfficialJUNIEL,officialLC9,OfficialLEEHI,officialLUNAFLY,officialpsy,officialroykim,OfficialSe7en,OfficialSEUNGRI,OfficialSEUNGYOON,OfficialTheRainbow,OfficialTMent,OFFICIALYNB,OFFROAD0924,onewayonesound,OPENWORLDent,parkjiyooncreative,pastelmusic,pledis17,pledisartist,pledisnuest,PolarisMusicOfficial,princeJKS,PUREENTER,RealTinyG,RealVIXX,RockinKOREAent,royalpiratesband,SHINee,SHINHWACOMPANY,SHINHWACOMPANY,sment,SMTOWN,soundholicENT,spicaofficial,Starempireofficial,starshipTV,SUPERJUNIOR,supervocaltomtom,TAILLRUNSMEDIA,TeenzOnTop,TheAziatix,TheCANENT,TheMRMRofficial,TheRealChocolat,TimeZOfficial2012,Top100percent,TOPmediaStar,Trophyentertainment1,Troublemakerofficial,TSENT2008,TVXQ,ukiss2008,wondergirls,woolliment,YeDangCompany,ygentertainment,ygtablo,YGTAEYANG,YMCent,ZEA2011"
 
 
-#YOUTUBE_IDS="ZEA2011"
-
 def regexify(needles)
   Regexp.new(needles.join("|"), "i")
 end
@@ -56,10 +54,20 @@ def create_new_video(video, youtube_user_id)
   new_video.english_subtitle = [true, false].sample
   new_video.official = [true, false].sample
   new_video.licensed_content = [true, false].sample
-
+  new_video.approval_rating = approval_rating(new_video.upvotes, new_video.downvotes)
+  new_video.upvotes_per_views = upvotes_per_views(new_video.upvotes, new_video.youtube_views)
   new_video.category = category_parsing(video["snippet"]["title"])
 
   new_video.save
+end
+
+
+def approval_rating(up, down)
+  ((up/(up + down +1).to_f) * 100).round(2)
+end
+
+def upvotes_per_views(up, views)
+  ((up/(views + 1).to_f) * 100).round(2)
 end
 
 def youtube_api(method, options)
