@@ -63,6 +63,7 @@ class VideosController < ApplicationController
   end
 
   def filters
+    p 'these are params', params
     search_filters = get_search_filters("title_korean", "title_english", "youtube_user_id", "description")
     integer_filters = get_range_filters("hotness", "cheesiness", "english_percentage")
     boolean_filters = get_boolean_filters("english_subtitle", "official", "licensed_content", "caption")

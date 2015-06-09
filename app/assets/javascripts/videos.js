@@ -40,19 +40,14 @@ $(document).on('page:change', function () {
   //apply all filters at once
   var form = $("form[name=filters]");
 
-  form.on('submit', function (e) {
-    e.preventDefault();
-    ajax_filters.call(this);
-  });
-
   form.on('change', function () {
     form.find("#page").val(1);
-    ajax_filters.call(this);
+    ajax_filters();
   });
 
   form.on('keyup', function () {
     form.find("#page").val(1);
-    ajax_filters.call(this);
+    ajax_filters();
   });
 
 
@@ -61,12 +56,11 @@ $(document).on('page:change', function () {
     $(window).on('scroll', function(e) {
       if ($(window).scrollTop() > $(document).height() - $(window).height() - 20)  {
         form.find("#page").val(parseInt(form.find("#page").val()) + 1);
-        form.submit();
+        ajax_filters();
       }
     })
   }
 
   // Initial load
-  form.submit();
-
+  ajax_filters();
 });
