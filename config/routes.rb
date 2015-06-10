@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'main/index'
-  get 'main/index2'
 
+  get 'main/index'  
+
+  devise_for :users
   resources :videos
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -7,10 +7,52 @@
         <img src="{{thumbnail}}">
       </div>
 
-      <div class="thumbnail_title">
+      <div class="thumbnail_title popup">
         {{title_korean}}
       </div>
     </a>
+
+
+    <div class="video_desc popup">
+      {{description}}
+    </div>
+
+    <div class="details popup">
+      {{youtube_user_id}} | {{category}} | {{duration}} seconds | {{upload_date}}
+    </div>
+
+    <div class="stats popup">
+      Views: {{youtube_views}} |
+      Upvotes: {{upvotes}} |
+      Downvotes: {{downvotes}} |
+      Approval Rating: {{approval_rating}}
+    </div>
+
+    <div class="kpop_fields popup">
+      Hotness: {{hotness}} |
+      Cheesiness : {{cheesiness}}
+    </div>
+
+    <div class="tags popup">
+      {{#if official}}
+        <span class="video_tag video_tag_official">Official</span>
+      {{/if}}
+
+      {{#if caption}}
+        <span class="video_tag video_tag_caption">Caption</span>
+      {{/if}}
+
+      {{#if english_subtitle}}
+        <span class="video_tag video_tag_english_subtitle">English Subtitle</span>
+      {{/if}}
+
+      {{#if licensed_content}}
+        <span class="video_tag video_tag_licensed_content">Licensed Content</span>
+      {{/if}}
+    </div>
+
+
+
   </li>
   {{/each}}
 </script>

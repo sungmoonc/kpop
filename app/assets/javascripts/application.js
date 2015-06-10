@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require masonry/jquery.masonry
 //= require turbolinks
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require_tree .
 
 $(document).ready(function() {

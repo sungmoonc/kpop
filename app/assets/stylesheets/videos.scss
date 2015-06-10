@@ -35,6 +35,39 @@ body {
   width: 140px;
 }
 
+.filter {
+  padding-top: 10px;
+}
+
+.video_desc {
+  display: none;
+}
+
+.popup-desc {
+  padding: 7px 5px;
+}
+
+.video_tag {
+  color: white;
+  padding: 2px 5px;
+}
+
+.video_tag_official {
+  background-color: blue;
+}
+
+.video_tag_caption {
+  background-color: gold;
+}
+
+.video_tag_licensed_content {
+  background-color: green;
+}
+
+.video_tag_english_subtitle {
+  background-color: red;
+}
+
 
 ul.thumbnails {
   list-style-type: none;

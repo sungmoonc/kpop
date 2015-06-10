@@ -4,6 +4,7 @@
   <div class="row">
     <div id="sidebar" class="col-xs-3">
       <%= render 'filter_form' %>
+      <%= render 'users/user_widget' %>
     </div>
 
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -14,6 +15,7 @@
             <div>
               <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
             </div>
+            <div id="popup_details"></div>
           </div>
         </div>
       </div>
@@ -21,10 +23,10 @@
 
     <div id="main-content" class="col-xs-9">
       <ul class="thumbnails">
-        <% @videos.each do |video| %>
-          <%= render 'each_video', :video => video %>
-        <% end %>
       </ul>
+
+      <div id="infinite-scrolling">
+      </div>
 
     </div>
   </div>
