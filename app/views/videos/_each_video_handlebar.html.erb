@@ -29,8 +29,21 @@
     </div>
 
     <div class="kpop_fields popup">
-      Hotness: {{hotness}} |
-      Cheesiness : {{cheesiness}}
+
+      {{#if editable}}
+        <form name="video_edit">
+          <input name="video_id" value="{{id}}">
+          Hotness: <input name="hotness" type=number class="number_input" value="{{hotness}}" min="0" max="10">
+          |
+          Cheesiness : <input name="cheesiness" type=number class="number_input" value="{{cheesiness}}" min="0" max="10">
+        </form>
+      {{else}}
+        Hotness: {{hotness}}
+        |
+        Cheesiness : {{cheesiness}}
+      {{/if}}
+
+
     </div>
 
     <div class="tags popup">

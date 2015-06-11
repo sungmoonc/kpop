@@ -19,6 +19,16 @@ function ajax_filters() {
   })
 }
 
+function ajax_save_edit() {
+  $.ajax({
+    url: '/videos/save_kpop_fields',
+    type: 'POST',
+    data: $(this).serialize()
+  }).fail(function(response){
+    alert("Unable to save the field:\n " + response.responseText);
+  })
+}
+
 $(document).on('page:change', function () {
   $("ul.thumbnails").on('click', ".hook--showmodal", function () {
     var url = $(this).attr("href");
@@ -48,6 +58,18 @@ $(document).on('page:change', function () {
   form.on('keyup', function () {
     form.find("#page").val(1);
     ajax_filters();
+  });
+
+
+  // Edit forms
+  var main_container = $('.thumbnails');
+
+  main_container.on('change', "form[name=video_edit]", function(){
+    ajax_save_edit.call(this);
+  });
+
+  main_container.on('change', "form[name=video_edit]", function(){
+    ajax_save_edit.call(this);
   });
 
 

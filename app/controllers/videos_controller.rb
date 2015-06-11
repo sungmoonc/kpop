@@ -1,6 +1,10 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
+
+  #todo: this should be true only if the logged in user is admin
+  @@is_current_user_admin = true
+
   # GET /videos
   # GET /videos.json
   def index
@@ -52,6 +56,23 @@ class VideosController < ApplicationController
     end
   end
 
+  def save_kpop_fields
+    if (@@is_current_user_admin)
+      video = Video.find(params["video_id"])
+      # todo: add model validation range 0 - 10
+      video.hotness=params["hotness"]
+      video.cheesiness=params["cheesiness"]
+
+      if (video.save)
+        head :ok
+      else
+        head :internal_server_error
+      end
+    else
+      head :bad_request
+    end
+  end
+
   # DELETE /videos/1
   # DELETE /videos/1.json
   def destroy
@@ -68,7 +89,7 @@ class VideosController < ApplicationController
     boolean_filters = get_boolean_filters(params, "english_subtitle", "official", "licensed_content")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
-    @videos = Video
+    videos = Video
       .paginate(page: params[:page], per_page: 10)
       .where(search_filters.join(" or "))
       .where(integer_filters.join(" and "))
@@ -76,7 +97,12 @@ class VideosController < ApplicationController
       .where(category)
       .order("#{params[:sort]} desc")
 
-    render json: @videos
+
+    videos = videos.as_json.map do |video|
+      video["editable"] = @@is_current_user_admin
+      video
+    end
+    render json: videos
   end
 
 
