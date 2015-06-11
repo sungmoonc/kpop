@@ -6,12 +6,22 @@
 	background: rgb(48,64,79);
 	height: 1000px;
 	color: rgb(255,255,255);
+	padding-left: 30px;
 }
 
 .menu_item {
 	margin: 20px;
 }
 
+.dropdown-menu {
+	background: rgb(48,64,79);
+	width: 180px;
+}
+
+.strVar {
+	font-size: 10px;
+	margin-top: 12px;
+}
 
 #main-content {
 	background-color: rgb(237,237,237);

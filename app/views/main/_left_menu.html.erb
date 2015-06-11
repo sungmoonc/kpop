@@ -1,32 +1,40 @@
 <div id="left-menu">
-	<div class="menu_item row">
-		<div class="col-md-4">Artist</div>
-		<div class="dropdown row">
-            <button class="btn btn-default dropdown-toggle" type="button" id="ddArtist" data-toggle="dropdown" aria-expanded="true">All <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Girl's Generation</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Psy</a></li>              
-            </ul>
-        </div>		
+	<div class="menu_item row">		
+		<div class="row">
+			<div class="col-md-8">Artist</div>
+		</div>
+		<div class="row">
+			<div class="dropdown col-md-4">
+	            <button class="btn btn-default dropdown-toggle" type="button" id="ddArtist" data-toggle="dropdown" aria-expanded="true">All <span class="caret"></span></button>
+	            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Girl's Generation</a></li>
+	              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Psy</a></li>              
+	            </ul>
+	        </div>		
+	    </div>
 	</div>		
 
 	<div class="menu_item row">
 		<div class="row">
-			<div class="col-md-4">Number of Singers</div><div class="strVar">3 - 5</div>
+			<div class="col-md-8">Number of Singers</div><div class="strVar">3 - 5</div>
 		</div>
-		<input id="ipNumSingers" name="interval-slider" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
+		<input id="ipNumSingers" name="interval-slider" type="text" class="span2" value="" data-slider-min="1" data-slider-max="7" data-slider-step="1" data-slider-value="[1,7]"/>
 	</div>
 
 	<div class="menu_item row">
-		<div class="col-md-4">Video Type</div>
-		<div class="dropdown row">
-            <button class="btn btn-default dropdown-toggle" type="button" id="ddVideoType" data-toggle="dropdown" aria-expanded="true">All <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Music Video</a></li>
-              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Live Performance</a></li>
-              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dance Practice</a></li>
-            </ul>
-        </div>		
+		<div class="row">
+			<div class="col-md-8">Video Type</div>
+		</div>
+		<div class="row">
+			<div class="dropdown col-md-4">
+	            <button class="btn btn-default dropdown-toggle" type="button" id="ddVideoType" data-toggle="dropdown" aria-expanded="true">All <span class="caret"></span></button>
+	            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+	              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Music Video</a></li>
+	              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Live Performance</a></li>
+	              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dance Practice</a></li>
+	            </ul>
+	        </div>		
+	    </div>
     </div>
 
     <div class="menu_item row">
@@ -46,15 +54,15 @@
 
     <div class="menu_item row">
     	<div class="row">
-			<div class="col-md-4">Year</div><div class="strVar">2000 - 2015</div>
+			<div class="col-md-8">Year</div><div class="strVar">2000 - 2015</div>
 		</div>
-    	<input id="ipYears" name="interval-slider" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
+    	<input id="ipYears" name="interval-slider" type="text" class="span2" value="" data-slider-min="2000" data-slider-max="2015" data-slider-step="1" data-slider-value="[2000,2015]"/>
     </div>
 
     <div class="menu_item row">
     	<div class="row">
-			<div class="col-md-4">Score</div><div class="strVar">0 - 100</div>
+			<div class="col-md-8">Score</div><div class="strVar">0 - 100</div>
 		</div>
-    	<input id="ipScore" name="interval-slider" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
+    	<input id="ipScore" name="interval-slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[0,100]"/>
     </div>
 </div>
