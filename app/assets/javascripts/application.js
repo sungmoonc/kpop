@@ -12,12 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-slider
+//= require bootstrap-switch
 //= require_tree .
-
-$(document).ready(function() {
-	
-});

@@ -5,6 +5,7 @@
 #sidebar {
 	background: rgb(48,64,79);
 	height: 1000px;
+	color: rgb(255,255,255);
 }
 
 .menu_item {
@@ -19,6 +20,12 @@
 .top_bar {	
 	height: 105px;				
 	margin-left: 20px;
+}
+
+.top_bar .titleFilter {	
+	font-size: 24px;
+	font-weight: normal;
+	color: rgb(255,255,255);
 }
 
 .top_bar .titleKpop {

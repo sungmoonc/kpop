@@ -56,6 +56,8 @@ gem 'haml', '~> 4.0.6'
 gem 'masonry-rails', '~> 0.2.4'
 # gem 'paperclip', '~> 4.2.2'
 # gem 'simple_form', '~> 3.1.0'
+gem 'bootstrap-slider-rails', '~> 4.8.1'
+gem 'bootstrap-switch-rails', '~> 3.3.2'
 
 
 group :development, :test do
