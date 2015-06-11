@@ -32,7 +32,7 @@
 
       {{#if editable}}
         <form name="video_edit">
-          <input name="video_id" value="{{id}}">
+          <input name="video_id" value="{{id}}" type="hidden">
           Hotness: <input name="hotness" type=number class="number_input" value="{{hotness}}" min="0" max="10">
           |
           Cheesiness : <input name="cheesiness" type=number class="number_input" value="{{cheesiness}}" min="0" max="10">
