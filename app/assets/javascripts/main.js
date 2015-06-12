@@ -12,6 +12,11 @@ $(document).on('page:change', function () {
 	//_left_menu
 	$("[name='interval-slider']").slider({});
 	$("[name='toggle-checkbox']").bootstrapSwitch();
+	$(".dropdown-menu li a").click(function(){
+	  $(this).parents(".dropdown").find('.selection').text($(this).text());
+	  $(this).parents(".dropdown").find('.selection').val($(this).text());
+	});
+
 
 	//_view_menu_box
 	$(".btn-group .btnView1").click(function() {
