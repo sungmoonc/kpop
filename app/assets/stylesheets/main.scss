@@ -26,11 +26,16 @@
 
 #sidebar .dropdown-menu {
 	background: rgb(48,64,79);
-	width: 180px;	
+	width: 200px;
+  	margin-left: 18px;
 }
 
 #sidebar .dropdown-menu a {
 	color: rgb(255,255,255);
+}
+
+#sidebar .dropdown-menu a:hover {
+	background: rgb(255,64,79);
 }
 
 //slider
