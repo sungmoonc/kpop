@@ -2,12 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#main-container {
+	background: rgb(48,64,79);	
+}
+
 #sidebar {
+	display: block;
 	background: rgb(48,64,79);
-	width: 310px;
+	width: 270px;
 	height: 1000px;
 	color: rgb(255,255,255);
-	padding-left: 30px;
+	padding-left: 45px;
 }
 
 .menu_item {
@@ -64,7 +69,9 @@
 }
 
 #main-content {
+	display: block;
 	background-color: rgb(237,237,237);
+	padding-left: 40px;
 }
 
 .top_bar {	
@@ -83,6 +90,7 @@
 	font-weight: bold;
 	font-style: italic;
 	color: rgb(48,64,79);
+	margin-left: 30px;
 }
 
 .top_bar hr {	
@@ -118,6 +126,7 @@
 	background-color: rgb(48,64,79);
 	border: 1px solid #ccc;
 	border-radius: 3px;	
+	margin-left: 16px;
 }
 
 .header_panel .dropdown .dropdown-menu a {
