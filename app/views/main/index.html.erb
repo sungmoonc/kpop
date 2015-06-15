@@ -1,7 +1,8 @@
 <div id="notice"></div>
 
-<div id="main-container" class="container-fluid">  
-    <div id="sidebar" class="col-xs-3">
+<div id="main-container" class="container-fluid">
+  <div class="row">
+    <div id="sidebar">
       <div class="top_bar row">
         <h2 class="titleFilter">Filters</h2>
         <hr></hr>
@@ -12,16 +13,16 @@
 
     <%= render 'video_dialog' %>
 
-    <div id="main-content" class="col-xs-9">
+    <div id="main-content">
       <div class="top_bar row">
         <h2 class="titleKpop">K-pop tv</h2>
         <hr></hr>
       </div>
 
       <div class="header_panel row">
-        <div class="numResults col-md-6">7160 results</div>
+        <div class="numResults col-md-5">7160 results</div>
         <div class="dropdown col-md-2">
-            <button class="btnSort btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="selection">SORT</span> <span class="caret"></span></button>
+            <button class="btnSort btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="selection">SORT</span> <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Default</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sexiness</a></li>
@@ -31,11 +32,9 @@
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Most Recent First</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Oldest First</a></li>
             </ul>
-        </div>
-
-        <div class="col-md-3">
-          <%= render 'view_menu_box' %>
-        </div>
+        </div>        
+          
+        <%= render 'view_menu_box' %>
       </div>
       <div id="cards" class="cards transitions-enabled row">
         <% @videos.each do |video| %>
@@ -44,6 +43,7 @@
       </div>
 
     </div>
+  </div>
 </div>
 
 
