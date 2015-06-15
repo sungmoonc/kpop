@@ -1,9 +1,9 @@
 
-<a href="https://www.youtube.com/embed/<%= video.youtube_id %>" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
+<a href="https://www.youtube.com/embed/{{youtube_id}}" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
 	<div class="box panel panel-default">
-		<%= image_tag video.thumbnail %>
+		<img src="{{thumbnail}}">		
 		<div class="overlay">
-			<div class="song_title"><%= video.title_korean %></div>			
+			<div class="song_title">{{title_korean}}</div>			
 		</div>
 	</div>
 </a>

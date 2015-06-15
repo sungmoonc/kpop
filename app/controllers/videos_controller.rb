@@ -79,6 +79,17 @@ class VideosController < ApplicationController
     render json: @videos
   end
 
+  def filters_test 
+    @videos = Video
+      .paginate(page: params[:page], per_page: 10)
+      .where(search_filters.join(" or "))
+      .where(integer_filters.join(" and "))
+      .where(boolean_filters)
+      .where("category = all")
+      .order("#{params[:sort]} desc")
+
+    render json: @videos
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.

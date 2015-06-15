@@ -20,9 +20,9 @@
       </div>
 
       <div class="header_panel row">
-        <div class="numResults col-md-5">7160 results</div>
+        <div class="numResults col-md-5">7160 results</div>        
         <div class="dropdown col-md-2">
-            <button class="btnSort btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="selection">SORT</span> <span class="caret"></span></button>
+            <button class="btnSort btn dropdown-toggle" type="button" id="btnSort" data-toggle="dropdown" aria-expanded="true"><span class="selection">SORT</span> <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Default</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sexiness</a></li>
@@ -32,19 +32,20 @@
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Most Recent First</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Oldest First</a></li>
             </ul>
-        </div>        
-          
+        </div>                
+
         <%= render 'view_menu_box' %>
       </div>
       <div id="cards" class="cards transitions-enabled row">
-        <% @videos.each do |video| %>
-          <%= render 'video_card', :video => video %>
-        <% end %>
+        <div class="thumbnails">
+        </div>
+
+        <div id="infinite-scrolling">
+        </div>
       </div>
 
     </div>
   </div>
 </div>
 
-
-
+<%= render partial: "video_card_handlebar"%>
