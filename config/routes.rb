@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Example of regular route:
 
   post '/videos/filters' => 'videos#filters'
+  post '/videos/save_kpop_fields' => 'videos#save_kpop_fields'
 
   # get '/filterby/:field/:from/:to' => 'videos#filter_by'
 
