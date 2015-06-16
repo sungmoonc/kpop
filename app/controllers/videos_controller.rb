@@ -60,6 +60,8 @@ class VideosController < ApplicationController
     if (@@is_current_user_admin)
       video = Video.find(params["video_id"])
       # todo: add model validation range 0 - 10
+      video.title_korean=params["title_korean"]
+      video.category=params["category"]
       video.hotness=params["hotness"]
       video.cheesiness=params["cheesiness"]
 

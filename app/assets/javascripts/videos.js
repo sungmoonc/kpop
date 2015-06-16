@@ -16,6 +16,18 @@ function ajax_filters() {
       $("ul.thumbnails").html("");
     }
     $(".thumbnails").append(templatingFunction(context));
+
+    $(context.videos).each(
+        function(i, v){
+          if (v.editable) {
+            console.log(v);
+
+            $("input[value="+ v["id"] + "]").parent().find("select[name=category]").val(v["category"])
+          }
+
+        }
+    );
+
   })
 }
 
