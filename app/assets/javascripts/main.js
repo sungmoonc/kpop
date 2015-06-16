@@ -1,26 +1,25 @@
-function ajax_filters() {
+function main_ajax_filters() {
   // Apply all the filters
-  var source = $("#idvideo_card_template").html();
+  var source = $("#video_card_template").html();  
   var templatingFunction = Handlebars.compile(source);
   var context = {};
 
-  var form = $("form[name=filters]");
+  // var form = $("form[name=filters]");
 
   $.ajax({
     url: '/videos/filters_test',
-    type: 'POST',
-    data: form.serialize()
+    type: 'GET'
+    // data: form.serialize()
   }).done(function (response) {
     context.videos = response;
-    if (form.find("#page").val() == "1") {
-      $("#cards.thumbnails").html("");
-    }
+    // if (form.find("#page").val() == "1") {
+    //   $("#cards.thumbnails").html("");
+    // }
     $("#cards.thumbnails").append(templatingFunction(context));
   })
 }
 
-
-$(document).ready(function() {
+$(document).on('page:change', function () {	
 	var cards = $("#cards");
 	cards.imagesLoaded(function() {
 		cards.masonry({
@@ -28,9 +27,7 @@ $(document).ready(function() {
 			isFitWidth: true
 		});
 	});
-});
 
-$(document).on('page:change', function () {
 	//_left_menu
 	$("[name='interval-slider']").slider({});
 	$("[name='toggle-checkbox']").bootstrapSwitch();
@@ -75,28 +72,28 @@ $(document).on('page:change', function () {
 
   	// Filters and sorting
 	//apply all filters at once
-	var form = $("form[name=filters]");
+	// var form = $("form[name=filters]");
 
-	form.on('change', function () {
-    	form.find("#page").val(1);
-    	ajax_filters();
-  	});
+	// form.on('change', function () {
+ //    	form.find("#page").val(1);
+ //    	main_ajax_filters();
+ //  	});
 
-  	form.on('keyup', function () {
-    	form.find("#page").val(1);
-    	ajax_filters();
-  	});
+ //  	form.on('keyup', function () {
+ //    	form.find("#page").val(1);
+ //    	main_ajax_filters();
+ //  	});
 
   	// Infinite scroll
   	if ($('#infinite-scrolling').size() > 0) {
     	$(window).on('scroll', function(e) {
 	      	if ($(window).scrollTop() > $(document).height() - $(window).height() - 20)  {
-	        	form.find("#page").val(parseInt(form.find("#page").val()) + 1);
-	        	ajax_filters();
+	        	// form.find("#page").val(parseInt(form.find("#page").val()) + 1);
+	        	main_ajax_filters();
 	      	}
     	});
   	}
 
   	// Initial load
-  	ajax_filters();
+  	main_ajax_filters();
 });

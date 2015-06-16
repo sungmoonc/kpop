@@ -5,7 +5,7 @@ function ajax_filters() {
   var context = {};
 
   var form = $("form[name=filters]");
-console.log(form.serialize());
+
   $.ajax({
     url: '/videos/filters',
     type: 'POST',

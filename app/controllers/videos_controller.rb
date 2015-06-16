@@ -79,15 +79,9 @@ class VideosController < ApplicationController
     render json: @videos
   end
 
-  def filters_test 
-    @videos = Video
-      .paginate(page: params[:page], per_page: 10)
-      .where(search_filters.join(" or "))
-      .where(integer_filters.join(" and "))
-      .where(boolean_filters)
-      .where("category = all")
-      .order("#{params[:sort]} desc")
-
+  def filters_test     
+    @videos = Video.order(youtube_views: :desc).first(50)  
+    
     render json: @videos
   end
 
