@@ -8,15 +8,16 @@ function main_ajax_filters() {
 
   $.ajax({
     url: '/videos/filters_test',
-    type: 'GET'
+    type: 'POST'
     // data: form.serialize()
   }).done(function (response) {
     context.videos = response;
     // if (form.find("#page").val() == "1") {
     //   $("#cards.thumbnails").html("");
     // }
-    $("#cards.thumbnails").append(templatingFunction(context));
-  })
+
+    $(".thumbnails").append(templatingFunction(context));
+  });
 }
 
 $(document).on('page:change', function () {	
