@@ -4,17 +4,17 @@ function main_ajax_filters() {
   var templatingFunction = Handlebars.compile(source);
   var context = {};
 
-  // var form = $("form[name=filters]");
+  var form = $("form[name=filters]");
 
   $.ajax({
     url: '/videos/filters_test',
-    type: 'POST'
-    // data: form.serialize()
+    type: 'POST',
+    data: form.serialize()
   }).done(function (response) {
     context.videos = response;
-    // if (form.find("#page").val() == "1") {
-    //   $("#cards.thumbnails").html("");
-    // }
+    if (form.find("#page").val() == "1") {
+      $("#cards.thumbnails").html("");
+    }
 
     $(".thumbnails").append(templatingFunction(context));
 
@@ -76,23 +76,22 @@ $(document).on('page:change', function () {
 
   	// Filters and sorting
 	//apply all filters at once
-	// var form = $("form[name=filters]");
+	var form = $("form[name=filters]");
 
-	// form.on('change', function () {
- //    	form.find("#page").val(1);
- //    	main_ajax_filters();
- //  	});
-
- //  	form.on('keyup', function () {
- //    	form.find("#page").val(1);
- //    	main_ajax_filters();
- //  	});
+	form.on('change', function () {
+    	form.find("#page").val(1);
+    	main_ajax_filters();
+  	});
+  	form.on('keyup', function () {
+    	form.find("#page").val(1);
+    	main_ajax_filters();
+  	});
 
   	// Infinite scroll
   	if ($('#infinite-scrolling').size() > 0) {
     	$(window).on('scroll', function(e) {
 	      	if ($(window).scrollTop() > $(document).height() - $(window).height() - 20)  {
-	        	// form.find("#page").val(parseInt(form.find("#page").val()) + 1);
+	        	form.find("#page").val(parseInt(form.find("#page").val()) + 1);
 	        	main_ajax_filters();
 	      	}
     	});
