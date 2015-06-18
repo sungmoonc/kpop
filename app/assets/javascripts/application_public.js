@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require masonry/jquery.masonry
 //= require turbolinks
-//= require jquery-readyselector
 //= require bootstrap
 //= require bootstrap-slider
 //= require bootstrap-switch

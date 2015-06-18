@@ -17,16 +17,19 @@ function main_ajax_filters() {
     // }
 
     $(".thumbnails").append(templatingFunction(context));
+
+    $(".btn-group .btnView1").click();
   });
 }
 
 $(document).on('page:change', function () {	
 	var cards = $("#cards");
+
 	cards.imagesLoaded(function() {
 		cards.masonry({
 			itemSelector: '.box',
 			isFitWidth: true
-		});
+		});		
 	});
 
 	//_left_menu
