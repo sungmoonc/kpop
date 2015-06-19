@@ -12,8 +12,10 @@ function main_ajax_filters() {
     data: form.serialize()
   }).done(function (response) {
     context.videos = response;
+
     if (form.find("#page").val() == "1") {
-      $("#cards.thumbnails").html("");
+    console.log(response[0]);
+      $(".thumbnails").html("");
     }
 
     $(".thumbnails").append(templatingFunction(context));
@@ -34,7 +36,11 @@ $(document).on('page:change', function () {
 
 	//_left_menu
 	$("[name='interval-slider']").slider({});
-	$("[name='toggle-checkbox']").bootstrapSwitch();
+	$("[class='toggle-checkbox']").bootstrapSwitch();
+	$("input[class='toggle-checkbox']").on("switchChange.bootstrapSwitch", function(event, state) {
+		$("form[name=filters]").trigger("change");		
+	});
+
 	$(".dropdown-menu li a").click(function(){
 	  $(this).parents(".dropdown").find('.selection').text($(this).text());
 	  $(this).parents(".dropdown").find('.selection').val($(this).text());
@@ -79,6 +85,7 @@ $(document).on('page:change', function () {
 	var form = $("form[name=filters]");
 
 	form.on('change', function () {
+		console.log("change");
     	form.find("#page").val(1);
     	main_ajax_filters();
   	});

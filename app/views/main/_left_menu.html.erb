@@ -1,5 +1,7 @@
 <%= form_tag("/videos/filters_test", name: 'filters') do %>
 <div id="left-menu">
+	<input id="page" name="page" value=1 type="hidden">
+	
 	<div class="menu_item row">		
 		<div class="row">
 			<div class="col-md-8">Artist</div>
@@ -40,22 +42,22 @@
 
     <div class="menu_item row">
     	<div>English Subtitle</div>
-    	<input type="checkbox" name="toggle-checkbox" data-size="small" data-on-color="info" checked>
+    	<input id="tcSubtitle" type="checkbox" class="toggle-checkbox" name="english_subtitle" data-size="small" data-on-color="info" checked>
     </div>
 
     <div class="menu_item row">
     	<div>Official Video</div>
-    	<input type="checkbox" name="toggle-checkbox" data-size="small" data-on-color="info" checked>
+    	<input id="tcOVideo" type="checkbox" class="toggle-checkbox" name="official" data-size="small" data-on-color="info" checked>
     </div>
 
-    <div class="menu_item row">
+    <!-- <div class="menu_item row">
     	<div>HD Video</div>
     	<input type="checkbox" name="toggle-checkbox" data-size="small" data-on-color="info" checked>
-    </div>
+    </div> -->
 
     <div class="menu_item row">
     	<div>Licensed Content</div>
-    	<input type="checkbox" name="toggle-checkbox" data-size="small" data-on-color="info" checked>
+    	<input id="tcLContent" type="checkbox" class="toggle-checkbox" name="licensed_content" data-size="small" data-on-color="info" checked>
     </div>
 
     <div class="menu_item row">

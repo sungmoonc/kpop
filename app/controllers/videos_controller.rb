@@ -82,16 +82,17 @@ class VideosController < ApplicationController
   def filters_test     
     # search_filters = get_search_filters("title_korean", "title_english", "youtube_user_id", "description")
     # integer_filters = get_range_filters(params, "hotness", "cheesiness", "english_percentage", "approval_rating")
-    # boolean_filters = get_boolean_filters(params, "english_subtitle", "official", "licensed_content")
+    boolean_filters = get_boolean_filters(params, "english_subtitle", "official", "licensed_content")
     # category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
     
     @videos = Video
+      .where(boolean_filters)
       .paginate(page: params[:page], per_page: 20)
       # .order("#{params[:sort]} desc")
       # .where(search_filters.join(" or "))
       # .where(integer_filters.join(" and "))
-      # .where(boolean_filters)
+      
       # .where(category)
       
 
