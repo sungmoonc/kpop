@@ -13,8 +13,7 @@ function main_ajax_filters() {
   }).done(function (response) {
     context.videos = response;
 
-    if (form.find("#page").val() == "1") {
-    console.log(response[0]);
+    if (form.find("#page").val() == "1") {    
       $(".thumbnails").html("");
     }
 
@@ -35,7 +34,9 @@ $(document).on('page:change', function () {
 	});
 
 	//_left_menu	
-	$("[name='interval-slider']").slider({});
+	// $("[name='interval-slider']").slider({});
+	var ipEP = $("#ipEP").slider({}).data("slider");		
+	var ipAR = $("#ipAR").slider({}).data("slider");
 	$("[class='toggle-checkbox']").bootstrapSwitch();
 	$("input[class='toggle-checkbox']").on("switchChange.bootstrapSwitch", function(event, state) {
 		$("form[name=filters]").trigger("change");		
@@ -44,7 +45,7 @@ $(document).on('page:change', function () {
 	$(".dropdown-menu li a").click(function(){
 	  $(this).parents(".dropdown").find('.selection').text($(this).text());
 	  $(this).parents(".dropdown").find('.selection').val($(this).text());
-	});	
+	});		
 
 
 	//_view_menu_box
@@ -85,7 +86,16 @@ $(document).on('page:change', function () {
 	var form = $("form[name=filters]");
 
 	form.on('change', function () {
-		console.log("change");
+		console.log("change");		
+				
+		var arrEp = ipEP.getValue();		
+		$("#epMin").val(arrEp[0]);
+		$("#epMax").val(arrEp[1]);
+
+		var arrAr = ipAR.getValue();
+		$("#arMin").val(arrAr[0]);
+		$("#arMax").val(arrAr[1]);
+
     	form.find("#page").val(1);
     	main_ajax_filters();
   	});
