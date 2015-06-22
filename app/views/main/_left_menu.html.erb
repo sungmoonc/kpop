@@ -29,12 +29,16 @@
 			<div class="col-md-8">Video Type</div>
 		</div>
 		<div class="row">
+            <input id="ipVType" name="category" value="all" type="hidden">
 			<div class="dropdown col-md-4">
 	            <button class="btn btn-default dropdown-toggle" type="button" id="ddVideoType" data-toggle="dropdown" aria-expanded="true"><span class="selection col-md-11">All</span> <span class="caret"></span></button>
 	            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-	              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Music Video</a></li>
-	              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Live Performance</a></li>
-	              	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dance Practice</a></li>
+                    <li role="presentation"><a role="menuitem" value="all" tabindex="-1" href="#">All</a></li>
+	              	<li role="presentation"><a role="menuitem" value="teaser" tabindex="-1" href="#">Teaser</a></li>
+	              	<li role="presentation"><a role="menuitem" value="dancepractice" tabindex="-1" href="#">Dance Practice</a></li>
+	              	<li role="presentation"><a role="menuitem" value="making" tabindex="-1" href="#">Making Film</a></li>
+                    <li role="presentation"><a role="menuitem" value="musicvideo" tabindex="-1" href="#">Music Videos</a></li>
+                    <li role="presentation"><a role="menuitem" value="other" tabindex="-1" href="#">Other</a></li>
 	            </ul>
 	        </div>		
 	    </div>

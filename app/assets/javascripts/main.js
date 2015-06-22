@@ -41,12 +41,14 @@ $(document).on('page:change', function () {
 	var ipAR = $("#ipAR").slider({}).data("slider");
 	$("[class='toggle-checkbox']").bootstrapSwitch();
 	$("input[class='toggle-checkbox']").on("switchChange.bootstrapSwitch", function(event, state) {
-		$("form[name=filters]").trigger("change");		
+		form.trigger("change");		
 	});
 
 	$(".dropdown-menu li a").click(function(){
 	  $(this).parents(".dropdown").find('.selection').text($(this).text());
 	  $(this).parents(".dropdown").find('.selection').val($(this).text());
+	  $("#ipVType").val($(this).attr("value"));
+	  form.trigger("change");
 	});		
 
 
