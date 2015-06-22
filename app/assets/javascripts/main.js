@@ -35,6 +35,8 @@ $(document).on('page:change', function () {
 
 	//_left_menu	
 	// $("[name='interval-slider']").slider({});
+	var ipHN = $("#ipHN").slider({}).data("slider");
+	var ipCN = $("#ipCN").slider({}).data("slider");
 	var ipEP = $("#ipEP").slider({}).data("slider");		
 	var ipAR = $("#ipAR").slider({}).data("slider");
 	$("[class='toggle-checkbox']").bootstrapSwitch();
@@ -87,7 +89,15 @@ $(document).on('page:change', function () {
 
 	form.on('change', function () {
 		console.log("change");		
-				
+
+		var arrHn = ipHN.getValue();
+		$("#hnMin").val(arrHn[0]);
+		$("#hnMax").val(arrHn[1]);
+
+		var arrCn = ipCN.getValue();
+		$("#cnMin").val(arrCn[0]);
+		$("#cnMax").val(arrCn[1]);
+
 		var arrEp = ipEP.getValue();		
 		$("#epMin").val(arrEp[0]);
 		$("#epMax").val(arrEp[1]);
