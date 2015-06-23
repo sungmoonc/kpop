@@ -91,7 +91,7 @@ class VideosController < ApplicationController
       .where(integer_filters.join(" and "))
       .where(category)
       .paginate(page: params[:page], per_page: 20)
-      # .order("#{params[:sort]} desc")
+      .order("#{params[:sort]} desc")
       # .where(search_filters.join(" or "))                     
 
     render json: @videos

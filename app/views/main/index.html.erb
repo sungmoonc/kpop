@@ -20,18 +20,16 @@
       </div>
 
       <div class="header_panel row">
-        <div class="numResults col-md-5">7160 results</div>        
-        <div class="dropdown col-md-2">
-                      
+        <div class="numResults col-md-5">7160 results</div>                
+        <div class="dropdown col-md-2">                
             <button class="btnSort btn dropdown-toggle" type="button" id="btnSort" data-toggle="dropdown" aria-expanded="true"><span class="selection">SORT</span> <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Default</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sexiness</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cheesiness</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Approval Rating</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Youtube Views</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Most Recent First</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Oldest First</a></li>
+            <ul id="ddSort" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">              
+              <li role="presentation"><a role="menuitem" value="youtube_views" tabindex="-1" href="#">Views</a></li>
+              <li role="presentation"><a role="menuitem" value="upvotes" tabindex="-1" href="#">Upvote</a></li>             
+              <li role="presentation"><a role="menuitem" value="upload_date" tabindex="-1" href="#">Recent</a></li> 
+              <li role="presentation"><a role="menuitem" value="hotness" tabindex="-1" href="#">Hotness</a></li>
+              <li role="presentation"><a role="menuitem" value="cheesiness" tabindex="-1" href="#">Cheesiness</a></li>
+              <li role="presentation"><a role="menuitem" value="approval_rating" tabindex="-1" href="#">Approval Rating</a></li>
             </ul>
           
         </div>                

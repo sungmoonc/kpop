@@ -46,10 +46,18 @@ $(document).on('page:change', function () {
 
 	$(".dropdown-menu li a").click(function(){
 	  $(this).parents(".dropdown").find('.selection').text($(this).text());
-	  $(this).parents(".dropdown").find('.selection').val($(this).text());
-	  $("#ipVType").val($(this).attr("value"));
-	  form.trigger("change");
-	});		
+	  $(this).parents(".dropdown").find('.selection').val($(this).text());	  	  
+	});	
+
+	$("#ddSort li a").click(function() {
+		$("#ipSort").val($(this).attr("value"));
+		form.trigger("change");
+	});
+
+	$("#ddVType li a").click(function() {
+		$("#ipVType").val($(this).attr("value"));
+		form.trigger("change");
+	});
 
 
 	//_view_menu_box

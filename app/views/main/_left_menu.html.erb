@@ -1,6 +1,7 @@
 <%= form_tag("/videos/filters_test", name: 'filters') do %>
 <div id="left-menu">
 	<input id="page" name="page" value=1 type="hidden">
+	<input id="ipSort" name="sort" value="youtube_views" type="hidden">
 	
 	<div class="menu_item row">		
 		<div class="row">
@@ -32,7 +33,7 @@
             <input id="ipVType" name="category" value="all" type="hidden">
 			<div class="dropdown col-md-4">
 	            <button class="btn btn-default dropdown-toggle" type="button" id="ddVideoType" data-toggle="dropdown" aria-expanded="true"><span class="selection col-md-11">All</span> <span class="caret"></span></button>
-	            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+	            <ul id="ddVType" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                     <li role="presentation"><a role="menuitem" value="all" tabindex="-1" href="#">All</a></li>
 	              	<li role="presentation"><a role="menuitem" value="teaser" tabindex="-1" href="#">Teaser</a></li>
 	              	<li role="presentation"><a role="menuitem" value="dancepractice" tabindex="-1" href="#">Dance Practice</a></li>
