@@ -33,6 +33,11 @@ $(document).on('page:change', function () {
 		});		
 	});
 
+	$("#ipSearch").keyup(function() {
+		$("#ipSearchHd").val($(this).val());
+		form.trigger("change");
+	});
+
 	//_left_menu	
 	// $("[name='interval-slider']").slider({});
 	var ipHN = $("#ipHN").slider({}).data("slider");
@@ -119,10 +124,10 @@ $(document).on('page:change', function () {
     	form.find("#page").val(1);
     	main_ajax_filters();
   	});
-  	form.on('keyup', function () {
-    	form.find("#page").val(1);
-    	main_ajax_filters();
-  	});
+  	// form.on('keyup', function () {
+   //  	form.find("#page").val(1);
+   //  	main_ajax_filters();
+  	// });
 
   	// Infinite scroll
   	if ($('#infinite-scrolling').size() > 0) {
