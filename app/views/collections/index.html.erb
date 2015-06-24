@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<%= render 'users/user_widget' %>
 
 <h1>Listing Collections</h1>
 
@@ -12,6 +13,7 @@
   <tbody>
     <% @collections.each do |collection| %>
       <tr>
+
         <td><%= collection.name %></td>
         <td><%= collection.user_id %></td>
         <td><%= link_to 'Show', collection %></td>
