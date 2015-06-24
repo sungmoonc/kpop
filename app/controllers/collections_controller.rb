@@ -4,12 +4,13 @@ class CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
-    @collections = Collection.all
+    @collections = Collection.where(user_id: current_user.id)
   end
 
   # GET /collections/1
   # GET /collections/1.json
   def show
+
   end
 
   # GET /collections/new
@@ -24,7 +25,7 @@ class CollectionsController < ApplicationController
   # POST /collections
   # POST /collections.json
   def create
-    @collection = Collection.new(collection_params)
+    @collection = Collection.new(collection_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @collection.save
@@ -69,6 +70,6 @@ class CollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params[:collection]
+      params.require(:collection).permit(:name)
     end
 end
