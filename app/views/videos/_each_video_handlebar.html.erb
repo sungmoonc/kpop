@@ -12,6 +12,8 @@
       </div>
     </a>
     <div class="thumbnail_title popup">
+      <input type="button", value="Like">
+      <input type="button", value="Add">
       {{#if editable}} <input name="title_korean" value="{{title_korean}}" class="title_input"> {{else}} {{title_korean}} {{/if}}
     </div>
 
@@ -45,7 +47,8 @@
       Views: {{youtube_views}} |
       Upvotes: {{upvotes}} |
       Downvotes: {{downvotes}} |
-      Approval Rating: {{approval_rating}}
+      Approval Rating: {{approval_rating}} |
+      Likes: {{likes}}
     </div>
 
     <div class="kpop_fields popup">
