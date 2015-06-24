@@ -1,14 +1,10 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
-
-  #todo: this should be true only if the logged in user is admin
-  @@is_current_user_admin = true
-
   # GET /videos
   # GET /videos.json
   def index
-
+    @@is_current_user_admin = signed_in? && current_user[:admin]
   end
 
 
