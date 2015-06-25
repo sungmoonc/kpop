@@ -2,20 +2,18 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
+    redirect_to("/admin/users")
   end
 
   def users
-    @users = User.all
+    if current_user["admin"]
+      @users = User.all
+    end
   end
 
   def toggle_user_admin
-    p params
     user = User.find(params["user_id"])
-    p params["admin"]
     user[:admin] = !(params["admin"] == "true")
-
-    p user
 
     if (user.save)
       render json: user
