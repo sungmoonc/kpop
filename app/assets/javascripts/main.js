@@ -2,7 +2,7 @@ function main_ajax_filters() {
   // Apply all the filters
   var source = $("#video_card_template").html();  
   var templatingFunction = Handlebars.compile(source);
-  var context = {};
+  var context = {};  
 
   var form = $("form[name=filters]");
 
@@ -17,13 +17,13 @@ function main_ajax_filters() {
       $(".thumbnails").html("");
     }
 
-    $(".thumbnails").append(templatingFunction(context));
+    $(".thumbnails").append(templatingFunction(context));    
 
     $(".btn-group .btnView1").click();
   });
 }
 
-$(document).on('page:change', function () {	
+$(document).on('page:change', function () {		
 	var cards = $("#cards");
 
 	cards.imagesLoaded(function() {
@@ -90,8 +90,12 @@ $(document).on('page:change', function () {
 	});
 
 	$(".cards").on('click', ".hook--showmodal", function () {
+		var modal = $("#basicModal");
     	var url = $(this).attr("href");
-    	$("#iframe").attr('src', url);
+    	modal.find(".iframe").attr('src', url);
+
+    	var title = $(this).find(".dataWrapper").attr("data-title");
+    	modal.find(".titleD").html(title);
   	});
 
   	$("#basicModal").on('hidden.bs.modal', function () {
