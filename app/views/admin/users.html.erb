@@ -1,0 +1,26 @@
+<%= render 'admin/admin_menu' %>
+
+<table width = 200>
+  <tr>
+      <th>ID</th>
+      <th>email</th>
+      <th>Admin?</th>
+
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%=user.id%>
+      </td>
+      <td>
+        <%=user.email%>
+      </td>
+      <td>
+
+        <div class="admin_toggle" data-user_id="<%=user.id%>" data-admin="<%=user.admin%>"><%=user.admin%></div>
+      </td>
+
+    </tr>
+
+  <% end %>
+</table>

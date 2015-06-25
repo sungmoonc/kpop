@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   post '/videos/filters' => 'videos#filters'
   post '/videos/save_kpop_fields' => 'videos#save_kpop_fields'
 
+  get '/admin' => 'admin#index'
+
+  get '/admin/users' => 'admin#users'
+  post '/admin/users/admin' => 'admin#toggle_user_admin'
+
   # get '/filterby/:field/:from/:to' => 'videos#filter_by'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
@@ -20,6 +25,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :videos
+
 
   # Example resource route with options:
   #   resources :products do
