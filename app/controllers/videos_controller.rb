@@ -81,6 +81,14 @@ class VideosController < ApplicationController
     end
   end
 
+  def update_likes
+
+  end
+
+  def add_video_to_collection
+
+  end
+
   def filters
     search_filters = get_search_filters("title_korean", "title_english", "youtube_user_id", "description")
     integer_filters = get_range_filters(params, "hotness", "cheesiness", "english_percentage", "approval_rating")
