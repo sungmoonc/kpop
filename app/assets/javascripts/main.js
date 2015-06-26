@@ -94,8 +94,16 @@ $(document).on('page:change', function () {
     	var url = $(this).attr("href");
     	modal.find(".iframe").attr('src', url);
 
-    	var title = $(this).find(".dataWrapper").attr("data-title");
-    	modal.find(".titleD").html(title);
+    	var dataWrapper = $(this).find(".dataWrapper");    	
+    	modal.find(".titleD").html(dataWrapper.attr("data-title"));    	
+    	modal.find(".youtube_user_id").html(dataWrapper.attr("data-youtube-userid"));
+    	modal.find(".upload_date").html(dataWrapper.attr("data-uploaded"));
+    	modal.find(".views").html(dataWrapper.attr("data-views"));
+    	modal.find(".upvotes").html(dataWrapper.attr("data-upvotes"));
+    	modal.find(".downvotes").html(dataWrapper.attr("data-downvotes"));
+    	modal.find(".approval").html(dataWrapper.attr("data-approval"));
+    	modal.find(".hotness").html(dataWrapper.attr("data-hotness"));
+    	modal.find(".cheesiness").html(dataWrapper.attr("data-cheese"));    	
   	});
 
   	$("#basicModal").on('hidden.bs.modal', function () {

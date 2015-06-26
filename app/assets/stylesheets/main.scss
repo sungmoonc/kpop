@@ -227,3 +227,18 @@
 	white-space: normal;
 }
 
+/* video Modal */
+#basicModal .modal-dialog {
+	width: 800px;
+}
+
+#basicModal .titleD {
+	margin: 10px;
+}
+
+#basicModal .close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
