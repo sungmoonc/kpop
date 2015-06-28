@@ -93,8 +93,13 @@ class VideosController < ApplicationController
       .where(integer_filters.join(" and "))
       .where(category)                                
       .order("#{params[:sort]} desc")      
+    @counts = @videos.count
 
-    render json: @videos
+    @json = {:videos => @videos, :count => @counts}.to_json
+
+    logger.debug @json
+
+    render json: @json
   end
 
   private

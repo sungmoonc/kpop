@@ -127,7 +127,13 @@
 .top_bar .searchBox {
 	position: absolute;
 	top: 20px;
-	right: 300px;
+	right: 400px;
+}
+
+.top_bar .dropdownP {
+	position: absolute;
+	top: 20px;
+	right: 200px;	
 }
 
 .top_bar hr {	
@@ -234,11 +240,16 @@
 
 #basicModal .titleD {
 	margin: 10px;
+	font-size: 25px;
 }
 
 #basicModal .close {
 	position: absolute;
 	top: 20px;
 	right: 20px;
+}
+
+#basicModal .iframe {
+	margin: 10px;
 }
 
