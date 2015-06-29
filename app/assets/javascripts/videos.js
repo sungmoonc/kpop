@@ -20,15 +20,21 @@ function ajax_filters() {
     $(context.videos).each(
         function(i, v){
           if (v.editable) {
-            console.log(v);
-
             $("input[value="+ v["id"] + "]").parent().find("select[name=category]").val(v["category"])
           }
 
         }
     );
 
+    // Video like button
+    $(".video-like").on('click', function(){
+      add_like($(this).data());
+    });
   })
+}
+
+function add_like(video){
+  console.log(video);
 }
 
 function ajax_save_edit() {
@@ -97,4 +103,6 @@ $(document).on('page:change', function () {
 
   // Initial load
   ajax_filters();
+
+
 });
