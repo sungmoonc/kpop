@@ -2,28 +2,29 @@
   {{#each videos}}
   <li class="each_thumbnail">
     {{#if editable}}
-      <form name="video_edit">
-        <input name="video_id" value="{{id}}" type="hidden">
-    {{/if}}
+    <form name="video_edit">
+      <input name="video_id" value="{{id}}" type="hidden">
+      {{/if}}
 
-    <a href="https://www.youtube.com/embed/{{youtube_id}}" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
-      <div class="thumbnail_image">
-        <img src="{{thumbnail}}">
+      <a href="https://www.youtube.com/embed/{{youtube_id}}" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
+        <div class="thumbnail_image">
+          <img src="{{thumbnail}}">
+        </div>
+      </a>
+
+      <div class="thumbnail_title popup">
+
+        {{#if editable}} <input name="title_korean" value="{{title_korean}}" class="title_input"> {{else}}
+        {{title_korean}} {{/if}}
       </div>
-    </a>
-    <div class="thumbnail_title popup">
-      <input type="button", value="Like">
-      <input type="button", value="Add">
-      {{#if editable}} <input name="title_korean" value="{{title_korean}}" class="title_input"> {{else}} {{title_korean}} {{/if}}
-    </div>
 
-    <div class="video_desc popup">
-      {{description}}
-    </div>
+      <div class="video_desc popup">
+        {{description}}
+      </div>
 
-    <div class="details popup">
-      {{youtube_user_id}} |
-      {{#if editable}}
+      <div class="details popup">
+        {{youtube_user_id}} |
+        {{#if editable}}
         <%= select_tag(
                 :category,
                 options_for_select(
@@ -38,35 +39,49 @@
                 )
             )
         %>
-      {{else}}
+        {{else}}
         {{category}}
-      {{/if}} | {{duration}} seconds | {{upload_date}}
-    </div>
+        {{/if}} | {{duration}} seconds | {{upload_date}}
+      </div>
 
-    <div class="stats popup">
-      Views: {{youtube_views}} |
-      Upvotes: {{upvotes}} |
-      Downvotes: {{downvotes}} |
-      Approval Rating: {{approval_rating}} |
-      Likes: {{likes}}
-    </div>
+      <div class="stats popup">
+        Views: {{youtube_views}} |
+        Upvotes: {{upvotes}} |
+        Downvotes: {{downvotes}} |
+        Approval Rating: {{approval_rating}} |
+        Likes: {{likes}}
+      </div>
 
-    <div class="kpop_fields popup">
+      <div class="kpop_fields popup">
 
-      {{#if editable}}
+        {{#if editable}}
         Hotness: <input name="hotness" type=number class="number_input" value="{{hotness}}" min="0" max="10">
         |
         Cheesiness : <input name="cheesiness" type=number class="number_input" value="{{cheesiness}}" min="0" max="10">
-      {{else}}
+        {{else}}
         Hotness: {{hotness}}
         |
         Cheesiness : {{cheesiness}}
-      {{/if}}
-    </div>
+        {{/if}}
+      </div>
 
-    {{#if editable}}
-      </form>
+      {{#if editable}}
+    </form>
     {{/if}}
+
+    <div id="video-actions" data-video_id="{{id}}">
+      <input type="button" value="Like">
+      <% if signed_in? %>
+        <%= select_tag(
+                :collection,
+                options_for_select(
+                    @current_user_collections
+                ),
+                class: "add-collection"
+            )
+        %>
+      <% end %>
+    </div>
 
     <div class="tags popup">
       {{#if official}}

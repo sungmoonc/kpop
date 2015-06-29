@@ -20,14 +20,31 @@ function ajax_filters() {
     $(context.videos).each(
         function(i, v){
           if (v.editable) {
-            console.log(v);
-
             $("input[value="+ v["id"] + "]").parent().find("select[name=category]").val(v["category"])
           }
-
         }
     );
 
+    $(".add-collection").on("change", function(e){
+      var collection_id = $(this).val();
+      if (collection_id == "new"){
+        var collection_name = prompt('How would you name the new collection?');
+        alert(collection_name);
+        return; // todo: call ajax
+      }
+
+      $.ajax({
+        url: '/videos/add_collection',
+        type: 'POST',
+        data: {
+          "collection_id": collection_id,
+          "video_id": $(this).parent().data()["video_id"]
+        }
+      }).fail(function(response){
+        alert("Unable to save the field:\n " + response.responseText);
+      })
+
+    });
   })
 }
 

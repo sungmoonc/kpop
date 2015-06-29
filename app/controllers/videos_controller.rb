@@ -5,6 +5,15 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @@is_current_user_admin = signed_in? && current_user[:admin]
+
+    @current_user_collections = if signed_in?
+      [["Add to Collection", "default"]] + (
+        Collection.where(user_id: current_user).map do |collection|
+          [collection.name, collection.id]
+        end
+      ) + [["New Collection", "new"]]
+    end
+
   end
 
 
@@ -53,7 +62,7 @@ class VideosController < ApplicationController
   end
 
   def save_kpop_fields
-    if (@@is_current_user_admin)
+    if @@is_current_user_admin
       video = Video.find(params["video_id"])
       # todo: add model validation range 0 - 10
       video.title_korean=params["title_korean"]
@@ -61,13 +70,21 @@ class VideosController < ApplicationController
       video.hotness=params["hotness"]
       video.cheesiness=params["cheesiness"]
 
-      if (video.save)
+      if video.save
         head :ok
       else
         head :internal_server_error
       end
     else
       head :bad_request
+    end
+  end
+
+  def add_collection
+    if CollectionsVideo.create!(collection_id: params["collection_id"], video_id: params["video_id"])
+      head :ok
+    else
+      head :internal_server_error
     end
   end
 
