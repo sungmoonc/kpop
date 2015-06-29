@@ -4,5 +4,9 @@ class Video < ActiveRecord::Base
   has_many :users, through: :likes
   validates :youtube_id, uniqueness: true
 
+
+  def likes_count
+    Like.where(video_id: id).count
+  end
 end
 

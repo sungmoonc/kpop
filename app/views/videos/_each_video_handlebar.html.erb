@@ -12,8 +12,6 @@
       </div>
     </a>
     <div class="thumbnail_title popup">
-      <input type="button" value="Like" class="video-like" data-id="{{id}}">
-      <input type="button" value="Add" class="video-add-collection">
       {{#if editable}} <input name="title_korean" value="{{title_korean}}" class="title_input"> {{else}} {{title_korean}} {{/if}}
     </div>
 
@@ -48,7 +46,7 @@
       Upvotes: {{upvotes}} |
       Downvotes: {{downvotes}} |
       Approval Rating: {{approval_rating}} |
-      Likes: {{likes}}
+      Likes: <span class="like_count">{{likes}}</span>
     </div>
 
     <div class="kpop_fields popup">
@@ -67,6 +65,12 @@
     {{#if editable}}
       </form>
     {{/if}}
+
+    <div class="video-actions" data-video_id="{{id}}">
+      <input type="button" value="Like" class="video-like" data-id="{{id}}">
+      <input type="button" value="Add" class="video-add-collection">
+    </div>
+
 
     <div class="tags popup">
       {{#if official}}
