@@ -30,35 +30,51 @@ def duration_to_seconds(duration)
 end
 
 def create_new_video(video, youtube_user_id)
-  new_video = Video.new
-  puts "\t" + video["snippet"]["title"]
-  new_video.youtube_id = video["id"]
-  new_video.title_korean = video["snippet"]["title"]
-  new_video.description = video["snippet"]["description"]
-  new_video.thumbnail = video["snippet"]["thumbnails"]["medium"]["url"]
-  new_video.upvotes = video["statistics"]["likeCount"]
-  new_video.downvotes = video["statistics"]["dislikeCount"]
-  new_video.youtube_views = video["statistics"]["viewCount"]
-  new_video.definition = video["contentDetails"]["definition"]
-  new_video.duration = duration_to_seconds(video["contentDetails"]["duration"])
-  new_video.dimension = video["contentDetails"]["dimension"]
-  new_video.caption = video["contentDetails"]["caption"] == "true" ? true : false
-  new_video.licensed_content = video["contentDetails"]["licensedContent"]
-  new_video.youtube_user_id = youtube_user_id
-  new_video.upload_date = video["snippet"]["publishedAt"]
 
-  #randomly assign hotness, cheesiness, and english_percentage value
-  new_video.hotness = rand(0..10)
-  new_video.cheesiness = rand(0..10)
-  new_video.english_percentage = rand(0..100)
-  new_video.english_subtitle = [true, false].sample
-  new_video.official = [true, false].sample
-  new_video.licensed_content = [true, false].sample
-  new_video.approval_rating = approval_rating(new_video.upvotes, new_video.downvotes)
-  new_video.upvotes_per_views = upvotes_per_views(new_video.upvotes, new_video.youtube_views)
-  new_video.category = category_parsing(video["snippet"]["title"])
 
-  new_video.save
+  #Update existing video info
+
+  existing_video = Video.find_by(youtube_id: video["id"])
+
+  if existing_video!= nil
+    p existing_video.upvotes
+    existing_video.upvotes = video["statistics"]["likeCount"]
+    p existing_video.upvotes
+    existing_video.downvotes = video["statistics"]["dislikeCount"]
+    existing_video.youtube_views = video["statistics"]["viewCount"]
+
+    existing_video.save
+    #Create a new video
+  else
+    new_video = Video.new
+    new_video.youtube_id = video["id"]
+    new_video.title_korean = video["snippet"]["title"]
+    new_video.description = video["snippet"]["description"]
+    new_video.thumbnail = video["snippet"]["thumbnails"]["medium"]["url"]
+    new_video.upvotes = video["statistics"]["likeCount"]
+    new_video.downvotes = video["statistics"]["dislikeCount"]
+    new_video.youtube_views = video["statistics"]["viewCount"]
+    new_video.definition = video["contentDetails"]["definition"]
+    new_video.duration = duration_to_seconds(video["contentDetails"]["duration"])
+    new_video.dimension = video["contentDetails"]["dimension"]
+    new_video.caption = video["contentDetails"]["caption"] == "true" ? true : false
+    new_video.licensed_content = video["contentDetails"]["licensedContent"]
+    new_video.youtube_user_id = youtube_user_id
+    new_video.upload_date = video["snippet"]["publishedAt"]
+
+    #randomly assign hotness, cheesiness, and english_percentage value
+    new_video.hotness = rand(0..10)
+    new_video.cheesiness = rand(0..10)
+    new_video.english_percentage = rand(0..100)
+    new_video.english_subtitle = [true, false].sample
+    new_video.official = [true, false].sample
+    new_video.licensed_content = [true, false].sample
+    new_video.approval_rating = approval_rating(new_video.upvotes, new_video.downvotes)
+    new_video.upvotes_per_views = upvotes_per_views(new_video.upvotes, new_video.youtube_views)
+    new_video.category = category_parsing(video["snippet"]["title"])
+
+    new_video.save
+  end
 end
 
 
@@ -145,11 +161,7 @@ namespace :youtube do
           next_page_token= video_ids[:nextPageToken]
 
           video_details.each do |video|
-            unless create_new_video(video, entertainment)
-              next_page_token = nil # stop going to the next page
-              puts "Page crawled before. Continuing to the next Youtube user id."
-              break
-            end
+            create_new_video(video, entertainment)
           end
         end
       end
