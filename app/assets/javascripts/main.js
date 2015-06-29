@@ -19,22 +19,24 @@ function main_ajax_filters() {
       $(".thumbnails").html("");
     }
 
-    $(".thumbnails").append(templatingFunction(context));    
+    var cards = $("#cards");
+
+	cards.imagesLoaded(function() {
+		cards.masonry({
+			itemSelector: '.box',
+			isFitWidth: true			
+		});		
+	});
+
+    var newThumbs = templatingFunction(context);
+    $(".thumbnails").append(newThumbs);    
 
     $(".btn-group .btnView1").click();
   });
 }
 
 $(document).on('page:change', function () {		
-	var cards = $("#cards");
-
-	cards.imagesLoaded(function() {
-		cards.masonry({
-			itemSelector: '.box',
-			isFitWidth: true
-		});		
-	});
-
+	
 	$("#ipSearch").keyup(function() {
 		$("#ipSearchHd").val($(this).val());
 		form.trigger("change");

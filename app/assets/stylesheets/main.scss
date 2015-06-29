@@ -186,6 +186,10 @@
 	margin-left: 20px;
 }
 
+.cardContainer {
+	width: 80%;
+}
+
 .cards {
 	margin: 0 auto;
  	width: 100%;          
@@ -236,6 +240,10 @@
 /* video Modal */
 #basicModal .modal-dialog {
 	width: 800px;
+}
+
+#basicModal .modal-body {
+	padding: 30px;
 }
 
 #basicModal .titleD {
