@@ -1,14 +1,17 @@
 class AdminController < ApplicationController
   before_action :authenticate_user!
+  before_action :isAdmin
+
+  def isAdmin
+    redirect_to "/" unless current_user["admin"]
+  end
 
   def index
     redirect_to("/admin/users")
   end
 
   def users
-    if current_user["admin"]
-      @users = User.all
-    end
+    @users = User.all
   end
 
   def toggle_user_admin
