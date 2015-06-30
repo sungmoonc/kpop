@@ -90,11 +90,9 @@ class VideosController < ApplicationController
         current_video = Video.find_by(id: params[:id])
         render json: current_video
       end
+    else
+      render :json => { :errors => "Login to like this video"}
     end
-  end
-
-  def update_likes
-
   end
 
   def add_video_to_collection
