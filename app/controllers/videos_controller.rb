@@ -98,10 +98,6 @@ class VideosController < ApplicationController
     end
   end
 
-  def update_likes
-
-  end
-
   def add_video_to_collection
 
   end
