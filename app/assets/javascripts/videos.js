@@ -40,10 +40,14 @@ function add_like(video) {
     type: 'POST',
     data: video.data()
   }).done(function (response) {
-    like_count_obj = video.parent().parent().find(".like_count");
-    like_count_obj.text(parseInt(like_count_obj.text()) + 1);
+    if (response["errors"] == undefined) {
+      like_count_obj = video.parent().parent().find(".like_count");
+      like_count_obj.text(parseInt(like_count_obj.text()) + 1);
+    } else {
+      alert(response["errors"])
+    }
   }).fail(function (response) {
-    alert("You already liked this video");
+    alert("You already liked this video")
   });
 }
 
