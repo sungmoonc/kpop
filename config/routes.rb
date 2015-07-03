@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :videos
+  resources :collections
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +14,17 @@ Rails.application.routes.draw do
   # Example of regular route:
 
   post '/videos/filters' => 'videos#filters'
+
   post '/videos/filters_test' => 'videos#filters_test'
+
+  post '/videos/save_kpop_fields' => 'videos#save_kpop_fields'
+  post '/videos/create_likes' => 'videos#create_likes'
+
+  get '/admin' => 'admin#index'
+
+  get '/admin/users' => 'admin#users'
+  post '/admin/users/admin' => 'admin#toggle_user_admin'
+
 
   # get '/filterby/:field/:from/:to' => 'videos#filter_by'
 
@@ -21,6 +32,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):    
+
 
   # Example resource route with options:
   #   resources :products do

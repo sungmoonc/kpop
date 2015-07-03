@@ -1,56 +1,94 @@
 <script id="indv_video_template" type="x-handlebars-template">
   {{#each videos}}
   <li class="each_thumbnail">
-    <a href="https://www.youtube.com/embed/{{youtube_id}}" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
+    {{#if editable}}
+      <form name="video_edit">
+        <input name="video_id" value="{{id}}" type="hidden">
+    {{/if}}
 
+    <a href="https://www.youtube.com/embed/{{youtube_id}}" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
       <div class="thumbnail_image">
         <img src="{{thumbnail}}">
       </div>
-
-      <div class="thumbnail_title popup">
-        {{title_korean}}
-      </div>
     </a>
-
+    <div class="thumbnail_title popup">
+      {{#if editable}} <input name="title_korean" value="{{title_korean}}" class="title_input"> {{else}} {{title_korean}} {{/if}}
+    </div>
 
     <div class="video_desc popup">
       {{description}}
     </div>
 
     <div class="details popup">
-      {{youtube_user_id}} | {{category}} | {{duration}} seconds | {{upload_date}}
+      {{youtube_user_id}} |
+      {{#if editable}}
+        <%= select_tag(
+                :category,
+                options_for_select(
+                    [
+                        ['All', 'all'],
+                        ['Teaser', 'teaser'],
+                        ['Dance Practice', 'dancepractice'],
+                        ['Making Film', 'making'],
+                        ['Music Videos', 'musicvideo'],
+                        ['Other', 'other']
+                    ]
+                )
+            )
+        %>
+      {{else}}
+        {{category}}
+      {{/if}} | {{duration}} seconds | {{upload_date}}
     </div>
 
     <div class="stats popup">
       Views: {{youtube_views}} |
       Upvotes: {{upvotes}} |
       Downvotes: {{downvotes}} |
-      Approval Rating: {{approval_rating}}
+      Approval Rating: {{approval_rating}} |
+      Likes: <span class="like_count">{{likes}}</span>
     </div>
 
     <div class="kpop_fields popup">
-      Hotness: {{hotness}} |
-      Cheesiness : {{cheesiness}}
+
+      {{#if editable}}
+        Hotness: <input name="hotness" type=number class="number_input" value="{{hotness}}" min="0" max="10">
+        |
+        Cheesiness : <input name="cheesiness" type=number class="number_input" value="{{cheesiness}}" min="0" max="10">
+      {{else}}
+        Hotness: {{hotness}}
+        |
+        Cheesiness : {{cheesiness}}
+      {{/if}}
     </div>
+
+    {{#if editable}}
+      </form>
+    {{/if}}
+
+    <div class="video-actions" data-video_id="{{id}}">
+      <input type="button" value="Like" class="video-like" data-id="{{id}}">
+      <input type="button" value="Add" class="video-add-collection">
+    </div>
+
 
     <div class="tags popup">
       {{#if official}}
-        <span class="video_tag video_tag_official">Official</span>
+      <span class="video_tag video_tag_official">Official</span>
       {{/if}}
 
       {{#if caption}}
-        <span class="video_tag video_tag_caption">Caption</span>
+      <span class="video_tag video_tag_caption">Caption</span>
       {{/if}}
 
       {{#if english_subtitle}}
-        <span class="video_tag video_tag_english_subtitle">English Subtitle</span>
+      <span class="video_tag video_tag_english_subtitle">English Subtitle</span>
       {{/if}}
 
       {{#if licensed_content}}
-        <span class="video_tag video_tag_licensed_content">Licensed Content</span>
+      <span class="video_tag video_tag_licensed_content">Licensed Content</span>
       {{/if}}
     </div>
-
 
 
   </li>

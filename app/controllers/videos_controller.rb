@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-
+    @@is_current_user_admin = signed_in? && current_user[:admin]
   end
 
 
@@ -52,6 +52,25 @@ class VideosController < ApplicationController
     end
   end
 
+  def save_kpop_fields
+    if (@@is_current_user_admin)
+      video = Video.find(params["video_id"])
+      # todo: add model validation range 0 - 10
+      video.title_korean=params["title_korean"]
+      video.category=params["category"]
+      video.hotness=params["hotness"]
+      video.cheesiness=params["cheesiness"]
+
+      if (video.save)
+        head :ok
+      else
+        head :internal_server_error
+      end
+    else
+      head :bad_request
+    end
+  end
+
   # DELETE /videos/1
   # DELETE /videos/1.json
   def destroy
@@ -62,13 +81,31 @@ class VideosController < ApplicationController
     end
   end
 
+  def create_likes
+    if signed_in?
+      new_like = Like.new
+      new_like.user_id=current_user.id
+      new_like.video_id=params[:id]
+      if (new_like.save)
+        current_video = Video.find_by(id: params[:id])
+        render json: current_video
+      end
+    else
+      render :json => { :errors => "Login to like this video"}
+    end
+  end
+
+  def add_video_to_collection
+
+  end
+
   def filters
     search_filters = get_search_filters("title_korean", "title_english", "youtube_user_id", "description")
     integer_filters = get_range_filters(params, "hotness", "cheesiness", "english_percentage", "approval_rating")
     boolean_filters = get_boolean_filters(params, "english_subtitle", "official", "licensed_content")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
 
-    @videos = Video
+    videos = Video
       .paginate(page: params[:page], per_page: 10)
       .where(search_filters.join(" or "))
       .where(integer_filters.join(" and "))
@@ -76,7 +113,13 @@ class VideosController < ApplicationController
       .where(category)
       .order("#{params[:sort]} desc")
 
-    render json: @videos
+
+    videos = videos.as_json.map do |video|
+      video["editable"] = @@is_current_user_admin
+      video["likes"] = Video.find(video["id"]).likes_count
+      video
+    end
+    render json: videos
   end
 
   def filters_test     
