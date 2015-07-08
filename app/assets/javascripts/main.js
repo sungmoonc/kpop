@@ -39,18 +39,22 @@ $(document).on('page:change', function () {
 	
 	$("#ipSearch").keyup(function() {
 		$("#ipSearchHd").val($(this).val());
-		form.trigger("change");
+		form.trigger("changeT");
 	});
 
 	//_left_menu	
 	// $("[name='interval-slider']").slider({});
-	var ipHN = $("#ipHN").slider({}).data("slider");
+	var ipHN = $("#ipHN").slider({}).data("slider");	
 	var ipCN = $("#ipCN").slider({}).data("slider");
 	var ipEP = $("#ipEP").slider({}).data("slider");		
-	var ipAR = $("#ipAR").slider({}).data("slider");
+	var ipAR = $("#ipAR").slider({}).data("slider");	
+	$(".inter_slider").on('slideStop', function(newV){
+		form.trigger("changeT");
+	});	
+
 	$("[class='toggle-checkbox']").bootstrapSwitch();
 	$("input[class='toggle-checkbox']").on("switchChange.bootstrapSwitch", function(event, state) {
-		form.trigger("change");		
+		form.trigger("changeT");		
 	});
 
 	$(".dropdown-menu li a").click(function(){
@@ -60,12 +64,12 @@ $(document).on('page:change', function () {
 
 	$("#ddSort li a").click(function() {
 		$("#ipSort").val($(this).attr("value"));
-		form.trigger("change");
+		form.trigger("changeT");
 	});
 
 	$("#ddVType li a").click(function() {
 		$("#ipVType").val($(this).attr("value"));
-		form.trigger("change");
+		form.trigger("changeT");
 	});
 
 
@@ -119,8 +123,8 @@ $(document).on('page:change', function () {
 	//apply all filters at once
 	var form = $("form[name=filters]");
 
-	form.on('change', function () {
-		console.log("change");		
+	form.on('changeT', function () {
+		console.log("changeT");		
 
 		var arrHn = ipHN.getValue();
 		$("#hnMin").val(arrHn[0]);
