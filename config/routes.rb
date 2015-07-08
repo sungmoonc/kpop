@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   post '/videos/filters' => 'videos#filters'
   post '/videos/save_kpop_fields' => 'videos#save_kpop_fields'
+  post '/videos/create_likes' => 'videos#create_likes'
   post '/videos/add_collection' => 'videos#add_collection'
 
   get '/admin' => 'admin#index'

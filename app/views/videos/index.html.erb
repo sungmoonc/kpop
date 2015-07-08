@@ -7,7 +7,6 @@
       <%= button_to 'my collections', collections_path, :method => :get %>
       <% if signed_in? && current_user["admin"] %>
         <%= button_to 'admin', admin_path, :method => :get %>
-
       <% end %>
       <%= render 'filter_form' %>
     </div>

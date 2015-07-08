@@ -98,6 +98,20 @@ class VideosController < ApplicationController
     end
   end
 
+  def create_likes
+    if signed_in?
+      new_like = Like.new
+      new_like.user_id=current_user.id
+      new_like.video_id=params[:id]
+      if (new_like.save)
+        current_video = Video.find_by(id: params[:id])
+        render json: current_video
+      end
+    else
+      render :json => { :errors => "Login to like this video"}
+    end
+  end
+
   def add_video_to_collection
 
   end
@@ -119,6 +133,7 @@ class VideosController < ApplicationController
 
     videos = videos.as_json.map do |video|
       video["editable"] = @@is_current_user_admin
+      video["likes"] = Video.find(video["id"]).likes_count
       video
     end
     render json: videos
