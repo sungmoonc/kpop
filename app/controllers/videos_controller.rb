@@ -7,11 +7,11 @@ class VideosController < ApplicationController
     @@is_current_user_admin = signed_in? && current_user[:admin]
 
     @current_user_collections = if signed_in?
-      [["Add to Collection", "default"]] + (
+      (
         Collection.where(user_id: current_user).map do |collection|
           [collection.name, collection.id]
         end
-      ) + [["New Collection", "new"]]
+      )
     end
 
   end
@@ -111,6 +111,8 @@ class VideosController < ApplicationController
     integer_filters = get_range_filters(params, "hotness", "cheesiness", "english_percentage", "approval_rating")
     boolean_filters = get_boolean_filters(params, "english_subtitle", "official", "licensed_content")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
+    # none0
+    # collection = "category = '#{params[:category]}'" unless params[:category] == "all"
 
     videos = Video
       .paginate(page: params[:page], per_page: 10)
@@ -119,6 +121,11 @@ class VideosController < ApplicationController
       .where(boolean_filters)
       .where(category)
       .order("#{params[:sort]} desc")
+
+    unless params[:collection] == "none0"
+      # p videos.joins(:collections)
+      # p params[:collection]
+    end
 
 
     videos = videos.as_json.map do |video|

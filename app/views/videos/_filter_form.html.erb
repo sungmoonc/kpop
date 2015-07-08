@@ -3,7 +3,7 @@
   <input id="page" name="page" value=1 type="hidden">
 
   <div class="filter">
-    <input name="search" placeholder = "Search here..">
+    <input name="search" placeholder="Search here..">
   </div>
 
   <div class="filter">
@@ -49,6 +49,21 @@
   </div>
 
   <div class="filter">
+    Collection:
+    <% if signed_in? %>
+      <%= select_tag(
+              :collection,
+              options_for_select(
+                  [["Select a Collection", "none0"]] +
+                  @current_user_collections
+              ),
+              class: "choose-collection"
+          )
+      %>
+    <% end %>
+  </div>
+
+  <div class="filter">
 
     Category:
     <%= select_tag(
@@ -74,7 +89,7 @@
                            ['All', 'all'],
                            ['2D', '2D'],
                            ['3D', '3D']
-                        ]
+                       ]
                    )
         )
     %>

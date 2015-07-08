@@ -75,9 +75,11 @@
         <%= select_tag(
                 :collection,
                 options_for_select(
-                    @current_user_collections
-                ),
-                class: "add-collection"
+                    [["Add to Collection", "default"]] +
+                        @current_user_collections +
+                        [["New Collection", "new"]]
+            ),
+            class: "add-collection"
             )
         %>
       <% end %>
