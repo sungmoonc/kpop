@@ -8,9 +8,9 @@ class VideosController < ApplicationController
 
     @current_user_collections = if signed_in?
       (
-        Collection.where(user_id: current_user).map do |collection|
-          [collection.name, collection.id]
-        end
+      Collection.where(user_id: current_user).map do |collection|
+        [collection.name, collection.id]
+      end
       )
     end
 
@@ -98,12 +98,27 @@ class VideosController < ApplicationController
     end
   end
 
-  def update_likes
-
+  def create_likes
+    if signed_in?
+      new_like = Like.new
+      new_like.user_id=current_user.id
+      new_like.video_id=params[:id]
+      if new_like.save
+        current_video = Video.find_by(id: params[:id])
+        render json: current_video
+      end
+    else
+      render :json => { :errors => "Login to like this video" }
+    end
   end
 
-  def add_video_to_collection
-
+  def add_to_new_collection
+    collection = Collection.create!(name: params[:name], user_id: current_user.id)
+    if CollectionsVideo.create!(collection_id: collection["id"], video_id: params["video_id"])
+      head :ok
+    else
+      head :internal_server_error
+    end
   end
 
   def filters
@@ -123,13 +138,16 @@ class VideosController < ApplicationController
       .order("#{params[:sort]} desc")
 
     unless params[:collection] == "none0"
-      # p videos.joins(:collections)
-      # p params[:collection]
+      video_ids = CollectionsVideo.where(collection_id: params[:collection].to_i).map do |v|
+        v[:video_id]
+      end.uniq
+      videos = videos.where(id: video_ids)
     end
 
 
     videos = videos.as_json.map do |video|
       video["editable"] = @@is_current_user_admin
+      video["likes"] = Video.find(video["id"]).likes_count
       video
     end
     render json: videos
@@ -169,4 +187,5 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, :approval_rating, :upvotes_per_views, :likes, :upload_date, :upvotes, :downvotes)
   end
+
 end
