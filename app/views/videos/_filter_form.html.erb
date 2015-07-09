@@ -3,7 +3,7 @@
   <input id="page" name="page" value=1 type="hidden">
 
   <div class="filter">
-    <input name="search" placeholder = "Search here..">
+    <input name="search" placeholder="Search here..">
   </div>
 
   <div class="filter">
@@ -48,6 +48,21 @@
     <input type="checkbox" name="licensed_content"> Licensed content
   </div>
 
+  <% if signed_in? %>
+    <div class="filter">
+      Collection:
+      <%= select_tag(
+              :collection,
+              options_for_select(
+                  [["Select a Collection", "none0"]] +
+                      @current_user_collections
+              ),
+              class: "choose-collection"
+          )
+      %>
+    </div>
+  <% end %>
+
   <div class="filter">
 
     Category:
@@ -74,7 +89,7 @@
                            ['All', 'all'],
                            ['2D', '2D'],
                            ['3D', '3D']
-                        ]
+                       ]
                    )
         )
     %>
