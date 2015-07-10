@@ -10,7 +10,7 @@
 	position: absolute;
 	left: 0;
 	display: block;
-	background: rgb(48,64,79);
+	background: #31374c;
 	width: 270px;
 	height: 1000px;
 	color: rgb(255,255,255);
@@ -26,14 +26,14 @@
 	box-sizing: border-box;		
 	width: 210px;	
 	height: 35px;
-	background-color: rgb(48,64,79);			
+	background-color: #3e445c;			
 	border: 1px solid rgb(255,255,255);
 	color: rgb(255,255,255);
 }
 
 
 #sidebar .dropdown-menu {
-	background: rgb(48,64,79);
+	background-color: #3e445c;
 	width: 200px;
   	margin-left: 18px;
   	z-index: 9000;
@@ -49,46 +49,46 @@
 
 //slider
 #ipNumSingers .slider-selection {
-	background: rgb(116,200,206);
+	background: rgb(253,153,126);
 }
 #ipNumSingers .slider-handle {
-	background: rgb(255,255,255);
+	background: rgb(230,234,248);
 }
 #ipHN .slider-selection {
-	background: rgb(116,200,206);
+	background: rgb(253,153,126);
 }
 #ipHN .slider-handle {
-	background: rgb(255,255,255);
+	background: rgb(230,234,248);
 }
 #ipCN .slider-selection {
-	background: rgb(116,200,206);
+	background: rgb(253,153,126);
 }
 #ipCN .slider-handle {
-	background: rgb(255,255,255);
+	background: rgb(230,234,248);
 }
 #ipEP .slider-selection {
-	background: rgb(116,200,206);
+	background: rgb(253,153,126);
 }
 #ipEP .slider-handle {
-	background: rgb(255,255,255);
+	background: rgb(230,234,248);
 }
 #ipAR .slider-selection {
-	background: rgb(116,200,206);
+	background: rgb(253,153,126);
 }
 #ipAR .slider-handle {
-	background: rgb(255,255,255);
+	background: rgb(230,234,248);
 }
 #ipYears .slider-selection {
-	background: rgb(116,200,206);
+	background: rgb(253,153,126);
 }
 #ipYears .slider-handle {
-	background: rgb(255,255,255);
+	background: rgb(230,234,248);
 }
 #ipScore .slider-selection {
-	background: rgb(116,200,206);
+	background: rgb(253,153,126);
 }
 #ipScore .slider-handle {
-	background: rgb(255,255,255);
+	background: rgb(230,234,248);
 }
 
 .strVar {
@@ -112,9 +112,9 @@
 }
 
 .top_bar .titleFilter {	
-	font-size: 24px;
-	font-weight: normal;
-	color: rgb(255,255,255);
+	font-size: 34px;
+	font-weight: bold;
+	color: rgb(255,171,145);
 }
 
 .top_bar .titleKpop {
@@ -167,7 +167,7 @@
 }
 
 .header_panel .dropdown .dropdown-menu {
-	background-color: rgb(48,64,79);	
+	background-color: #3e445c;	
 	border-radius: 3px;	
 	margin-left: 20px;
 }
@@ -200,12 +200,13 @@
 .box {
 	display: inline-block;
 	margin: 10px;
-	width: 320px;
-	height: 180px;	
+	width: 490px;
+	height: 330px;	
 	border: 1px solid rgba(230,230,230,1);
 	border-radius: 5px;
 	box-shadow: 0px 3px 0px 0px rgba(220,220,220,1);	
 	text-align: center;
+	margin-bottom: 25px;
 }
 
 .box:hover {
@@ -215,8 +216,15 @@
 
 .box img {
 	width: 100%;
-	height: 100%;
+	height: 270px;
 	border-radius: 5px;
+}
+
+.box .titleKr {
+	width: 100%;
+	height: 60px;
+	font-size: 22px;
+	color: rgb(101,107,124);	
 }
 
 .box .overlay {
@@ -225,7 +233,7 @@
 	position: absolute;
 	top: 0;
 	width: 100%;
-	height: 100%;
+	height: 270px;
 	background: rgba(0,0,0,0.7);
 	border-radius: 5px;
 }

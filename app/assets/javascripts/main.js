@@ -75,7 +75,7 @@ $(document).on('page:change', function () {
 
 	//_view_menu_box
 	$(".btn-group .btnView1").click(function() {
-		$(".cards .box").width("320px");
+		$(".cards .box").width("490px");
 		$("#cards").masonry('reload');
 	});
 
