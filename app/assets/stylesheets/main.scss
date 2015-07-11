@@ -102,13 +102,12 @@
 	width: 100%;
 	height: 100%;
 	display: block;
-	background-color: rgb(237,237,237);
+	background-color: rgb(255,255,255);
 	padding-left: 40px;
 }
 
 .top_bar {	
-	height: 105px;				
-	margin-left: 20px;
+	height: 100px;					
 }
 
 .top_bar .titleFilter {	
@@ -146,36 +145,48 @@
 
 .header_panel {	
 	width: 100%;
-	height: 100px;			
+	height: 90px;			
 }
 
 .header_panel .numResults {
-	font-size: 21px;
-	color: rgb(128,128,128);
-	margin-top: 25px;
+	font-size: 28px;
+	color: rgb(51,58,77);	
 	margin-left: 20px;
+	line-height: 80px;
 }
 
-.header_panel .dropdown .btnSort{
-	margin-top: 10px;
+.header_panel .dropdown .btnSort{	
 	margin-right: 10px;
-	width: 170px;
+	width: 200px;
 	height: 50px;
 	font-size: 18px;
 	color: rgb(128,128,128);
 	background-color: rgb(237,237,237);
 }
 
+.header_panel .dropdown .btnSort .selection {
+	position: absolute;
+	top: 13px;
+	left: 30px;
+}
+
+.header_panel .dropdown .btnSort .caret {
+	position: absolute;
+	right: 10px;
+}
+
 .header_panel .dropdown .dropdown-menu {
+	width: 200px;
 	background-color: #3e445c;	
 	border-radius: 3px;	
-	margin-left: 20px;
+	margin-left: 15px;	
 }
 
 .header_panel .dropdown .dropdown-menu a {
 	color: rgb(255,255,255);
-	font-size: 13px;
-	font-weight: bold;
+	font-size: 18px;	
+	height: 52px;
+	line-height: 33px;	
 }
 
 .header_panel .dropdown .dropdown-menu a:hover {
@@ -183,13 +194,12 @@
 } 
 
 .header_panel .btn-group {
-	margin-top: 15px;
+	margin-top: 5px;
 	margin-left: 20px;
 }
 
 .cardContainer {
-	width: 80%;
-	background-color: rgb(237,237,237);
+	width: 80%;	
 }
 
 .cards {
@@ -225,6 +235,8 @@
 	height: 60px;
 	font-size: 22px;
 	color: rgb(101,107,124);	
+	background: #ededed;
+	line-height: 55px;
 }
 
 .box .overlay {
@@ -240,34 +252,58 @@
 
 .box .overlay .song_title {
 	position: absolute;
-	top: 50px;
-	left: 20px;
-	font-size: 24px;
+	top: 65px;
+	left: 27px;
+	font-size: 30px;
 	color: rgba(255,255,255,1);			
 	white-space: normal;
 }
 
 /* video Modal */
 #basicModal .modal-dialog {
-	width: 800px;
+	width: 1300px;
 }
 
 #basicModal .modal-body {
 	padding: 30px;
 }
 
-#basicModal .titleD {
-	margin: 10px;
-	font-size: 25px;
+#basicModal .titleD {	
+	font-size: 36px;
+	font-weight: bold;
+	color: rgb(101,107,124);
+
 }
 
 #basicModal .close {
 	position: absolute;
 	top: 20px;
 	right: 20px;
+	font-size: 34px;
+}
+
+#basicModal .detail-infos {
+	font-size: 22px;
+	color: rgb(163,167,179);
+}
+
+#basicModal .detail-infos .youtube_user_id {
+	font-weight: bold;
+	color: rgb(101,107,124);
+}
+
+#basicModal .detail-infos .category {
+	color: rgb(101,107,124);
 }
 
 #basicModal .iframe {
 	margin: 10px;
+}
+
+#basicModal .footer-content {
+	height: 140px;
+	background: #31374c;
+	font-size: 22px;
+	color: rgb(163,167,179);
 }
 
