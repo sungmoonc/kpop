@@ -259,6 +259,44 @@
 	white-space: normal;
 }
 
+.vlist {
+	display: inline-block;
+	width: 1000px;
+}
+
+.vlist .box .overlay {
+	width: 490px;
+}
+
+.vlist .list-info {
+	display: inline-block;
+	position: absolute;
+  	top: 14px;  
+  	margin-left: 18px;
+  	width: 500px;
+
+  	font-size: 20px;
+  	color: rgb(163,167,179);
+}
+
+.vlist .list-info .titleD {
+	font-size: 26px;
+	font-weight: bold;
+	color: rgb(101,107,124);
+}
+
+.vlist .list-info .youtube_user_id {
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(101,107,124);
+}
+
+.vlist .list-info .category {
+	font-size: 20px;
+	color: rgb(101,107,124);
+}
+
+
 /* video Modal */
 #basicModal .modal-dialog {
 	width: 1300px;
