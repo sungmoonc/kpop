@@ -25,11 +25,16 @@
             </div><!-- /input-group -->            
           </div>
 
-          <div class="dropdownP col-md-2">                
+          <div class="dropdownP col-md-2">   
+          <% if user_signed_in? %>                     
             <button class="btnProfile btn dropdown-toggle" type="button" id="btnSort" data-toggle="dropdown" aria-expanded="true"><span class="selection">Profile</span> <span class="caret"></span></button>
-            <ul id="ddProfile" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">           
+            <ul id="ddProfile" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">          
               <li role="presentation"><a role="menuitem" value="youtube_views" tabindex="-1" href="#">Profile</a></li>              
             </ul>          
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, :class => 'login-widget'  %>
+            <%= link_to "Sign up", new_user_registration_path, :class => 'login-widget'  %>             
+          <% end %>                         
           </div>           
       </div>
 

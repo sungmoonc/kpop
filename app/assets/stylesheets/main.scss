@@ -127,13 +127,19 @@
 .top_bar .searchBox {
 	position: absolute;
 	top: 20px;
-	right: 400px;
+	right: 430px;
 }
 
 .top_bar .dropdownP {
 	position: absolute;
 	top: 20px;
-	right: 200px;	
+	right: 220px;	
+}
+
+.top_bar .dropdownP .login-widget {
+	font-size: 20px;
+	color: rgb(51,58,77);
+	margin-right: 15px;
 }
 
 .top_bar hr {	
@@ -142,6 +148,7 @@
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
+
 
 .header_panel {	
 	width: 100%;
@@ -272,7 +279,7 @@
 	display: inline-block;
 	position: absolute;
   	top: 14px;  
-  	margin-left: 18px;
+  	margin-left: 30px;
   	width: 500px;
 
   	font-size: 20px;
@@ -296,6 +303,11 @@
 	color: rgb(101,107,124);
 }
 
+.vlist .list-info .detailinfos {
+	margin-top: 30px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
 
 /* video Modal */
 #basicModal .modal-dialog {
@@ -321,6 +333,7 @@
 }
 
 #basicModal .detail-infos {
+	margin-top: 20px;
 	font-size: 22px;
 	color: rgb(163,167,179);
 }
