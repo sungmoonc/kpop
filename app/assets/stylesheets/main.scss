@@ -13,13 +13,20 @@
 	background: #31374c;
 	width: 270px;
 	height: 1000px;
-	color: rgb(255,255,255);
-	padding-left: 40px;
+	color: rgb(255,255,255);	
+}
+
+.menu_header {
+	height: 100px;
+	background: #3e445c;
+	padding-left: 47px;
+	padding-top: 30px;
+	font-size: 28px;	
 }
 
 .menu_item {
-	margin: 20px;
-	
+	margin: 20px;	
+	padding-left: 47px;
 }
 
 #sidebar .dropdown button{
@@ -264,6 +271,13 @@
 	font-size: 30px;
 	color: rgba(255,255,255,1);			
 	white-space: normal;
+}
+
+.box .overlay .buttons {
+	position: absolute;
+	bottom: 10px;
+	font-size: 18px;
+	color: rgb(255,255,255);
 }
 
 .vlist {
