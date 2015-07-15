@@ -17,7 +17,7 @@
 }
 
 .menu_header {
-	height: 100px;
+	height: 90px;
 	background: #3e445c;
 	padding-left: 47px;
 	padding-top: 30px;
@@ -52,6 +52,11 @@
 
 #sidebar .dropdown-menu a:hover {
 	background: rgb(255,64,79);
+}
+
+//toggle button
+#sidebar .bootstrap-switch-handle-on {
+	background: rgb(253,153,126);
 }
 
 //slider
@@ -121,6 +126,7 @@
 	font-size: 34px;
 	font-weight: bold;
 	color: rgb(255,171,145);
+	padding-left: 30px;
 }
 
 .top_bar .titleKpop {
@@ -135,6 +141,10 @@
 	position: absolute;
 	top: 20px;
 	right: 430px;
+}
+
+.top_bar .searchBox #ipSearch {
+	border-radius: 15px;
 }
 
 .top_bar .dropdownP {
