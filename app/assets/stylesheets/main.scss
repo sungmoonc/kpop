@@ -140,11 +140,21 @@
 .top_bar .searchBox {
 	position: absolute;
 	top: 20px;
-	right: 430px;
+	right: 430px;	
+}
+
+.top_bar .searchBox .glyphicon-search {
+	position:absolute;
+	top: 10px;
+	left: 15px;
+	z-index: 10;
 }
 
 .top_bar .searchBox #ipSearch {
-	border-radius: 15px;
+	border-radius: 15px;	
+	padding-left: 30px;
+	font-size: 22px;
+	color: rgb(163,167,179);
 }
 
 .top_bar .dropdownP {
@@ -196,7 +206,7 @@
 
 .header_panel .dropdown .btnSort .caret {
 	position: absolute;
-	right: 10px;
+	right: 40px;
 }
 
 .header_panel .dropdown .dropdown-menu {
@@ -310,7 +320,7 @@
   	color: rgb(163,167,179);
 }
 
-.vlist .list-info .titleD {
+.vlist .list-info .titleD {	
 	font-size: 26px;
 	font-weight: bold;
 	color: rgb(101,107,124);
@@ -339,14 +349,14 @@
 }
 
 #basicModal .modal-body {
-	padding: 30px;
+	padding: 0px;
 }
 
 #basicModal .titleD {	
+	margin: 30px;
 	font-size: 36px;
 	font-weight: bold;
 	color: rgb(101,107,124);
-
 }
 
 #basicModal .close {
@@ -356,8 +366,8 @@
 	font-size: 34px;
 }
 
-#basicModal .detail-infos {
-	margin-top: 20px;
+#basicModal .detail-infos {	
+	margin: 30px;
 	font-size: 22px;
 	color: rgb(163,167,179);
 }
@@ -372,11 +382,14 @@
 }
 
 #basicModal .iframe {
-	margin: 10px;
+	width: 1300px;
+	height: 600px;
 }
 
 #basicModal .footer-content {
+	width: 100%;
 	height: 140px;
+	margin: 0px;
 	background: #31374c;
 	font-size: 22px;
 	color: rgb(163,167,179);
