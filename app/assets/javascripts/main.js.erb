@@ -54,6 +54,13 @@ function main_ajax_filters(mode) {
   	});
 }
 
+function viewMenuBtnInit() {
+	$(".btn-group .btnView1").attr({ src: "<%= asset_path('main/view_2_n.png') %>"});
+	$(".btn-group .btnView2").attr({ src: "<%= asset_path('main/view_3_n.png') %>"});
+	$(".btn-group .btnView3").attr({ src: "<%= asset_path('main/view_list_n.png') %>"});
+}
+
+
 $(document).on('page:change', function () {		
 	var mode = "cardview";
 
@@ -94,21 +101,26 @@ $(document).on('page:change', function () {
 
 
 	//_view_menu_box
-	$(".btn-group .btnView1").click(function() {
-		// $(".cards .box").width("490px");
-		// $("#cards").masonry('reload');
+	$(".btn-group .btnView1").click(function() {		
+		viewMenuBtnInit();
+		$(".btn-group .btnView1").attr({ src: "<%= asset_path('main/view_2_p.png') %>"});
+
 		mode = "cardview";
 		main_ajax_filters(mode);
 	});
 
-	$(".btn-group .btnView2").click(function() {
-		// $(".cards .box").width("500px");
-		// $("#cards").masonry('reload');
+	$(".btn-group .btnView2").click(function() {		
+		viewMenuBtnInit();
+		$(".btn-group .btnView2").attr({ src: "<%= asset_path('main/view_3_p.png') %>"});
+
 		mode = "cardview";
 		main_ajax_filters(mode);
 	});
 
 	$(".btn-group .btnView3").click(function() {
+		viewMenuBtnInit();
+		$(".btn-group .btnView3").attr({ src: "<%= asset_path('main/view_list_p.png') %>"});
+
 		mode = "listview";
 		main_ajax_filters(mode);
 	});
@@ -132,10 +144,10 @@ $(document).on('page:change', function () {
     	modal.find(".youtube_user_id").html(dataWrapper.attr("data-youtube-userid"));
     	modal.find(".category").html(dataWrapper.attr("data-category"));
     	modal.find(".upload_date").html(dataWrapper.attr("data-uploaded"));
-    	modal.find(".views").html(dataWrapper.attr("data-views"));
-    	modal.find(".upvotes").html(dataWrapper.attr("data-upvotes"));
-    	modal.find(".downvotes").html(dataWrapper.attr("data-downvotes"));
-    	modal.find(".approval").html(dataWrapper.attr("data-approval") + " Approval");
+    	modal.find(".views").find(".value").html(dataWrapper.attr("data-views"));
+    	modal.find(".upvotes").find(".value").html(dataWrapper.attr("data-upvotes"));
+    	modal.find(".downvotes").find(".value").html(dataWrapper.attr("data-downvotes"));
+    	modal.find(".approval").html(dataWrapper.attr("data-approval") + "% Approval");
     	modal.find(".hotness").html(dataWrapper.attr("data-hotness"));
     	modal.find(".cheesiness").html(dataWrapper.attr("data-cheese"));    	
   	});

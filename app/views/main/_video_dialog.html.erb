@@ -4,16 +4,15 @@
         <div class="modal-body container-fluid">
           <div class="row">
             <div class="titleD"></div>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-          </div>
+            <%= image_tag "main/video_player/close.png", :class => "close", :data => {:dismiss=>"modal"} %></div>
           <div class="detail-infos row">
             <div class="col-md-2">
               <div class="youtube_user_id"></div>
               <div class="category"></div>
             </div>            
-            <div class="views col-md-2"></div>
-            <div class="upvotes col-md-2"></div>
-            <div class="downvotes col-md-2"></div>
+            <div class="views col-md-2"><%= image_tag "main/video_player/view.png" %> <span class="value"></span></div>
+            <div class="upvotes col-md-2"><%= image_tag "main/video_player/like.png" %> <span class="value"></span></div>
+            <div class="downvotes col-md-2"><%= image_tag "main/video_player/dislike.png" %> <span class="value"></span></div>
             <div class="approval col-md-2"></div>
             <div class="upload_date col-md-2"></div>
           </div>

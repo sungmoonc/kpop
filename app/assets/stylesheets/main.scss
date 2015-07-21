@@ -236,7 +236,13 @@
 	margin-left: 20px;
 }
 
-.header_panel .btn-group .btnView1 {
+.header_panel .btn-group img {
+	margin-top: 14px;
+	margin-left: 15px;
+	cursor: pointer;
+}
+
+.header_panel .btn-group img .focus {
 	
 }
 
@@ -394,6 +400,10 @@
 
 #basicModal .detail-infos .category {
 	color: rgb(101,107,124);
+}
+
+#basicModal .detail-infos .value {
+	margin-left: 10px;
 }
 
 #basicModal .iframe {
