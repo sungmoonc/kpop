@@ -137,7 +137,7 @@ $(document).on('page:change', function () {
 	$(".cards").on('click', ".hook--showmodal", function () {
 		var modal = $("#basicModal");
     	var url = $(this).attr("href");
-    	modal.find(".iframe").attr('src', url);
+    	modal.find(".iframe").attr('src', url);    	
 
     	var dataWrapper = $(this).find(".dataWrapper");    	
     	modal.find(".titleD").html(dataWrapper.attr("data-title"));    	
@@ -148,8 +148,15 @@ $(document).on('page:change', function () {
     	modal.find(".upvotes").find(".value").html(dataWrapper.attr("data-upvotes"));
     	modal.find(".downvotes").find(".value").html(dataWrapper.attr("data-downvotes"));
     	modal.find(".approval").html(dataWrapper.attr("data-approval") + "% Approval");
-    	modal.find(".hotness").html(dataWrapper.attr("data-hotness"));
-    	modal.find(".cheesiness").html(dataWrapper.attr("data-cheese"));    	
+
+    	$("#ipViewHN").slider({
+    		tooltip: 'always',
+    		value: parseInt(dataWrapper.attr("data-hotness"))
+    	});	
+		$("#ipViewCN").slider({
+			tooltip: 'always',
+			value: parseInt(dataWrapper.attr("data-cheese"))
+		});    	
   	});
 
   	$("#basicModal").on('hidden.bs.modal', function () {

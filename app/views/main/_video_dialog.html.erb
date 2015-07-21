@@ -16,15 +16,21 @@
             <div class="approval col-md-2"></div>
             <div class="upload_date col-md-2"></div>
           </div>
-          <div class="row text-center">
+          <div class="main-video">
             <iframe class="iframe" src="" frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="footer-content row">
-            <div class="hotness col-md-4"></div>
-            <div class="cheesiness col-md-4"></div>
+            <div class="hotness col-md-4">
+                <span>Sexy Score</span>
+                <input id="ipViewHN" name="view-slider" type="text" class="view_slider" value="" data-slider-id="ipViewHN" data-slider-min="0" data-slider-max="10" data-slider-step="1"/>
+            </div>
+            <div class="cheesiness col-md-4">
+                <span>Cheesy Score</span>
+                <input id="ipViewCN" name="view-slider" type="text" class="view_slider" value="" data-slider-id="ipViewCN" data-slider-min="0" data-slider-max="10" data-slider-step="1"/>
+            </div>
             <div class="buttonBox col-md-4">
-              <button class="btnLike">Like</button>
-              <button class="btnAdd">Add</button>
+              <button class="btnLike"><%=image_tag "main/video_player/like_btn.png" %> Like</button>
+              <button class="btnAdd"><%=image_tag "main/video_player/add_btn.png" %> Add</button>
             </div>
           </div>
         </div>
