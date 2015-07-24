@@ -69,8 +69,7 @@ $(document).on('page:change', function () {
 		form.trigger("changeT");
 	});
 
-	//_left_menu	
-	// $("[name='interval-slider']").slider({});
+	//_left_menu		
 	var ipHN = $("#ipHN").slider({}).data("slider");	
 	var ipCN = $("#ipCN").slider({}).data("slider");
 	var ipEP = $("#ipEP").slider({}).data("slider");		
@@ -79,10 +78,39 @@ $(document).on('page:change', function () {
 		form.trigger("changeT");
 	});	
 
-	$("[class='toggle-checkbox']").bootstrapSwitch();
-	$("input[class='toggle-checkbox']").on("switchChange.bootstrapSwitch", function(event, state) {
-		form.trigger("changeT");		
+	$("#tcSubtitle").on("click", function() {
+		if($(this).hasClass('on')){
+			$(this).removeClass('on');
+			$("#ipSubtitle").val("");
+		} else {
+			$(this).addClass('on');
+			$("#ipSubtitle").val("on");
+		}
+		form.trigger("changeT");
 	});
+
+	$("#tcOVideo").on("click", function() {
+		if($(this).hasClass('on')){
+			$(this).removeClass('on');
+			$("#ipOVideo").val("");
+		} else {
+			$(this).addClass('on');
+			$("#ipOVideo").val("on");
+		}
+		form.trigger("changeT");
+	});
+
+	$("#tcLContent").on("click", function() {
+		if($(this).hasClass('on')){
+			$(this).removeClass('on');
+			$("#ipLContent").val("");
+		} else {
+			$(this).addClass('on');
+			$("#ipLContent").val("on");
+		}
+		form.trigger("changeT");
+	});
+
 
 	$(".dropdown-menu li a").click(function(){
 	  $(this).parents(".dropdown").find('.selection').text($(this).text());

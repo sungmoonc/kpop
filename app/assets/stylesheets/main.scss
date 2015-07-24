@@ -61,6 +61,54 @@
 	background: rgb(253,153,126);
 }
 
+.flat-toggle {
+    width: 56px;
+    border-radius: 10px;
+    height: 22px;
+    background: rgb(27,30,46);
+    position: relative;
+    margin: 20px 0;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.flat-toggle:after {
+    border-radius: 100%;
+    background: rgb(230,234,248);
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 22px;
+    height: 22px;
+    content: '';
+    -webkit-transform: translate(0);
+    -ms-transform: translate(0);
+    transform: translateX(0);
+     transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+}
+
+.flat-toggle:hover {
+    cursor: pointer;
+}
+
+.flat-toggle.on {
+    background: rgb(253,153,126);
+    transform: translate3d(0,0,0);
+}
+
+.flat-toggle.on:after {
+    background-color: rgb(230,234,248);
+    -webkit-transform: translate(37px);
+    -ms-transform: translate(37px);
+    transform: translateX(37px);
+}
+
+
 //slider
 #ipNumSingers .slider-selection {
 	background: rgb(253,153,126);
@@ -260,7 +308,7 @@
 	display: inline-block;
 	margin: 10px;
 	width: 490px;
-	height: 330px;	
+	height: 320px;	
 	border: 1px solid rgba(230,230,230,1);
 	border-radius: 5px;
 	box-shadow: 0px 3px 0px 0px rgba(220,220,220,1);	
