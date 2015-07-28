@@ -5,6 +5,15 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @@is_current_user_admin = signed_in? && current_user[:admin]
+
+    @current_user_collections = if signed_in?
+      (
+      Collection.where(user_id: current_user).map do |collection|
+        [collection.name, collection.id]
+      end
+      )
+    end
+
   end
 
 
@@ -53,7 +62,7 @@ class VideosController < ApplicationController
   end
 
   def save_kpop_fields
-    if (@@is_current_user_admin)
+    if @@is_current_user_admin
       video = Video.find(params["video_id"])
       # todo: add model validation range 0 - 10
       video.title_korean=params["title_korean"]
@@ -61,13 +70,21 @@ class VideosController < ApplicationController
       video.hotness=params["hotness"]
       video.cheesiness=params["cheesiness"]
 
-      if (video.save)
+      if video.save
         head :ok
       else
         head :internal_server_error
       end
     else
       head :bad_request
+    end
+  end
+
+  def add_collection
+    if CollectionsVideo.create!(collection_id: params["collection_id"], video_id: params["video_id"])
+      head :ok
+    else
+      head :internal_server_error
     end
   end
 
@@ -86,17 +103,22 @@ class VideosController < ApplicationController
       new_like = Like.new
       new_like.user_id=current_user.id
       new_like.video_id=params[:id]
-      if (new_like.save)
+      if new_like.save
         current_video = Video.find_by(id: params[:id])
         render json: current_video
       end
     else
-      render :json => { :errors => "Login to like this video"}
+      render :json => { :errors => "Login to like this video" }
     end
   end
 
-  def add_video_to_collection
-
+  def add_to_new_collection
+    collection = Collection.create!(name: params[:name], user_id: current_user.id)
+    if CollectionsVideo.create!(collection_id: collection["id"], video_id: params["video_id"])
+      head :ok
+    else
+      head :internal_server_error
+    end
   end
 
   def filters
@@ -104,6 +126,8 @@ class VideosController < ApplicationController
     integer_filters = get_range_filters(params, "hotness", "cheesiness", "english_percentage", "approval_rating")
     boolean_filters = get_boolean_filters(params, "english_subtitle", "official", "licensed_content")
     category = "category = '#{params[:category]}'" unless params[:category] == "all"
+    # none0
+    # collection = "category = '#{params[:category]}'" unless params[:category] == "all"
 
     videos = Video
       .paginate(page: params[:page], per_page: 10)
@@ -112,6 +136,13 @@ class VideosController < ApplicationController
       .where(boolean_filters)
       .where(category)
       .order("#{params[:sort]} desc")
+
+    unless params[:collection] == "none0"
+      video_ids = CollectionsVideo.where(collection_id: params[:collection].to_i).map do |v|
+        v[:video_id]
+      end.uniq
+      videos = videos.where(id: video_ids)
+    end
 
 
     videos = videos.as_json.map do |video|
@@ -178,4 +209,5 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:youtube_id, :thumbnail, :artist, :title_korean, :title_english, :youtube_user_id, :description, :hotness, :cheesiness, :english_percentage, :english_subtitle, :official, :youtube_views, :definition, :duration, :dimension, :caption, :category, :licensed_content, :approval_rating, :upvotes_per_views, :likes, :upload_date, :upvotes, :downvotes)
   end
+
 end

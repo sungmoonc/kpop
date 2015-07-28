@@ -22,10 +22,40 @@ function ajax_filters() {
           if (v.editable) {
             $("input[value=" + v["id"] + "]").parent().find("select[name=category]").val(v["category"])
           }
-
         }
     );
+    
+    $(".add-collection").on("change", function(e){
+      var collection_id = $(this).val();
+      if (collection_id == "new"){
+        var collection_name = prompt('How would you name the new collection?');
+        $.ajax({
+          url: '/videos/add_to_new_collection',
+          type: 'POST',
+          data: {
+            "name": collection_name,
+            "video_id": $(this).parent().data()["video_id"]
+          }
+        }).fail(function(response){
+          alert("Unable to save the field:\n " + response.responseText);
+        })
+      } else {
+        $.ajax({
+          url: '/videos/add_collection',
+          type: 'POST',
+          data: {
+            "collection_id": collection_id,
+            "video_id": $(this).parent().data()["video_id"]
+          }
+        }).fail(function(response){
+          alert("Unable to save the field:\n " + response.responseText);
+        })
+      }
 
+
+
+    });
+    
     // Video like button
     $(".video-like").on('click', function () {
       add_like($(this));
