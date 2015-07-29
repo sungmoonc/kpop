@@ -17,12 +17,12 @@ function main_ajax_filters(mode) {
   	}).done(function (response) {
     	context.videos = response.videos;
 
-    	$(".header_panel .numResults").html(response.count + " results");
+    	$(".header_panel .numResults").html(response.count + " results");    	
 
     	if (form.find("#page").val() == "1") {    
-      		$(".thumbnails").html("");
+      		$(".thumbnails").empty();      		   		
     	}
-
+    	
     	var cards = $("#cards");
 
     	if(mode==="cardview"){
@@ -197,6 +197,7 @@ $(document).on('page:change', function () {
 
 	form.on('changeT', function () {
 		console.log("changeT");		
+		$(document).height(3650);
 
 		var arrHn = ipHN.getValue();
 		$("#hnMin").val(arrHn[0]);
@@ -225,7 +226,9 @@ $(document).on('page:change', function () {
   	// Infinite scroll
   	if ($('#infinite-scrolling').size() > 0) {
     	$(window).on('scroll', function(e) {
+    		console.log($(window).scrollTop() + "/" + $(document).height() + "/"+ $(window).height());
 	      	if ($(window).scrollTop() > $(document).height() - $(window).height() - 20)  {
+	      		console.log("infinite-scrolling");
 	        	form.find("#page").val(parseInt(form.find("#page").val()) + 1);
 	        	main_ajax_filters(mode);	        	
 	      	}

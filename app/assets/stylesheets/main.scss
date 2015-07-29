@@ -296,7 +296,7 @@
 
 .header_panel .dropdown .btnSort .caret {
 	position: absolute;
-	right: 40px;
+	right: 30px;
 }
 
 .header_panel .dropdown .dropdown-menu {
@@ -386,9 +386,10 @@
 }
 
 .box .overlay .song_title {
-	position: absolute;
+	position: absolute;	
 	top: 65px;
-	left: 27px;
+	left: 17px;
+	padding: 10px;
 	font-size: 30px;
 	color: rgba(255,255,255,1);			
 	white-space: normal;
