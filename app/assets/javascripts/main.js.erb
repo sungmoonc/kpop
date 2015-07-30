@@ -20,7 +20,8 @@ function main_ajax_filters(mode) {
     	$(".header_panel .numResults").html(response.count + " results");    	
 
     	if (form.find("#page").val() == "1") {    
-      		$(".thumbnails").empty();      		   		
+      		$(".thumbnails").empty();      	  
+      		$("#sidebar").css("height", 3650);    			   		      		
     	}
     	
     	var cards = $("#cards");
@@ -42,7 +43,7 @@ function main_ajax_filters(mode) {
     	}	
 
     	var newThumbs = templatingFunction(context);
-    	$(".thumbnails").append(newThumbs);    
+    	$(".thumbnails").append(newThumbs);        	
 
     	// $(".btn-group .btnView1").click();
     	if(mode==="cardview"){
@@ -196,8 +197,7 @@ $(document).on('page:change', function () {
 	var form = $("form[name=filters]");
 
 	form.on('changeT', function () {
-		console.log("changeT");		
-		$(document).height(3650);
+		console.log("changeT");				
 
 		var arrHn = ipHN.getValue();
 		$("#hnMin").val(arrHn[0]);
@@ -225,13 +225,13 @@ $(document).on('page:change', function () {
 
   	// Infinite scroll
   	if ($('#infinite-scrolling').size() > 0) {
-    	$(window).on('scroll', function(e) {
-    		console.log($(window).scrollTop() + "/" + $(document).height() + "/"+ $(window).height());
+    	$(window).on('scroll', function(e) {    		
 	      	if ($(window).scrollTop() > $(document).height() - $(window).height() - 20)  {
 	      		console.log("infinite-scrolling");
 	        	form.find("#page").val(parseInt(form.find("#page").val()) + 1);
 	        	main_ajax_filters(mode);	        	
 	      	}
+
 	      	$("#sidebar").css("height", $(document).height());
     	});
   	}
