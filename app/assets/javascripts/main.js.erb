@@ -185,11 +185,11 @@ $(document).on('page:change', function () {
 		$("#ipViewCN").slider({
 			tooltip: 'always',
 			value: parseInt(dataWrapper.attr("data-cheese"))
-		});    	
+		});    			
   	});
 
   	$("#basicModal").on('hidden.bs.modal', function () {
-    	$("#iframe").attr('src', '');
+    	$(".main-video .iframe").attr('src', '');    	
   	});
 
   	// Filters and sorting
