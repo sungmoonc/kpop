@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post '/videos/add_collection' => 'videos#add_collection'
   post '/videos/add_to_new_collection' => 'videos#add_to_new_collection'
 
+  get '/videos' => 'videos#index'
+
   get '/admin' => 'admin#index'
 
   get '/admin/users' => 'admin#users'

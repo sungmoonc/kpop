@@ -137,12 +137,12 @@ class VideosController < ApplicationController
       .where(category)
       .order("#{params[:sort]} desc")
 
-    unless params[:collection] == "none0"
-      video_ids = CollectionsVideo.where(collection_id: params[:collection].to_i).map do |v|
-        v[:video_id]
-      end.uniq
-      videos = videos.where(id: video_ids)
-    end
+    # unless params[:collection] == "none0"
+    #   video_ids = CollectionsVideo.where(collection_id: params[:collection].to_i).map do |v|
+    #     v[:video_id]
+    #   end.uniq
+    #   videos = videos.where(id: video_ids)
+    # end
 
 
     videos = videos.as_json.map do |video|
@@ -169,9 +169,7 @@ class VideosController < ApplicationController
       .order("#{params[:sort]} desc")      
     @counts = @videos.count
 
-    @json = {:videos => @videos, :count => @counts}.to_json
-
-    logger.debug @json
+    @json = {:videos => @videos, :count => @counts}.to_json    
 
     render json: @json
   end
