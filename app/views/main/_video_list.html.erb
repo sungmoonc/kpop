@@ -9,6 +9,17 @@
 			<img src="{{thumbnail}}">					
 			<div class="overlay">
 				<div class="song_title">{{title_korean}}</div>			
+				<div class="buttons row">
+					<div class="btnLike">
+						<%= image_tag "main/hover_like.png" %> Like
+					</div>
+					<div class="btnAdd">
+						<%= image_tag "main/hover_add.png" %> Add
+					</div>
+					<div class="btnLater">
+						<%= image_tag "main/hover_later.png" %> Later
+					</div>
+				</div>		
 			</div>
 		</div>		
 	</a>
@@ -19,7 +30,7 @@
           <div class="category col-md-6">{{category}} / {{upload_date}}</div>          
         </div>
         <div class="row">        	
-	        <div class="detailinfos">{{youtube_views}} Views / {{upvotes}} Likes / {{downvotes}} Dislikes / Approval Rating: {{approval_rating}}%</div>	        
+	        <div class="detailinfos"><span class="numvalue">{{youtube_views}}</span> Views / <span class="numvalue">{{upvotes}}</span> Likes / <span class="numvalue">{{downvotes}}</span> Dislikes / Approval Rating: {{approval_rating}}%</div>	        
         </div>
         <div class="row">
         	<div class="hotness col-md-5">Sexy Score <span class="boxwrapper">{{hotness}}</span></div>

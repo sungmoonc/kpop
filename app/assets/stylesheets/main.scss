@@ -2,7 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+	font-family: 'montserratregular';
+	src: asset-url('montserratregular.woff');
+}
+
 #main-container {
+	font-family: 'montserratregular';
 	background: rgb(48,64,79);	
 }
 
@@ -19,6 +25,7 @@
 .menu_header {
 	height: 60px;
 	background: #3e445c;
+	margin-top: 10px;
 	padding-left: 47px;
 	padding-top: 25px;
 	font-size: 20px;	
@@ -26,6 +33,10 @@
 
 .menu_header .row {
 	line-height: 12px;
+}
+
+.menu_header .unfold {
+	margin-top: -8px;
 }
 
 .menu_item {
@@ -202,10 +213,12 @@
 }
 
 .top_bar .titleFilter {	
-	font-size: 30px;
+	font-size: 26px;
 	font-weight: bold;
+	margin-top: 15px;	
 	color: rgb(255,171,145);
 	padding-left: 30px;
+	padding-bottom: 15px;
 }
 
 .top_bar .titleKpop {

@@ -17,7 +17,7 @@ function main_ajax_filters(mode) {
   	}).done(function (response) {
     	context.videos = response.videos;
 
-    	$(".header_panel .numResults").html(response.count + " results");    	
+    	$(".header_panel .numResults").html($.number(response.count) + " results");    	
 
     	if (form.find("#page").val() == "1") {    
       		$(".thumbnails").empty();      	  
@@ -39,7 +39,7 @@ function main_ajax_filters(mode) {
 					itemSelector: '.vlist',
 					isFitWidth: true
 				});
-			});
+			});			
     	}	
 
     	var newThumbs = templatingFunction(context);
@@ -51,6 +51,7 @@ function main_ajax_filters(mode) {
 			$("#cards").masonry('reload');	
     	} else {
     		$("#cards").masonry('reload');	
+    		$(".numvalue").number(true);			
     	}    	
   	});
 }
@@ -173,9 +174,9 @@ $(document).on('page:change', function () {
     	modal.find(".youtube_user_id").html(dataWrapper.attr("data-youtube-userid"));
     	modal.find(".category").html(dataWrapper.attr("data-category"));
     	modal.find(".upload_date").html(dataWrapper.attr("data-uploaded"));
-    	modal.find(".views").find(".value").html(dataWrapper.attr("data-views"));
-    	modal.find(".upvotes").find(".value").html(dataWrapper.attr("data-upvotes"));
-    	modal.find(".downvotes").find(".value").html(dataWrapper.attr("data-downvotes"));
+    	modal.find(".views").find(".value").html($.number(dataWrapper.attr("data-views")));
+    	modal.find(".upvotes").find(".value").html($.number(dataWrapper.attr("data-upvotes")));
+    	modal.find(".downvotes").find(".value").html($.number(dataWrapper.attr("data-downvotes")));
     	modal.find(".approval").html(dataWrapper.attr("data-approval") + "% Approval");
 
     	$("#ipViewHN").slider({

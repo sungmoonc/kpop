@@ -37,6 +37,8 @@ gem 'autoprefixer-rails'
 # jquery ui
 gem 'jquery-ui-rails'
 
+gem 'jquery-number-rails', '~> 2.1.3'
+
 #gem 'google-api-client'
 
 gem 'curb'

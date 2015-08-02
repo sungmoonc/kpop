@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-number
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require bootstrap
