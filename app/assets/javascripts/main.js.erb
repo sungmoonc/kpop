@@ -166,8 +166,8 @@ $(document).on('page:change', function () {
 
 	$(".cards").on('click', ".hook--showmodal", function () {
 		var modal = $("#basicModal");
-    	var url = $(this).attr("href");
-    	modal.find(".iframe").attr('src', url);    	
+    	var url = $(this).attr("href")+"?autoplay=1";
+    	modal.find(".iframe").attr('src', url);    	    	
 
     	var dataWrapper = $(this).find(".dataWrapper");    	
     	modal.find(".titleD").html(dataWrapper.attr("data-title"));    	

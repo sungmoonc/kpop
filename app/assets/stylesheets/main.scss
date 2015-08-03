@@ -7,6 +7,8 @@
 	src: asset-url('montserratregular.woff');
 }
 
+button:focus {outline:0 !important;}
+
 #main-container {
 	font-family: 'montserratregular';
 	background: rgb(48,64,79);	
@@ -373,8 +375,7 @@
 
 .box img {
 	width: 100%;
-	height: 270px;
-	border-radius: 5px;
+	height: 270px;	
 }
 
 .box .titleKr {
@@ -474,12 +475,14 @@
 
 .vlist .list-info .detailinfos {
 	margin-top: 30px;
-	margin-left: 10px;
+	margin-left: 15px;
 	margin-bottom: 10px;
 }
 
 .vlist .list-info .boxwrapper {
-	padding: 8px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
 	background: rgb(192,192,192);
 	color: rgb(255,255,255);
 }
