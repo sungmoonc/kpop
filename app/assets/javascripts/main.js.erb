@@ -164,9 +164,9 @@ $(document).on('page:change', function () {
 		$(this).find(".overlay").hide();
 	});
 
-	$(".cards").on('click', ".hook--showmodal", function () {
+	$(".cards").on('click', ".hook--showmodal", function (e) {		
 		var modal = $("#basicModal");
-    	var url = $(this).attr("href")+"?autoplay=1";
+    	var url = $(this).attr("data-href")+"?autoplay=1";
     	modal.find(".iframe").attr('src', url);    	    	
 
     	var dataWrapper = $(this).find(".dataWrapper");    	
@@ -188,6 +188,28 @@ $(document).on('page:change', function () {
 			value: parseInt(dataWrapper.attr("data-cheese"))
 		});    			
   	});
+
+
+	$(".cards").on('click', ".btnLike", function(e) {		
+				
+		e.stopPropagation();				
+		var objData = {id: $(this).attr("data-video-id")};
+		$.ajax({
+		    url: '/videos/create_likes',
+		    type: 'POST',
+		    data: objData
+		  }).done(function (response) {		  	
+		    if (response["errors"] == undefined) {		    	
+		      // var like_count_obj = video.parent().parent().find(".like_count");
+		      // like_count_obj.text(parseInt(like_count_obj.text()) + 1);
+		      alert("I liked this video");
+		    } else {
+		      alert(response["errors"])
+		    }
+		  }).fail(function (response) {
+		    alert("You already liked this video")
+		  });
+	});
 
   	$("#basicModal").on('hidden.bs.modal', function () {
     	$(".main-video .iframe").attr('src', '');    	

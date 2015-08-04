@@ -1,6 +1,6 @@
 
-<a href="https://www.youtube.com/embed/{{youtube_id}}" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
-	<div class="dataWrapper"
+<div data-href="https://www.youtube.com/embed/{{youtube_id}}" data-toggle="modal" data-target="#basicModal" class="hook--showmodal">
+	<div class="dataWrapper"		
 		data-title="{{title_korean}}" data-youtube-userid="{{youtube_user_id}}" data-uploaded="{{upload_date}}" data-category="{{category}}"
 		data-views="{{youtube_views}}" data-upvotes="{{upvotes}}" data-downvotes="{{downvotes}}"
 		data-approval="{{approval_rating}}" data-hotness="{{hotness}}" data-cheese="{{cheesiness}}">
@@ -11,7 +11,7 @@
 		<div class="overlay">
 			<div class="song_title">{{title_korean}}</div>	
 			<div class="buttons row">
-				<div class="btnLike">
+				<div class="btnLike" data-video-id="{{id}}">
 					<%= image_tag "main/hover_like.png" %> Like
 				</div>
 				<div class="btnAdd">
@@ -23,4 +23,4 @@
 			</div>		
 		</div>
 	</div>
-</a>
+</div>

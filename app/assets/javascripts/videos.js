@@ -64,7 +64,7 @@ function ajax_filters() {
 }
 
 function add_like(video) {
-  console.log(video)
+  console.log(video.data())
   $.ajax({
     url: '/videos/create_likes',
     type: 'POST',
