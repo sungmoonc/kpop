@@ -10,9 +10,9 @@
               <div class="youtube_user_id"></div>
               <div class="category"></div>
             </div>            
-            <div class="views col-md-2"><%= image_tag "main/video_player/view.png" %> <span class="value"></span></div>
-            <div class="upvotes col-md-2"><%= image_tag "main/video_player/like.png" %> <span class="value"></span></div>
-            <div class="downvotes col-md-2"><%= image_tag "main/video_player/dislike.png" %> <span class="value"></span></div>
+            <div class="views col-md-2"><%= image_tag "main/video_player/view.png", :class => "imgview" %> <span class="value"></span></div>
+            <div class="upvotes col-md-2"><%= image_tag "main/video_player/like.png", :class => "imglike" %> <span class="value"></span></div>
+            <div class="downvotes col-md-2"><%= image_tag "main/video_player/dislike.png", :class => "imgdislike" %> <span class="value"></span></div>
             <div class="approval col-md-2"></div>
             <div class="upload_date col-md-2"></div>
           </div>
@@ -31,8 +31,8 @@
                 data-slider-enabled="false"/>
             </div>
             <div class="buttonBox">
-              <button class="btnLike"><%=image_tag "main/video_player/like_btn.png" %> Like</button>
-              <button class="btnAdd"><%=image_tag "main/video_player/add_btn.png" %> Add</button>
+              <%=image_tag "main/video_player/likebtn.png", :class=>"btnLike" %>
+              <%=image_tag "main/video_player/addbtn.png", :class=>"btnAdd" %>
             </div>
           </div>
         </div>
