@@ -26,7 +26,7 @@ function main_ajax_filters(mode) {
     	
     	var cards = $("#cards");
 
-    	if(mode==="cardview"){
+    	if(mode==="cardview" || mode==="cardview2"){
     		cards.imagesLoaded(function() {
 				cards.masonry({
 					itemSelector: '.box',
@@ -47,8 +47,11 @@ function main_ajax_filters(mode) {
 
     	// $(".btn-group .btnView1").click();
     	if(mode==="cardview"){
-    		$(".cards .box").width("490px");
+    		$(".cards .box").width("490px");    		
 			$("#cards").masonry('reload');	
+    	} else if(mode==="cardview2"){
+    		$(".cards .box").width("326px");    		
+    		$("#cards").masonry('reload');	
     	} else {
     		$("#cards").masonry('reload');	
     		$(".numvalue").number(true);			
@@ -160,7 +163,7 @@ $(document).on('page:change', function () {
 		viewMenuBtnInit();
 		$(".btn-group .btnView2").attr({ src: "<%= asset_path('main/view_3_p.png') %>"});
 
-		mode = "cardview";
+		mode = "cardview2";
 		main_ajax_filters(mode);
 	});
 
