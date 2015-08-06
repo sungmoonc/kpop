@@ -260,12 +260,18 @@ button:focus {outline:0 !important;}
 .top_bar .dropdownP {
 	position: absolute;
 	top: 25px;
-	right: 220px;	
+	right: 210px;	
+}
+
+.top_bar .dropdownP .imgProfile {
+	width: 40px;
+	height: 40px;
+	margin-top: -10px;
 }
 
 .top_bar .dropdownP .login-widget {
 	font-size: 16px;
-	color: rgb(51,58,77);	
+	color: rgb(51,58,77);		
 	margin-right: 15px;
 }
 
