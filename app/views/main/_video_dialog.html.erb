@@ -31,8 +31,12 @@
                 data-slider-enabled="false"/>
             </div>
             <div class="buttonBox">
-              <%=image_tag "main/video_player/likebtn.png", :class=>"btnLike" %>
-              <%=image_tag "main/video_player/addbtn.png", :class=>"btnAdd" %>
+              <div class="btnLike" data-video-id="{{id}}">
+                <%=image_tag "main/video_player/likebtn.png" %>
+              </div>
+              <div class="btnAdd">
+                <%=image_tag "main/video_player/addbtn.png" %>
+              </div>
             </div>
           </div>
         </div>

@@ -62,6 +62,23 @@ function viewMenuBtnInit() {
 	$(".btn-group .btnView3").attr({ src: "<%= asset_path('main/view_list_n.png') %>"});
 }
 
+function processLike(objData){
+	$.ajax({
+	    url: '/videos/create_likes',
+	    type: 'POST',
+	    data: objData
+	  }).done(function (response) {		  	
+	    if (response["errors"] == undefined) {		    	
+	      // var like_count_obj = video.parent().parent().find(".like_count");
+	      // like_count_obj.text(parseInt(like_count_obj.text()) + 1);
+	      alert("I liked this video");
+	    } else {
+	      alert(response["errors"])
+	    }
+	  }).fail(function (response) {
+	    alert("You already liked this video")
+	  });
+}
 
 $(document).on('page:change', function () {		
 	var mode = "cardview";
@@ -179,37 +196,35 @@ $(document).on('page:change', function () {
     	modal.find(".downvotes").find(".value").html($.number(dataWrapper.attr("data-downvotes")));
     	modal.find(".approval").html(dataWrapper.attr("data-approval") + "% Approval");
 
+
+    	modal.find(".btnLike").on('click', function(e){    		
+    		var objData = {id: $(this).attr("data-video-id")};
+    		// console.log("d:"+objData);
+			// processLike(objData);
+    	});
+
     	$("#ipViewHN").slider({
     		tooltip: 'always',
-    		value: parseInt(dataWrapper.attr("data-hotness"))
+    		value: parseInt(dataWrapper.attr("data-hotness")),
+    		enabled: false
     	});	
 		$("#ipViewCN").slider({
 			tooltip: 'always',
-			value: parseInt(dataWrapper.attr("data-cheese"))
-		});    			
+			value: parseInt(dataWrapper.attr("data-cheese")),
+			enabled: false
+		});
   	});
 
 
 	$(".cards").on('click', ".btnLike", function(e) {		
 				
 		e.stopPropagation();				
+		
 		var objData = {id: $(this).attr("data-video-id")};
-		$.ajax({
-		    url: '/videos/create_likes',
-		    type: 'POST',
-		    data: objData
-		  }).done(function (response) {		  	
-		    if (response["errors"] == undefined) {		    	
-		      // var like_count_obj = video.parent().parent().find(".like_count");
-		      // like_count_obj.text(parseInt(like_count_obj.text()) + 1);
-		      alert("I liked this video");
-		    } else {
-		      alert(response["errors"])
-		    }
-		  }).fail(function (response) {
-		    alert("You already liked this video")
-		  });
+		processLike(objData);
 	});
+
+
 
   	$("#basicModal").on('hidden.bs.modal', function () {
     	$(".main-video .iframe").attr('src', '');    	

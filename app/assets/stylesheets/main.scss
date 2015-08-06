@@ -617,11 +617,13 @@ button:focus {outline:0 !important;}
 }
 
 #basicModal .footer-content .buttonBox .btnLike {
+	display: inline-block;
 	background: rgb(253,153,126);
 	cursor: pointer;
 }
 
 #basicModal .footer-content .buttonBox .btnAdd {
+	display: inline-block;
 	background: rgb(184,184,184); 
 	cursor: pointer;
 }
