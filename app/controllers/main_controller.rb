@@ -1,9 +1,13 @@
 class MainController < ApplicationController
 	layout "main_layout"
 	
-  def index
-  	# @videos = Video.order(youtube_views: :desc).first(50)
+  def index  	
+  	render "index", :locals => { :ismypage => false }
   end  
+
+  def mypage
+  	render "index", :locals => { :ismypage => true }
+  end
 
   def show
   end

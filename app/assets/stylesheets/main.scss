@@ -201,6 +201,23 @@ button:focus {outline:0 !important;}
 	margin-top: 12px;
 }
 
+/* mypage */
+#left-mypage-menu .menu_profile {	
+	text-align: center;
+	background: #3e445c;
+	height: 160px;
+	padding-top: 33px;
+}
+
+#left-mypage-menu .menu_item {
+	margin-bottom: 30px;
+}
+
+#left-mypage-menu .menu_item img {
+	margin-right: 10px;
+}
+
+/* main-content */
 #main-content {
 	position: absolute;
 	left: 270px;

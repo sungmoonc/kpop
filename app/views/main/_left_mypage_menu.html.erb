@@ -1,0 +1,33 @@
+<%= form_tag("/videos/filters_test", name: 'filters') do %>
+<div id="left-mypage-menu">
+	<input id="page" name="page" value=1 type="hidden">
+	<input id="ipSort" name="sort" value="youtube_views" type="hidden">
+    <input id="ipSearchHd" name="search" type="hidden">
+
+    <div class="menu_profile row">
+    	<%= image_tag("main/profile_none.png") %>
+    	<div class="pname">Sole Lee</div>
+    </div>
+
+    <div class="menu_item">
+        <div class="row">
+            <div class="col-md-8"><%= image_tag "mypage/like.png" %> Liked</div>
+        </div>
+    </div>
+    <div class="menu_item">
+        <div class="row">
+            <div class="col-md-8"><%= image_tag "main/hover_add.png" %> Added</div>
+        </div>
+    </div>
+    <div class="menu_item">
+        <div class="row">
+            <div class="col-md-8"><%= image_tag "mypage/later.png" %> Later</div>
+        </div>
+    </div>
+    <div class="menu_item">
+        <div class="row">
+            <div class="col-md-8"><%= image_tag "mypage/collection.png" %> Collection</div>
+        </div>
+    </div>
+</div>
+<% end %>

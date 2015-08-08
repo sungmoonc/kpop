@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   # Example of regular route:
 
+  get '/main/index' => 'main#index'
+  get '/main/mypage' => 'main#mypage'
+
   post '/videos/filters' => 'videos#filters'
 
   post '/videos/filters_test' => 'videos#filters_test'

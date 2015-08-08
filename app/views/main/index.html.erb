@@ -7,7 +7,12 @@
         <div class="titleFilter"><%= image_tag("main/kpoptv_logo.png", :class=>"logo")%> KpopTV</div>        
       </div>
 
-      <%= render 'left_menu' %>
+      <% if ismypage %>
+        <%= render 'left_mypage_menu' %>
+      <% else %>
+        <%= render 'left_menu' %>
+      <% end %>
+      
     </div>    
 
     <%= render 'video_dialog' %>
