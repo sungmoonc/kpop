@@ -1,5 +1,5 @@
-class MainController < ApplicationController
-	layout "main_layout"
+class MainController < ApplicationController	
+	layout 'main_layout'	
 	
   def index  	
   	render "index", :locals => { :ismypage => false }
@@ -11,4 +11,5 @@ class MainController < ApplicationController
 
   def show
   end
+  
 end
