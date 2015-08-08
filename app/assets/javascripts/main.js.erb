@@ -91,64 +91,67 @@ $(document).on('page:change', function () {
 		form.trigger("changeT");
 	});
 
-	//_left_menu		
-	var ipHN = $("#ipHN").slider({}).data("slider");	
-	var ipCN = $("#ipCN").slider({}).data("slider");
-	var ipEP = $("#ipEP").slider({}).data("slider");		
-	var ipAR = $("#ipAR").slider({}).data("slider");	
-	$(".inter_slider").on('slideStop', function(newV){
-		form.trigger("changeT");
-	});	
+	//_left_menu			
+	if($("#menutype").val()==0){
+		var ipHN = $("#ipHN").slider({}).data("slider");	
+		var ipCN = $("#ipCN").slider({}).data("slider");
+		var ipEP = $("#ipEP").slider({}).data("slider");		
+		var ipAR = $("#ipAR").slider({}).data("slider");	
+		$(".inter_slider").on('slideStop', function(newV){
+			form.trigger("changeT");
+		});	
 
-	$("#tcSubtitle").on("click", function() {
-		if($(this).hasClass('on')){
-			$(this).removeClass('on');
-			$("#ipSubtitle").val("");
-		} else {
-			$(this).addClass('on');
-			$("#ipSubtitle").val("on");
-		}
-		form.trigger("changeT");
-	});
+		$("#tcSubtitle").on("click", function() {
+			if($(this).hasClass('on')){
+				$(this).removeClass('on');
+				$("#ipSubtitle").val("");
+			} else {
+				$(this).addClass('on');
+				$("#ipSubtitle").val("on");
+			}
+			form.trigger("changeT");
+		});
 
-	$("#tcOVideo").on("click", function() {
-		if($(this).hasClass('on')){
-			$(this).removeClass('on');
-			$("#ipOVideo").val("");
-		} else {
-			$(this).addClass('on');
-			$("#ipOVideo").val("on");
-		}
-		form.trigger("changeT");
-	});
+		$("#tcOVideo").on("click", function() {
+			if($(this).hasClass('on')){
+				$(this).removeClass('on');
+				$("#ipOVideo").val("");
+			} else {
+				$(this).addClass('on');
+				$("#ipOVideo").val("on");
+			}
+			form.trigger("changeT");
+		});
 
-	$("#tcLContent").on("click", function() {
-		if($(this).hasClass('on')){
-			$(this).removeClass('on');
-			$("#ipLContent").val("");
-		} else {
-			$(this).addClass('on');
-			$("#ipLContent").val("on");
-		}
-		form.trigger("changeT");
-	});
+		$("#tcLContent").on("click", function() {
+			if($(this).hasClass('on')){
+				$(this).removeClass('on');
+				$("#ipLContent").val("");
+			} else {
+				$(this).addClass('on');
+				$("#ipLContent").val("on");
+			}
+			form.trigger("changeT");
+		});
 
 
-	$(".dropdown-menu li a").click(function(){
-	  $(this).parents(".dropdown").find('.selection').text($(this).text());
-	  $(this).parents(".dropdown").find('.selection').val($(this).text());	  	  
-	});	
+		$(".dropdown-menu li a").click(function(){
+		  $(this).parents(".dropdown").find('.selection').text($(this).text());
+		  $(this).parents(".dropdown").find('.selection').val($(this).text());	  	  
+		});	
 
-	$("#ddSort li a").click(function() {
-		$("#ipSort").val($(this).attr("value"));
-		form.trigger("changeT");
-	});
+		$("#ddSort li a").click(function() {
+			$("#ipSort").val($(this).attr("value"));
+			form.trigger("changeT");
+		});
 
-	$("#ddVType li a").click(function() {
-		$("#ipVType").val($(this).attr("value"));
-		form.trigger("changeT");
-	});
+		$("#ddVType li a").click(function() {
+			$("#ipVType").val($(this).attr("value"));
+			form.trigger("changeT");
+		});
 
+	}
+	
 
 	//_view_menu_box
 	$(".btn-group .btnView1").click(function() {		

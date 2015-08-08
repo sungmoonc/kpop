@@ -11,7 +11,7 @@
 <% if current_page?(:controller => 'main', :action => 'index') %>
   	<%= javascript_include_tag 'main' %>  
 <% elsif current_page?(:controller => 'main', :action => 'mypage') %>
-	<%= javascript_include_tag 'mypage' %>  
+	<%= javascript_include_tag 'main' %>  
 <% end %>
 
   <%= csrf_meta_tags %>

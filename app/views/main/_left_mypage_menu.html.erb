@@ -1,8 +1,21 @@
 <%= form_tag("/videos/filters_test", name: 'filters') do %>
 <div id="left-mypage-menu">
+	<input id="menutype" value=1 type="hidden">
 	<input id="page" name="page" value=1 type="hidden">
 	<input id="ipSort" name="sort" value="youtube_views" type="hidden">
     <input id="ipSearchHd" name="search" type="hidden">
+    <input id="ipVType" name="category" value="all" type="hidden">
+    <input id="hnMin" name="hotness[min]" type="hidden" value="0">
+    <input id="hnMax" name="hotness[max]" type="hidden" value="10">
+    <input id="cnMin" name="cheesiness[min]" type="hidden" value="0">
+    <input id="cnMax" name="cheesiness[max]" type="hidden" value="10">
+    <input id="epMin" name="english_percentage[min]" type="hidden" value="0">
+    <input id="epMax" name="english_percentage[max]" type="hidden" value="100">
+    <input id="arMin" name="approval_rating[min]" type="hidden" value="0">
+    <input id="arMax" name="approval_rating[max]" type="hidden" value="100">
+    <input id="ipSubtitle" name="english_subtitle" value="" type="hidden">
+    <input id="ipOVideo" name="official" value="" type="hidden">
+    <input id="ipLContent" name="licensed_content" value="" type="hidden">
 
     <div class="menu_profile row">
     	<%= image_tag("main/profile_none.png") %>
