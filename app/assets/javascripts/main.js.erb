@@ -188,7 +188,7 @@ $(document).on('page:change', function () {
 	});
 
 	$(".cards").on('click', ".hook--showmodal", function (e) {		
-		var modal = $("#basicModal");
+		var modal = $("#videoModal");
     	var url = $(this).attr("data-href")+"?autoplay=1";
     	modal.find(".iframe").attr('src', url);    	    	
 
@@ -232,7 +232,7 @@ $(document).on('page:change', function () {
 
 
 
-  	$("#basicModal").on('hidden.bs.modal', function () {
+  	$("#videoModal").on('hidden.bs.modal', function () {
     	$(".main-video .iframe").attr('src', '');    	
   	});
 

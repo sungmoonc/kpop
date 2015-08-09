@@ -522,15 +522,15 @@ button:focus {outline:0 !important;}
 }
 
 /* video Modal */
-#basicModal .modal-dialog {
+#videoModal .modal-dialog {
 	width: 900px;
 }
 
-#basicModal .modal-body {
+#videoModal .modal-body {
 	padding: 0px;
 }
 
-#basicModal .titleD {	
+#videoModal .titleD {	
 	margin: 20px;
 	margin-left: 45px;
 	font-size: 20px;
@@ -538,7 +538,7 @@ button:focus {outline:0 !important;}
 	color: rgb(101,107,124);
 }
 
-#basicModal .close {
+#videoModal .close {
 	position: absolute;
 	width: 28px;
 	top: 20px;
@@ -547,47 +547,47 @@ button:focus {outline:0 !important;}
 	text-shadow: 0 1px 0 #fff;	
 }
 
-#basicModal .detail-infos {	
+#videoModal .detail-infos {	
 	margin: 15px;
 	font-size: 14px;
 	color: rgb(163,167,179);
 }
 
-#basicModal .detail-infos .imgview {
+#videoModal .detail-infos .imgview {
 	width: 28px;
 }
 
-#basicModal .detail-infos .imglike {
+#videoModal .detail-infos .imglike {
 	width: 22px;
 }
 
-#basicModal .detail-infos .imgdislike {
+#videoModal .detail-infos .imgdislike {
 	width: 22px;
 }
 
-#basicModal .detail-infos .youtube_user_id {
+#videoModal .detail-infos .youtube_user_id {
 	font-weight: bold;
 	color: rgb(101,107,124);
 }
 
-#basicModal .detail-infos .category {
+#videoModal .detail-infos .category {
 	color: rgb(101,107,124);
 }
 
-#basicModal .detail-infos .value {
+#videoModal .detail-infos .value {
 	margin-left: 10px;
 }
 
-#basicModal .main-video {
+#videoModal .main-video {
 	background: #31374c;
 }
 
-#basicModal .iframe {
+#videoModal .iframe {
 	width: 100%;
 	height: 500px;
 }
 
-#basicModal .footer-content {
+#videoModal .footer-content {
 	width: 100%;
 	height: 80px;
 	margin: 0px;
@@ -597,53 +597,53 @@ button:focus {outline:0 !important;}
 	color: rgb(163,167,179);
 }
 
-#basicModal #ipViewHN {
+#videoModal #ipViewHN {
 	margin-left: 10px;		
 }
-#basicModal #ipViewHN .slider-selection {
+#videoModal #ipViewHN .slider-selection {
 	background: rgb(253,153,126);
 }
-#basicModal #ipViewHN .slider-handle {
+#videoModal #ipViewHN .slider-handle {
 	background: rgb(230,234,248);
 }
 
-#basicModal #ipViewCN {
+#videoModal #ipViewCN {
 	margin-left: 10px;
 }
-#basicModal #ipViewCN .slider-selection {
+#videoModal #ipViewCN .slider-selection {
 	background: rgb(253,153,126);
 }
-#basicModal #ipViewCN .slider-handle {
+#videoModal #ipViewCN .slider-handle {
 	background: rgb(230,234,248);
 }
 
-#basicModal .footer-content .hotness {
+#videoModal .footer-content .hotness {
 	margin-top: 10px;
 }
 
-#basicModal .footer-content .cheesiness {
+#videoModal .footer-content .cheesiness {
 	margin-top: 10px;
 }
 
-#basicModal .footer-content .buttonBox {
+#videoModal .footer-content .buttonBox {
 	display: inline-block;	
 	float: right;
 	margin-right: 20px;
 	margin-top: 10px;
 }
 
-#basicModal .footer-content .buttonBox button {
+#videoModal .footer-content .buttonBox button {
 	width: 120px;
 	height: 50px;
 	color: rgb(255,255,255);
 }
 
-#basicModal .footer-content .buttonBox .btnLike {
+#videoModal .footer-content .buttonBox .btnLike {
 	display: inline-block;	
 	cursor: pointer;
 }
 
-#basicModal .footer-content .buttonBox .btnAdd {
+#videoModal .footer-content .buttonBox .btnAdd {
 	display: inline-block;	
 	cursor: pointer;
 }
