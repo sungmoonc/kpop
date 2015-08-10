@@ -202,13 +202,6 @@ $(document).on('page:change', function () {
     	modal.find(".downvotes").find(".value").html($.number(dataWrapper.attr("data-downvotes")));
     	modal.find(".approval").html(dataWrapper.attr("data-approval") + "% Approval");
 
-
-    	modal.find(".btnLike").on('click', function(e){    		
-    		var objData = {id: $(this).attr("data-video-id")};
-    		// console.log("d:"+objData);
-			// processLike(objData);
-    	});
-
     	$("#ipViewHN").slider({
     		tooltip: 'always',
     		value: parseInt(dataWrapper.attr("data-hotness")),
@@ -222,8 +215,7 @@ $(document).on('page:change', function () {
   	});
 
 
-	$(".cards").on('click', ".btnLike", function(e) {		
-				
+	$(".cards").on('click', ".btnLike", function(e) {					
 		e.stopPropagation();				
 		
 		var objData = {id: $(this).attr("data-video-id")};
