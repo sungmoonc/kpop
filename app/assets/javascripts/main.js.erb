@@ -151,7 +151,7 @@ $(document).on('page:change', function () {
 		});
 
 	}
-	
+
 
 	//_view_menu_box
 	$(".btn-group .btnView1").click(function() {		
@@ -177,6 +177,18 @@ $(document).on('page:change', function () {
 		mode = "listview";
 		main_ajax_filters(mode);
 	});
+
+	//login modal
+	$("form#sign_in_user").bind("ajax:success", function(e, data, status, xhr) {
+		if(data.success){
+			alert('login success');
+			$("#loginModal").modal('hide');
+			$("#loginModal .btnLogin").hide();
+		} else {
+			alert('Login failure!');
+		}
+	});
+
 
 	//cards	
 	$(".cards").on('mouseover', ".hook--showmodal", function() {
@@ -214,15 +226,12 @@ $(document).on('page:change', function () {
 		});
   	});
 
-
 	$(".cards").on('click', ".btnLike", function(e) {					
 		e.stopPropagation();				
 		
 		var objData = {id: $(this).attr("data-video-id")};
 		processLike(objData);
 	});
-
-
 
   	$("#videoModal").on('hidden.bs.modal', function () {
     	$(".main-video .iframe").attr('src', '');    	
