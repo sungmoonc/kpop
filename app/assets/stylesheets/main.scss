@@ -287,9 +287,11 @@ button:focus {outline:0 !important;}
 }
 
 .top_bar .dropdownP .login-widget {
+	display: inline-block;
 	font-size: 16px;
 	color: rgb(51,58,77);		
 	margin-right: 15px;
+	cursor: pointer;
 }
 
 .top_bar .dropdownP .login-widget:hover {

@@ -18,6 +18,7 @@
     <%= render 'video_dialog' %>
 
     <%= render 'login_dialog' %>
+    <%= render 'signup_dialog' %>
 
     <div id="main-content">
       <div class="top_bar">        
@@ -39,9 +40,8 @@
               <li role="presentation"><a role="menuitem" value="youtube_views" tabindex="-1" href="#">Profile</a></li>            
             </ul>           -->
           <% else %>                      
-            <div class="login-widget" data-toggle="modal" data-target="#loginModal">Sign Test</div>
-            <%= link_to "Sign in", new_user_session_path, :class => 'login-widget'  %>
-            <%= link_to "Sign up", new_user_registration_path, :class => 'login-widget'  %>             
+            <div class="login-widget" data-toggle="modal" data-target="#loginModal">Sign in</div>          
+            <div class="login-widget" data-toggle="modal" data-target="#signupModal">Sign up</div>                  
           <% end %>                         
           </div>           
       </div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do  
 
-  devise_for :users, :controllers => {registrations: 'registrations', sessions: 'sessions'}
+  devise_for :users  #, :controllers => {registrations: 'registrations', sessions: 'sessions'}
   resources :videos
   resources :collections
   # The priority is based upon order of creation: first created -> highest priority.
