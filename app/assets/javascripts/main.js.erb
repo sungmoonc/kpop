@@ -178,16 +178,18 @@ $(document).on('page:change', function () {
 		main_ajax_filters(mode);
 	});
 
-	//login modal
-	// $(document).on("ajax:success", "form#sign_in_user", function(e, data, status, xhr) {		
-	// 	if(data.success){
-	// 		alert('login success');
-	// 		$("#loginModal").modal('hide');
-	// 		$("#loginModal .btnLogin").hide();
-	// 	} else {
-	// 		alert('Login failure!');
-	// 	}
-	// });
+	//login modal	
+
+	$(document).on("ajax:success", "form#sign_in_user", function(e, data, status, xhr) {		
+		console.log(data);
+		if(data.success){
+			alert('login success');
+			$("#loginModal").modal('hide');
+			$("#loginModal .btnLogin").hide();
+		} else {
+			alert('Login failure!');
+		}
+	});
 	
 
 
