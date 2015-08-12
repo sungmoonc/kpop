@@ -179,7 +179,6 @@ $(document).on('page:change', function () {
 	});
 
 	//login modal	
-
 	$(document).on("ajax:success", "form#sign_in_user", function(e, data, status, xhr) {		
 		console.log(data);
 		if(data.success){
@@ -188,6 +187,17 @@ $(document).on('page:change', function () {
 			$("#loginModal .btnLogin").hide();
 		} else {
 			alert('Login failure!');
+		}
+	});
+
+	$(document).on("ajax:success", "form#sign_up_user", function(e, data, status, xhr) {		
+		console.log(data);
+		if(data.success){
+			alert('signup success');
+			$("#signupModal").modal('hide');
+			$("#signupModal .btnSignup").hide();
+		} else {
+			alert('signup failure!');
 		}
 	});
 	
