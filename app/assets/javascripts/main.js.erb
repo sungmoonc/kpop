@@ -1,3 +1,21 @@
+function login_ajax(email, password, remember_me) {
+	$.ajax({ url: '/users/sign_in',
+	  type: 'POST',
+	  beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	  data: {
+	  	"user": {
+	        "email": email,
+	        "password": password,
+	        "remember_me": remember_me
+	    }
+	  },
+	  success: function(response) {
+	    console.log(response);
+	  }
+	});
+}
+
+
 function main_ajax_filters(mode) { 
 	var source = $("#video_card_template").html();  
 	
@@ -179,27 +197,37 @@ $(document).on('page:change', function () {
 	});
 
 	//login modal	
-	$(document).on("ajax:success", "form#sign_in_user", function(e, data, status, xhr) {		
-		console.log(data);
-		if(data.success){
-			alert('login success');
-			$("#loginModal").modal('hide');
-			$("#loginModal .btnLogin").hide();
-		} else {
-			alert('Login failure!');
+	$("#btnLogin").click(function() {		
+		if($("#ipEmail").val().length>0 && $("#ipPassword").val().length>0){
+			var remember = 0;
+			if($("#cbRemember").is(":checked")==true){
+				remember = 1;
+			}
+			login_ajax($("#ipEmail").val(), $("#ipPassword").val(), remember);
 		}
 	});
 
-	$(document).on("ajax:success", "form#sign_up_user", function(e, data, status, xhr) {		
-		console.log(data);
-		if(data.success){
-			alert('signup success');
-			$("#signupModal").modal('hide');
-			$("#signupModal .btnSignup").hide();
-		} else {
-			alert('signup failure!');
-		}
-	});
+	// $(document).on("ajax:success", "form#sign_in_user", function(e, data, status, xhr) {		
+	// 	console.log(data);
+	// 	if(data.success){
+	// 		alert('login success');
+	// 		$("#loginModal").modal('hide');
+	// 		$("#loginModal .btnLogin").hide();
+	// 	} else {
+	// 		alert('Login failure!');
+	// 	}
+	// });
+
+	// $(document).on("ajax:success", "form#sign_up_user", function(e, data, status, xhr) {		
+	// 	console.log(data);
+	// 	if(data.success){
+	// 		alert('signup success');
+	// 		$("#signupModal").modal('hide');
+	// 		$("#signupModal .btnSignup").hide();
+	// 	} else {
+	// 		alert('signup failure!');
+	// 	}
+	// });
 	
 
 
