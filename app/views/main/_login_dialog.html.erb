@@ -3,8 +3,10 @@
       <div class="modal-content">
         <div class="modal-body container-fluid">
 
-
-        <h2>Log in</h2>
+        <div class="row">
+          <h2>Log in</h2>
+          <%= image_tag "main/video_player/close.png", :class => "close", :data => {:dismiss=>"modal"} %>
+        </div>
 
         <!--
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:id => "sign_in_user"}, :remote => :true, :format => :json) do |f| %> 
@@ -32,7 +34,8 @@
 
         <!--
         <% end %>
-        -->        
+        --> 
+        <%= render "users/shared/links" %>       
       </div>
     </div>
   </div>
