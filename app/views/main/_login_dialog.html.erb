@@ -32,22 +32,19 @@
           </div>
       <% end %>
     -->
-               
-      
-        <div class="field">
-          <div class="title">Email</div>            
-          <input id="ipEmail" type="text" class="form-control" autofocus> 
+                 
+        <div class="field">          
+          <input id="ipEmail" type="text" placeholder="email" class="form-control" autofocus> 
         </div>
 
-        <div class="field">
-          <div class="title">Password</div>            
-          <input id="ipPassword" type="password" class="form-control">            
+        <div class="field">                    
+          <input id="ipPassword" type="password" placeholder="password" class="form-control">            
         </div>
 
         <% if devise_mapping.rememberable? -%>
           <div class="field">              
             <input id="cbRemember" type="checkbox" value="0">
-            <span>Remember me</span>              
+            <span class="spRemember">Remember me</span>              
           </div>
         <% end -%>
 

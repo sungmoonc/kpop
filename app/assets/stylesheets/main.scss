@@ -9,16 +9,34 @@
 
 button:focus {outline:0 !important;}
 
-
 .dialog-title {
-	font-size: 18px;
+	font-size: 36px;
 	font-weight: bold;
+	color: rgb(101, 107, 124);
 	display: inline-block;
-	margin-left: 15px;
+	margin-left: 30px;
+}
+
+#loginModal .modal-dialog {
+	width: 584px;
 }
 
 #loginModal .close {
-	margin-right: 10px;
+	margin-right: 20px;
+}
+
+#loginModal .spRemember {
+	font-size: 20px;
+	color: rgb(163,167,179);
+}
+
+#loginModal .links {
+	color: rgb(163,167,179);
+}
+
+#loginModal .links a{
+	font-size: 24px;
+	color: rgb(101,107,124);	
 }
 
 #signupModal .close {
