@@ -1,17 +1,29 @@
 function login_ajax(email, password, remember_me) {
-	$.ajax({ url: '/users/sign_in',
-	  type: 'POST',
-	  beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-	  data: {
-	  	"user": {
-	        "email": email,
-	        "password": password,
-	        "remember_me": remember_me
-	    }
-	  },
-	  success: function(response) {
-	    console.log(response);
+	$.ajaxSetup({
+	  headers: {
+	    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
 	  }
+	});
+	
+	$.ajax({ 		
+		url: '/users/sign_in',		
+	  	type: 'POST',	  
+	  	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},	  		  	
+		  data: {
+		  	"user": {
+		        "email": email,
+		        "password": password,
+		        "remember_me": remember_me
+		    }
+		  },
+		  success: function(response) {
+		    console.log(response);
+		    alert("s:"+response);
+		  },
+		  error: function(resp){
+		  	var resp_json = $.parseJSON(resp.responseText);
+		  	alert(resp_json);
+		  }
 	});
 }
 
@@ -203,7 +215,7 @@ $(document).on('page:change', function () {
 			if($("#cbRemember").is(":checked")==true){
 				remember = 1;
 			}
-			login_ajax($("#ipEmail").val(), $("#ipPassword").val(), remember);
+			login_ajax($("#ipEmail").val(), $("#ipPassword").val(), remember);			
 		}
 	});
 
@@ -218,16 +230,16 @@ $(document).on('page:change', function () {
 	// 	}
 	// });
 
-	// $(document).on("ajax:success", "form#sign_up_user", function(e, data, status, xhr) {		
-	// 	console.log(data);
-	// 	if(data.success){
-	// 		alert('signup success');
-	// 		$("#signupModal").modal('hide');
-	// 		$("#signupModal .btnSignup").hide();
-	// 	} else {
-	// 		alert('signup failure!');
-	// 	}
-	// });
+	$(document).on("ajax:success", "form#sign_up_user", function(e, data, status, xhr) {		
+		console.log(data);
+		if(data.success){
+			alert('signup success');
+			$("#signupModal").modal('hide');
+			$("#signupModal .btnSignup").hide();
+		} else {
+			alert('signup failure!');
+		}
+	});
 	
 
 

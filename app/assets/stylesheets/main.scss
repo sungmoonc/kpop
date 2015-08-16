@@ -9,6 +9,22 @@
 
 button:focus {outline:0 !important;}
 
+
+.dialog-title {
+	font-size: 18px;
+	font-weight: bold;
+	display: inline-block;
+	margin-left: 15px;
+}
+
+#loginModal .close {
+	margin-right: 10px;
+}
+
+#signupModal .close {
+	margin-right: 10px;
+}
+
 #main-container {
 	font-family: 'montserratregular';
 	background: rgb(48,64,79);	

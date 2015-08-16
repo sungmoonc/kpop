@@ -3,7 +3,10 @@
       <div class="modal-content">
         <div class="modal-body container-fluid">
 
-        	<h2>Sign up</h2>
+        	<div class="row">
+	          <div class="dialog-title">Sign up</div>
+	          <%= image_tag "login/close.png", :class => "close", :data => {:dismiss=>"modal"} %>
+	        </div>        	
 
 			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html=>{:id => "sign_up_user"}, :format => :json, :remote => true) do |f| %>
 			  <%= devise_error_messages! %>
@@ -31,7 +34,11 @@
 			  </div>
 			<% end %>
 
-			<%= render "users/shared/links" %>
+			<div class="links">
+				<%- if controller_name != 'sessions' %>
+				  <%= link_to "Log in", new_session_path(resource_name) %>
+				<% end -%>
+			</div>
 		</div>
     </div>
   </div>
