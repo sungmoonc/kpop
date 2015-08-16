@@ -1,4 +1,3 @@
-class SessionsController < Devise::SessionsController  	
-    protect_from_forgery with: :null_session    
-    respond_to :json    
+class SessionsController < Devise::SessionsController  	       
+    # respond_to :json    
 end  
