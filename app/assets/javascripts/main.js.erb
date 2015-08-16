@@ -1,11 +1,5 @@
-function login_ajax(email, password, remember_me) {
-	$.ajaxSetup({
-	  headers: {
-	    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-	  }
-	});
-	
-	$.ajax({ 		
+function login_ajax(email, password, remember_me) {	
+	var request = $.ajax({ 		
 		url: '/users/sign_in',		
 	  	type: 'POST',	  
 	  	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},	  		  	
@@ -15,16 +9,18 @@ function login_ajax(email, password, remember_me) {
 		        "password": password,
 		        "remember_me": remember_me
 		    }
-		  },
-		  success: function(response) {
-		    console.log(response);
-		    alert("s:"+response);
-		  },
-		  error: function(resp){
-		  	var resp_json = $.parseJSON(resp.responseText);
-		  	alert(resp_json);
 		  }
-	});
+		});
+
+	  request.success(function(){		    
+	    alert("success");
+	  });
+
+	  request.error(function(httpObj, textStatus) {
+	  	if(httpObj.status!=200){	  	
+	  		alert("false:"+httpObj.status);
+	  	}
+	  });		  	
 }
 
 
@@ -209,6 +205,12 @@ $(document).on('page:change', function () {
 	});
 
 	//login modal	
+	$.ajaxSetup({
+	  headers: {
+	    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+	  }
+	});
+
 	$("#btnLogin").click(function() {		
 		if($("#ipEmail").val().length>0 && $("#ipPassword").val().length>0){
 			var remember = 0;
