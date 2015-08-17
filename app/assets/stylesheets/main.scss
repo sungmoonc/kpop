@@ -21,22 +21,54 @@ button:focus {outline:0 !important;}
 	width: 584px;
 }
 
+#loginModal .row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 #loginModal .close {
-	margin-right: 20px;
+	margin-top: 5px;
+	margin-right: 30px;
+}
+
+#loginModal .field {
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+#loginModal input.form-control {
+	width: 524px;
+	height: 40px;
+	font-size: 20px;
+	color: rgb(101,107,124);	
 }
 
 #loginModal .spRemember {
-	font-size: 20px;
+	font-size: 16px;
 	color: rgb(163,167,179);
+	margin-left: 10px;
+}
+
+#loginModal #btnLogin {
+	cursor: pointer;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 
 #loginModal .links {
 	color: rgb(163,167,179);
+	margin-top: 20px;
+	margin-bottom: 15px;
+	margin-left: 15px;
 }
 
 #loginModal .links a{
-	font-size: 24px;
+	font-size: 18px;
 	color: rgb(101,107,124);	
+}
+
+#loginModal .links a:hover {
+	background: #fff;
 }
 
 #signupModal .close {
