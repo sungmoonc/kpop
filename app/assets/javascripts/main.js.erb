@@ -1,3 +1,28 @@
+function signup_ajax(email, password) {
+	var request = $.ajax({
+		url: '/users/',
+		type: 'POST',
+		beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},	  		  	
+		data: {
+			"user":{
+				"email": email,
+				"password": password,
+				"password_confirmation": password
+			}			
+		}	
+	});
+
+	request.success(function(){		    
+		alert("success");
+	});
+
+	request.error(function(httpObj, textStatus) {
+	  if(httpObj.status!=200){	  	
+	  	alert("Email or password is incorrect. :"+httpObj.status);
+	  }
+	});	
+}
+
 function login_ajax(email, password, remember_me) {	
 	var request = $.ajax({ 		
 		url: '/users/sign_in',		
@@ -12,15 +37,15 @@ function login_ajax(email, password, remember_me) {
 		  }
 		});
 
-	  request.success(function(){		    
-	    	location.href="/";
-	  });
+	request.success(function(){		    
+	    location.href="/";
+	});
 
-	  request.error(function(httpObj, textStatus) {
+	request.error(function(httpObj, textStatus) {
 	  	if(httpObj.status!=200){	  	
 	  		alert("Email or password is incorrect. :"+httpObj.status);
 	  	}
-	  });		  	
+	});		  	
 }
 
 
@@ -221,16 +246,9 @@ $(document).on('page:change', function () {
 		}
 	});
 
-	// $(document).on("ajax:success", "form#sign_in_user", function(e, data, status, xhr) {		
-	// 	console.log(data);
-	// 	if(data.success){
-	// 		alert('login success');
-	// 		$("#loginModal").modal('hide');
-	// 		$("#loginModal .btnLogin").hide();
-	// 	} else {
-	// 		alert('Login failure!');
-	// 	}
-	// });
+	$("#btnSignup").click(function() {
+		
+	});
 
 	// $(document).on("ajax:success", "form#sign_up_user", function(e, data, status, xhr) {		
 	// 	console.log(data);

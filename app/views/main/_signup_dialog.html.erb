@@ -8,7 +8,8 @@
 	          <%= image_tag "login/close.png", :class => "close", :data => {:dismiss=>"modal"} %>
 	        </div>        	
 
-			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html=>{:id => "sign_up_user"}, :format => :json, :remote => true) do |f| %>
+	        <!--
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html=>{:id => "sign_up_user"}) do |f| %>
 			  <%= devise_error_messages! %>
 
 			  <div class="field">
@@ -33,6 +34,23 @@
 			    <%= f.submit "Sign up", :class => 'btnSignup'  %>
 			  </div>
 			<% end %>
+			-->
+
+			<div class="field">          
+          		<input id="ipEmail" type="text" placeholder="E-mail Address" class="form-control" autofocus> 
+        	</div>
+
+        	<div class="field">
+        		<input id="ipPassword" type="password" placeholder="Password/8 characters minimum" class="form-control">
+        	</div>           
+
+        	<div class="field">
+        		<input id="ipPasswordConfirm" type="password" placeholder="Password Confirmation" class="form-control">
+        	</div>
+
+        	<div class="actions">
+        		<div id="btnSignup"><%=image_tag "login/btnsignup.png" %></div>
+        	</div>
 
 			<div class="links">
 				<%- if controller_name != 'sessions' %>
