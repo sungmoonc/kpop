@@ -236,7 +236,7 @@ $(document).on('page:change', function () {
 	  headers: {
 	    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
 	  }
-	});
+	});	
 
 	$("#btnLogin").click(function() {		
 		if($("#loginModal #ipEmail").val().length>0 && $("#loginModal #ipPassword").val().length>0){
@@ -248,7 +248,7 @@ $(document).on('page:change', function () {
 		} else {
 			alert("Please fill in all fields.");
 		}
-	});
+	});	
 
 	$("#btnSignup").click(function() {				
 		var email = $("#signupModal #ipEmail").val();
@@ -276,6 +276,16 @@ $(document).on('page:change', function () {
 
 		signup_ajax(email, password);
 	});	
+
+	$("#loginModal #link_signup").click(function() {
+		$("#loginModal").modal('hide');
+		$("#signupModal").modal('show');
+	});
+
+	$("#signupModal #link_login").click(function() {
+		$("#signupModal").modal('hide');
+		$("#loginModal").modal('show');	
+	});
 
 
 	//cards	

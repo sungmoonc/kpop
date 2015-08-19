@@ -52,10 +52,8 @@
         		<div id="btnSignup"><%=image_tag "login/btnsignup.png" %></div>
         	</div>
 
-			<div class="links">
-				<%- if controller_name != 'sessions' %>
-				  <%= link_to "Log in", new_session_path(resource_name) %>
-				<% end -%>
+			<div class="links">				
+				<div id="link_login">Log in</div>
 			</div>
 		</div>
     </div>

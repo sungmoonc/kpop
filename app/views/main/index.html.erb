@@ -32,8 +32,7 @@
           </div>
 
           <div class="dropdownP col-md-2">   
-          <% if user_signed_in? %>                   
-            <%= current_user %>
+          <% if user_signed_in? %>                               
             <%= image_tag("main/profile_none.png", :class => "imgProfile") %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'login-widget'  %>            
             <!-- <button class="btnProfile btn dropdown-toggle" type="button" id="btnSort" data-toggle="dropdown" aria-expanded="true"><span class="selection">Profile</span> <span class="caret"></span></button>
