@@ -457,13 +457,11 @@ input.form-control {
 }
 
 .header_panel .btn-group img {
+	width: 22px;
+	height: 22px;
 	margin-top: 14px;
 	margin-left: 15px;
 	cursor: pointer;
-}
-
-.header_panel .btn-group img .focus {
-	
 }
 
 
@@ -479,8 +477,8 @@ input.form-control {
 .box {
 	display: inline-block;
 	margin: 10px;
-	width: 490px;
-	height: 320px;	
+	width: 350px;
+	height: 230px;	
 	border: 1px solid rgba(230,230,230,1);
 	border-radius: 5px;
 	box-shadow: 0px 3px 0px 0px rgba(220,220,220,1);	
@@ -496,7 +494,7 @@ input.form-control {
 
 .box img {
 	width: 100%;
-	height: 270px;	
+	height: 190px;	
 }
 
 .box .titleKr {
@@ -514,17 +512,17 @@ input.form-control {
 	position: absolute;
 	top: 0;
 	width: 100%;
-	height: 270px;
+	height: 190px;
 	background: rgba(51,58,77,0.7);
 	border-radius: 5px;
 }
 
 .box .overlay .song_title {
 	position: absolute;	
-	top: 65px;
-	left: 17px;
+	top: 40px;
+	left: 14px;
 	padding: 10px;
-	font-size: 22px;
+	font-size: 20px;
 	color: rgba(255,255,255,1);			
 	white-space: normal;
 }
@@ -533,10 +531,10 @@ input.form-control {
 	position: absolute;
 	left: 15px;
 	bottom: 2px;
-	font-size: 18px;	
+	font-size: 15px;	
 	color: rgb(255,255,255);
 	width: 100%;
-	height: 60px;
+	height: 43px;
 	background: rgba(51,58,77, 0.9);
 }
 
@@ -547,8 +545,8 @@ input.form-control {
 
 .box .overlay .buttons div {
 	display: inline-block;
-	width: 143px;
-	line-height: 60px;
+	width: 30%;
+	line-height: 43px;
 }
 
 
@@ -562,12 +560,12 @@ input.form-control {
 }
 
 .vlist .box {	
-	height: 270px;
+	height: 190px;
 }
 
 .vlist .box .overlay {
-	width: 490px;
-	height: 280px;
+	width: 350px;
+	height: 210px;
 }
 
 .vlist .list-info {
@@ -582,7 +580,7 @@ input.form-control {
 }
 
 .vlist .list-info .titleD {	
-	margin-top: 36px;
+	margin-top: 13px;
 	font-size: 18px;
 	font-weight: bold;
 	color: rgb(101,107,124);
@@ -600,7 +598,7 @@ input.form-control {
 }
 
 .vlist .list-info .detailinfos {
-	margin-top: 60px;
+	margin-top: 30px;
 	margin-left: 15px;
 	margin-bottom: 10px;
 }
