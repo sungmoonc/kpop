@@ -351,8 +351,8 @@ input.form-control {
 
 .top_bar .searchBox .glyphicon-search {
 	position:absolute;
-	top: 10px;
-	left: 15px;
+	top: 13px;
+	left: 12px;
 	z-index: 10;
 }
 
@@ -495,6 +495,7 @@ input.form-control {
 .box img {
 	width: 100%;
 	height: 190px;	
+	border-radius: 5px;
 }
 
 .box .titleKr {
