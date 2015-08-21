@@ -14,11 +14,13 @@ function signup_ajax(email, password) {
 
 	request.success(function(){		    
 		alert("Sign Up Successful");
+		$("#signupModal").modal('hide');
+		$("#loginModal").modal('show');	
 	});
 
 	request.error(function(httpObj, textStatus) {
 	  if(httpObj.status!=200){	  	
-	  	alert("Email or password is incorrect. :"+httpObj.status);
+	  	alert("Email or password is incorrect.");
 	  }
 	});	
 }
@@ -43,7 +45,7 @@ function login_ajax(email, password, remember_me) {
 
 	request.error(function(httpObj, textStatus) {
 	  	if(httpObj.status!=200){	  	
-	  		alert("Email or password is incorrect. :"+httpObj.status);
+	  		alert("Email or password is incorrect.");
 	  	}
 	});		  	
 }
