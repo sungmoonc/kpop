@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/main/index' => 'main#index'
   get '/main/mypage' => 'main#mypage'
+  get '/main/mylikes' => 'main#mylikes'
 
   post '/videos/filters' => 'videos#filters'
 

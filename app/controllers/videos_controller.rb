@@ -14,7 +14,7 @@ class VideosController < ApplicationController
       )
     end
 
-  end
+  end  
 
 
   # GET /videos/1
@@ -96,7 +96,7 @@ class VideosController < ApplicationController
       format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
+  end  
 
   def create_likes
     if signed_in?

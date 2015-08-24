@@ -11,5 +11,17 @@ class MainController < ApplicationController
 
   def show
   end
+
+  def mylikes
+    if signed_in?
+      likes = Like
+      .paginate(page: params[:page], per_page: 10)
+      .where("user_id = '#{current_user.id}'")
+     
+      render :json => likes    
+    else
+      render :json => {:errors => "Login to view this video"}
+    end
+  end
   
 end
