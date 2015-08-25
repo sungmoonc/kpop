@@ -17,8 +17,16 @@ class MainController < ApplicationController
       likes = Like
       .paginate(page: params[:page], per_page: 10)
       .where("user_id = '#{current_user.id}'")
-     
-      render :json => likes    
+      
+      @videos = Array.new
+      likes.each do |like|
+        @videos.push(like.video)
+      end
+      @counts = @videos.count
+
+      @json = {:videos => @videos, :count => @counts}.to_json    
+
+      render :json => @json   
     else
       render :json => {:errors => "Login to view this video"}
     end
