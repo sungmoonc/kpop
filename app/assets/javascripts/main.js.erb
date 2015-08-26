@@ -50,6 +50,36 @@ function login_ajax(email, password, remember_me) {
 	});		  	
 }
 
+function render_cards(mode) {
+	var cards = $("#cards");
+
+    	if(mode==="cardview" || mode==="cardview2"){
+    		cards.imagesLoaded(function() {
+				cards.masonry({
+					itemSelector: '.box',
+					isFitWidth: true			
+				});		
+			});
+    	} else {
+    		cards.imagesLoaded(function() {
+				cards.masonry({
+					itemSelector: '.vlist',
+					isFitWidth: true
+				});
+			});			
+    	}	    	
+    	
+    	if(mode==="cardview"){
+    		$(".cards .box").width("350px");    		
+			$("#cards").masonry('reload');	
+    	} else if(mode==="cardview2"){
+    		$(".cards .box").width("210px");    		
+    		$("#cards").masonry('reload');	
+    	} else {
+    		$("#cards").masonry('reload');	
+    		$(".numvalue").number(true);			
+    	}    	
+}
 
 function main_ajax_filters(mode) { 
 	var source = $("#video_card_template").html();  
@@ -76,39 +106,11 @@ function main_ajax_filters(mode) {
       		$(".thumbnails").empty();      	  
       		$("#sidebar").css("height", 3650);    			   		      		
     	}
-    	
-    	var cards = $("#cards");
-
-    	if(mode==="cardview" || mode==="cardview2"){
-    		cards.imagesLoaded(function() {
-				cards.masonry({
-					itemSelector: '.box',
-					isFitWidth: true			
-				});		
-			});
-    	} else {
-    		cards.imagesLoaded(function() {
-				cards.masonry({
-					itemSelector: '.vlist',
-					isFitWidth: true
-				});
-			});			
-    	}	
 
     	var newThumbs = templatingFunction(context);
     	$(".thumbnails").append(newThumbs);        	
-
-    	// $(".btn-group .btnView1").click();
-    	if(mode==="cardview"){
-    		$(".cards .box").width("350px");    		
-			$("#cards").masonry('reload');	
-    	} else if(mode==="cardview2"){
-    		$(".cards .box").width("210px");    		
-    		$("#cards").masonry('reload');	
-    	} else {
-    		$("#cards").masonry('reload');	
-    		$(".numvalue").number(true);			
-    	}    	
+    	
+    	render_cards(mode);
   	});
 }
 
@@ -122,7 +124,7 @@ function mypage_ajax_likes(mode) {
   	var templatingFunction = Handlebars.compile(source);
   	var context = {};  
 
-  	var form = $("form[name=filters]");
+  	var form = $("form[name=likeform]");
 
   	$.ajax({
     	url: '/main/mylikes',
@@ -137,39 +139,11 @@ function mypage_ajax_likes(mode) {
       		$(".thumbnails").empty();      	  
       		$("#sidebar").css("height", 3650);    			   		      		
     	}
-    	
-    	var cards = $("#cards");
-
-    	if(mode==="cardview" || mode==="cardview2"){
-    		cards.imagesLoaded(function() {
-				cards.masonry({
-					itemSelector: '.box',
-					isFitWidth: true			
-				});		
-			});
-    	} else {
-    		cards.imagesLoaded(function() {
-				cards.masonry({
-					itemSelector: '.vlist',
-					isFitWidth: true
-				});
-			});			
-    	}	
 
     	var newThumbs = templatingFunction(context);
     	$(".thumbnails").append(newThumbs);        	
-
-    	// $(".btn-group .btnView1").click();
-    	if(mode==="cardview"){
-    		$(".cards .box").width("350px");    		
-			$("#cards").masonry('reload');	
-    	} else if(mode==="cardview2"){
-    		$(".cards .box").width("210px");    		
-    		$("#cards").masonry('reload');	
-    	} else {
-    		$("#cards").masonry('reload');	
-    		$(".numvalue").number(true);			
-    	}    	
+    	
+    	render_cards(mode);
   	});
 }
 
@@ -451,4 +425,5 @@ $(document).on('page:change', function () {
 
   	// Initial load
   	main_ajax_filters(mode);
+  	// mypage_ajax_likes(mode);
 });
