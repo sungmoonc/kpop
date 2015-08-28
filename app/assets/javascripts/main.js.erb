@@ -1,3 +1,11 @@
+function redirect_ajax(mode){
+	if(window.location.pathname=="/"){
+  		main_ajax_filters(mode);
+  	} else {
+  		mypage_ajax_likes(mode);
+  	}	  	  	
+}
+
 function signup_ajax(email, password) {
 	var request = $.ajax({
 		url: '/users/',
@@ -247,7 +255,8 @@ $(document).on('page:change', function () {
 
 		mode = "cardview";
 		$("#page").val(1);
-		main_ajax_filters(mode);
+		
+		redirect_ajax(mode);
 	});
 
 	$(".btn-group .btnView2").click(function() {		
@@ -256,7 +265,8 @@ $(document).on('page:change', function () {
 
 		mode = "cardview2";
 		$("#page").val(1);
-		main_ajax_filters(mode);
+		
+		redirect_ajax(mode);
 	});
 
 	$(".btn-group .btnView3").click(function() {
@@ -265,7 +275,8 @@ $(document).on('page:change', function () {
 
 		mode = "listview";
 		$("#page").val(1);
-		main_ajax_filters(mode);
+		
+		redirect_ajax(mode);
 	});
 
 	//login modal	
@@ -403,11 +414,11 @@ $(document).on('page:change', function () {
 		$("#arMax").val(arrAr[1]);
 
     	form.find("#page").val(1);
-    	main_ajax_filters(mode);
+    	redirect_ajax(mode);
   	});
   	// form.on('keyup', function () {
    //  	form.find("#page").val(1);
-   //  	main_ajax_filters();
+   //  	redirect_ajax(mode);
   	// });
 
   	// Infinite scroll
@@ -416,14 +427,14 @@ $(document).on('page:change', function () {
 	      	if ($(window).scrollTop() > $(document).height() - $(window).height() - 20)  {
 	      		console.log("infinite-scrolling");
 	        	form.find("#page").val(parseInt(form.find("#page").val()) + 1);
-	        	main_ajax_filters(mode);	        	
+	        	redirect_ajax(mode);
 	      	}
 
 	      	$("#sidebar").css("height", $(document).height());
     	});
   	}
 
-  	// Initial load
-  	main_ajax_filters(mode);
-  	// mypage_ajax_likes(mode);
+  	// Initial load  	
+  	redirect_ajax(mode);
+  	
 });
