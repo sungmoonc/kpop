@@ -4,7 +4,7 @@
   <div class="row">
     <div id="sidebar">
       <div class="top_bar">
-        <div class="titleFilter"><%= image_tag("main/kpoptv_logo.png", :class=>"logo")%> KpopTV</div>        
+        <a href="/"><div class="titleFilter"><%= image_tag("main/kpoptv_logo.png", :class=>"logo")%> KpopTV</div></a>
       </div>
 
       <% if ismypage %>
@@ -33,7 +33,7 @@
 
           <div class="dropdownP col-md-2">   
           <% if user_signed_in? %>                               
-            <%= image_tag("main/profile_none.png", :class => "imgProfile") %>
+            <%= link_to image_tag("main/profile_none.png", :class => "imgProfile"), '/main/mypage' %></a>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'login-widget'  %>            
             <!-- <button class="btnProfile btn dropdown-toggle" type="button" id="btnSort" data-toggle="dropdown" aria-expanded="true"><span class="selection">Profile</span> <span class="caret"></span></button>
             <ul id="ddProfile" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">          

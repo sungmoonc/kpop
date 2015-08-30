@@ -141,6 +141,11 @@ input.form-control {
 	color: rgb(199,203,213);
 }
 
+.menu_item a:visited {
+	font-size: 16px;
+	color: rgb(199,203,213);
+}
+
 .menu_item.drop-menu {
 	height: 60px;	
 }
@@ -326,6 +331,10 @@ input.form-control {
 	height: 60px;					
 }
 
+.top_bar a {
+	text-decoration: none !important;
+}
+
 .top_bar .logo {
 	width: 36px;
 }
@@ -372,6 +381,10 @@ input.form-control {
 	position: absolute;
 	top: 25px;
 	right: 225px;	
+}
+
+.top_bar .dropdownP a:visited {
+	background: #fff;
 }
 
 .top_bar .dropdownP .imgProfile {
