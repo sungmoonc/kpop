@@ -58,25 +58,7 @@ function login_ajax(email, password, remember_me) {
 	});		  	
 }
 
-function render_cards(mode) {
-	var cards = $("#cards");
-
-    	if(mode==="cardview" || mode==="cardview2"){
-    		cards.imagesLoaded(function() {
-				cards.masonry({
-					itemSelector: '.box',
-					isFitWidth: true			
-				});		
-			});
-    	} else {
-    		cards.imagesLoaded(function() {
-				cards.masonry({
-					itemSelector: '.vlist',
-					isFitWidth: true
-				});
-			});			
-    	}	    	
-    	
+function render_cards(mode) {		
     	if(mode==="cardview"){
     		$(".cards .box").width("350px");    		
 			$("#cards").masonry('reload');	
@@ -115,6 +97,24 @@ function main_ajax_filters(mode) {
       		$("#sidebar").css("height", 3650);    			   		      		
     	}
 
+    	var cards = $("#cards");
+
+    	if(mode==="cardview" || mode==="cardview2"){
+    		cards.imagesLoaded(function() {
+				cards.masonry({
+					itemSelector: '.box',
+					isFitWidth: true			
+				});		
+			});
+    	} else {
+    		cards.imagesLoaded(function() {
+				cards.masonry({
+					itemSelector: '.vlist',
+					isFitWidth: true
+				});
+			});			
+    	}	    
+
     	var newThumbs = templatingFunction(context);
     	$(".thumbnails").append(newThumbs);        	
     	
@@ -147,6 +147,24 @@ function mypage_ajax_likes(mode) {
       		$(".thumbnails").empty();      	  
       		$("#sidebar").css("height", 3650);    			   		      		
     	}
+
+    	var cards = $("#cards");
+
+    	if(mode==="cardview" || mode==="cardview2"){
+    		cards.imagesLoaded(function() {
+				cards.masonry({
+					itemSelector: '.box',
+					isFitWidth: true			
+				});		
+			});
+    	} else {
+    		cards.imagesLoaded(function() {
+				cards.masonry({
+					itemSelector: '.vlist',
+					isFitWidth: true
+				});
+			});			
+    	}	    
 
     	var newThumbs = templatingFunction(context);
     	$(".thumbnails").append(newThumbs);        	
