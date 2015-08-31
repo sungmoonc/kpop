@@ -9,11 +9,19 @@ class MainController < ApplicationController
       end
       )
     end
-    
+
   	render "index", :locals => { :ismypage => false }
   end  
 
   def mypage
+    @current_user_collections = if signed_in?
+      (
+      Collection.where(user_id: current_user).map do |collection|
+        [collection.name, collection.id]
+      end
+      )
+    end
+
   	render "index", :locals => { :ismypage => true }
   end
 
