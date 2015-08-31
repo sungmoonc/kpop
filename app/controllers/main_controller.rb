@@ -2,6 +2,14 @@ class MainController < ApplicationController
 	layout 'main_layout'	
 	
   def index  	
+    @current_user_collections = if signed_in?
+      (
+      Collection.where(user_id: current_user).map do |collection|
+        [collection.name, collection.id]
+      end
+      )
+    end
+    
   	render "index", :locals => { :ismypage => false }
   end  
 

@@ -397,6 +397,12 @@ $(document).on('page:change', function () {
 		processLike(objData);
 	});
 
+	$(".cards").on('click', ".btnAdd", function(e) {
+		e.stopPropagation();
+
+		$("#collectionModal").modal('show');		
+	});
+
   	$("#videoModal").on('hidden.bs.modal', function () {
     	$(".main-video .iframe").attr('src', '');    	
   	});
@@ -406,6 +412,34 @@ $(document).on('page:change', function () {
 
   		var objData = {id: $(this).attr("data-video-id")};
 		processLike(objData);
+  	});
+
+  	$("#collectionModal .add-collection").on("change", function(e){
+      var collection_id = $(this).val();
+      if (collection_id == "new"){
+        var collection_name = prompt('How would you name the new collection?');
+        $.ajax({
+          url: '/videos/add_to_new_collection',
+          type: 'POST',
+          data: {
+            "name": collection_name,
+            "video_id": $(this).parent().data()["video_id"]
+          }
+        }).fail(function(response){
+          alert("Unable to save the field:\n " + response.responseText);
+        });
+      } else {
+        $.ajax({
+          url: '/videos/add_collection',
+          type: 'POST',
+          data: {
+            "collection_id": collection_id,
+            "video_id": $(this).parent().data()["video_id"]
+          }
+        }).fail(function(response){
+          alert("Unable to save the field:\n " + response.responseText);
+        });
+      }
   	});
 
   	// Filters and sorting

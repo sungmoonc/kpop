@@ -1,0 +1,32 @@
+<div class="modal fade" id="collectionModal" tabindex="-1" role="dialog" aria-labelledby="collectionModal" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body container-fluid">
+
+        <div class="row">
+          <div class="dialog-title">Add Collection</div>
+          <%= image_tag "login/close.png", :class => "close", :data => {:dismiss=>"modal"} %>
+        </div>     
+                 
+        <div class="field">          
+          <% if signed_in? %>
+            <%= select_tag(
+                    :collection,
+                    options_for_select(
+                        [["Add to Collection", "default"]] +
+                            @current_user_collections +
+                            [["New Collection", "new"]]
+                ),
+                class: "add-collection"
+                )
+            %>
+          <% end %>          
+        </div>
+        
+        <div class="actions">
+            
+        </div>                              
+      </div>
+    </div>
+  </div>
+</div>
