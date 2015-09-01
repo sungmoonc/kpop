@@ -47,5 +47,9 @@ class MainController < ApplicationController
       render :json => {:errors => "Login to view this video"}
     end
   end
+
+  def mycollections
+
+  end
   
 end

@@ -173,6 +173,14 @@ function mypage_ajax_likes(mode) {
   	});
 }
 
+function mypage_ajax_collections() {
+	var source = $("#collection_list_template").html();
+	var templatingFunction = Handlebars.compile(source);
+  	var context = {};  
+
+  	
+}
+
 function viewMenuBtnInit() {
 	$(".btn-group .btnView1").attr({ src: "<%= asset_path('main/view_2_n.png') %>"});
 	$(".btn-group .btnView2").attr({ src: "<%= asset_path('main/view_3_n.png') %>"});
