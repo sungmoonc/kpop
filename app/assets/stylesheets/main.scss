@@ -756,3 +756,20 @@ input.form-control {
 	display: inline-block;	
 	cursor: pointer;
 }
+
+/* collection modal */
+#collectionModal #ipCreateCol {
+	display: inline-block;
+	font-size: 16px;
+	color: rgba(211,211,211, 0.3);
+}
+
+#collectionModal #btnAdd {
+	display: inline-block;
+	width: 68px;
+	height: 43px;
+	background: #656b7c;
+	color: #fff;
+}
+
+
