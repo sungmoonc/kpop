@@ -422,8 +422,9 @@ $(document).on('page:change', function () {
 		processLike(objData);
   	});
 
-  	$("#collectionModal .add-collection").on("click", "#btnAdd", function(e) {
-  		var collection_id = $(this).val();
+  	$("#collectionModal").on("click", "#btnAdd", function(e) {  		
+  		var nextVal = $(".add-collection option").length;
+
   		var collection_name = $("#ipCreateCol").val();
   		if(collection_name.length > 0){
   			$.ajax({
@@ -433,16 +434,20 @@ $(document).on('page:change', function () {
 	            "name": collection_name,
 	            "video_id": $(this).attr("data-video-id")
 	          }
-	        }).done(function() {
+	        }).done(function(response) {	        		        	
 		  		alert("success");
+		  		$(".add-collection").append($('<option>', {
+		  			value: nextVal,
+		  			text: collection_name
+		  		}));
 		  	}).fail(function(response){
 	         	alert("Unable to save the field:\n " + response.responseText);
 	        });
   		}
   	});
 
-  	$("#collectionModal .add-collection").on("click", "#btnSave", function(e) {
-  		var collection_id = $(this).val();
+  	$("#collectionModal").on("click", "#btnSave", function(e) {
+  		var collection_id = $(".add-collection").val();
 
   		 $.ajax({
 	          url: '/videos/add_collection',
@@ -453,6 +458,7 @@ $(document).on('page:change', function () {
 	          }
 	        }).done(function() {
 		  		alert("success"); 
+		  		$("#collectionModal").modal('hide');
 	        }).fail(function(response){
 	          alert("Unable to save the field:\n " + response.responseText);
 	        });
