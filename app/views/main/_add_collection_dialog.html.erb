@@ -8,21 +8,23 @@
           <%= image_tag "login/close.png", :class => "close", :data => {:dismiss=>"modal"} %>
         </div>     
 
-        <div class="field">
-          <input id="ipCreateCol" type="text" placeholder="Create a new collection" class="form-control" autofocus>
-          <button id="btnAdd" data-video-id="{{id}}">Add</button>                  
-        </div>
+        <% if signed_in? %>
+          <div class="field">
+            <input id="ipCreateCol" type="text" placeholder="Create a new collection" class="form-control" autofocus>
+            <button id="btnAdd" data-video-id="{{id}}">Add</button>                  
+          </div>
 
-        <div class="field">
-          <%= select_tag(
-              :collection, options_for_select([["Add to Collection", "default"]] + @current_user_collections), class: "add-collection form-control"
-            )
-          %>
-        </div>                         
-        
-        <div class="actions">
-            <div id="btnSave" data-video-id="{{id}}"><%=image_tag "main/btnsave.png" %></div>
-        </div>                              
+          <div class="field">
+            <%= select_tag(
+                :collection, options_for_select([["Add to Collection", "default"]] + @current_user_collections), class: "add-collection form-control"
+              )
+            %>
+          </div>                         
+          
+          <div class="actions">
+              <div id="btnSave" data-video-id="{{id}}"><%=image_tag "main/btnsave.png" %></div>
+          </div>                              
+        <% end %>
       </div>
     </div>
   </div>
