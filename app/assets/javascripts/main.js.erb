@@ -178,7 +178,7 @@ function mypage_ajax_collections() {
 	var templatingFunction = Handlebars.compile(source);
   	var context = {};  
 
-  	
+
 }
 
 function viewMenuBtnInit() {
@@ -422,33 +422,41 @@ $(document).on('page:change', function () {
 		processLike(objData);
   	});
 
-  	$("#collectionModal .add-collection").on("change", function(e){
-      var collection_id = $(this).val();
-      if (collection_id == "new"){
-        var collection_name = prompt('How would you name the new collection?');
-        $.ajax({
-          url: '/videos/add_to_new_collection',
-          type: 'POST',
-          data: {
-            "name": collection_name,
-            "video_id": $(this).parent().data()["video_id"]
-          }
-        }).fail(function(response){
-          alert("Unable to save the field:\n " + response.responseText);
-        });
-      } else {
-        $.ajax({
-          url: '/videos/add_collection',
-          type: 'POST',
-          data: {
-            "collection_id": collection_id,
-            "video_id": $(this).parent().data()["video_id"]
-          }
-        }).fail(function(response){
-          alert("Unable to save the field:\n " + response.responseText);
-        });
-      }
+  	$("#collectionModal .add-collection").on("click", "#btnAdd", function(e) {
+  		var collection_id = $(this).val();
+  		var collection_name = $("#ipCreateCol").val();
+  		if(collection_name.length > 0){
+  			$.ajax({
+	          url: '/videos/add_to_new_collection',
+	          type: 'POST',
+	          data: {
+	            "name": collection_name,
+	            "video_id": $(this).attr("data-video-id")
+	          }
+	        }).done(function() {
+		  		alert("success");
+		  	}).fail(function(response){
+	         	alert("Unable to save the field:\n " + response.responseText);
+	        });
+  		}
   	});
+
+  	$("#collectionModal .add-collection").on("click", "#btnSave", function(e) {
+  		var collection_id = $(this).val();
+
+  		 $.ajax({
+	          url: '/videos/add_collection',
+	          type: 'POST',
+	          data: {
+	            "collection_id": collection_id,
+	            "video_id": $(this).attr("data-video-id")
+	          }
+	        }).done(function() {
+		  		alert("success"); 
+	        }).fail(function(response){
+	          alert("Unable to save the field:\n " + response.responseText);
+	        });
+  	});  
 
   	// Filters and sorting
 	//apply all filters at once

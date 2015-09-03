@@ -758,10 +758,24 @@ input.form-control {
 }
 
 /* collection modal */
+#collectionModal .modal-dialog{
+	width: 412px;	
+}
+
 #collectionModal #ipCreateCol {
 	display: inline-block;
+	width: 307px;
+	height: 43px;
 	font-size: 16px;
-	color: rgba(211,211,211, 0.3);
+	margin-top: 20px;	
+}
+
+#collectionModal .add-collection {
+	width: 373px;
+	height: 43px;
+	font-size: 16px;
+	padding-left: 10px;
+	color: rgb(253,171,148);
 }
 
 #collectionModal #btnAdd {
@@ -770,6 +784,11 @@ input.form-control {
 	height: 43px;
 	background: #656b7c;
 	color: #fff;
+}
+
+#collectionModal #btnSave img {
+	width: 373px;
+	cursor: pointer;
 }
 
 
