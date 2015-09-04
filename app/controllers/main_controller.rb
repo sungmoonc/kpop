@@ -14,6 +14,10 @@ class MainController < ApplicationController
   end  
 
   def mypage
+    redirect_to action: "list_likes"
+  end
+
+  def list_likes
     @current_user_collections = if signed_in?
       (
       Collection.where(user_id: current_user).map do |collection|
@@ -22,7 +26,21 @@ class MainController < ApplicationController
       )
     end
 
-  	render "index", :locals => { :ismypage => true }
+    @ajax_path = "/main/mylikes"
+    render "index", :locals => { :ismypage => true }
+  end
+
+  def list_collections
+    @current_user_collections = if signed_in?
+      (
+      Collection.where(user_id: current_user).map do |collection|
+        [collection.name, collection.id]
+      end
+      )
+    end
+
+    @ajax_path = "/main/mycollections"
+    render "index", :locals => { :ismypage => true }
   end
 
   def show

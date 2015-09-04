@@ -1,4 +1,4 @@
-<%= form_tag("/main/mylikes", name: 'likeform') do %>
+<%= form_tag(@ajax_path, name: 'likeform') do %>
 <div id="left-mypage-menu">
 	<input id="menutype" value=1 type="hidden">
 	<input id="page" name="page" value=1 type="hidden">
@@ -25,12 +25,12 @@
 
     <div class="menu_item">
         <div class="row">
-            <a href="/main/mypage"><div class="col-md-8"><%= image_tag "mypage/like.png" %> Liked</div></a>
+            <a href="/main/list_likes"><div class="col-md-8"><%= image_tag "mypage/like.png" %> Liked</div></a>
         </div>
     </div>
     <div class="menu_item">
         <div class="row">
-            <div class="col-md-8"><%= image_tag "mypage/collection.png" %> Collection</div>
+            <a href="/main/list_collections"><div class="col-md-8"><%= image_tag "mypage/collection.png" %> Collection</div></a>
         </div>
     </div>    
     <div class="menu_item">
