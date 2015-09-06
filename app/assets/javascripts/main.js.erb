@@ -132,7 +132,7 @@ function mypage_ajax_likes(mode) {
   	var templatingFunction = Handlebars.compile(source);
   	var context = {};  
 
-  	var form = $("form[name=likeform]");
+  	var form = $("form[name=mypageform]");
 
   	$.ajax({
     	url: '/main/mylikes',
@@ -178,7 +178,17 @@ function mypage_ajax_collections() {
 	var templatingFunction = Handlebars.compile(source);
   	var context = {};  
 
+  	var form = $("form[name=mypageform]");
 
+  	$.ajax({
+    	url: '/main/mycollections',
+    	type: 'GET',
+    	data: null
+  	}).done(function (response) {
+    	$(".header_panel .numResults").html($.number(response.count) + " Collections");	
+
+    	
+    });
 }
 
 function viewMenuBtnInit() {

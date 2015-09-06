@@ -67,7 +67,19 @@ class MainController < ApplicationController
   end
 
   def mycollections
+    if signed_in?
+      collections = Collection
+      .paginate(page: params[:page], per_page: 10)
+      .where("user_id = '#{current_user.id}'")
 
+      @counts = collections.count
+
+      @json = {:collections => collections, :count => @counts}.to_json
+
+      render :json => @json
+    else
+      render :json => {:errors => "Login to view this video"}
+    end
   end
   
 end
