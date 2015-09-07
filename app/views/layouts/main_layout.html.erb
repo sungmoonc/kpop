@@ -8,11 +8,7 @@
   <%= javascript_include_tag 'application_public', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js" %>
   
-<% if current_page?(:controller => 'main', :action => 'index') %>
-  	<%= javascript_include_tag 'main' %>  
-<% elsif current_page?(:controller => 'main', :action => 'mypage') %>
-	<%= javascript_include_tag 'main' %>  
-<% end %>
+  <%= javascript_include_tag 'main' %>  
 
   <%= csrf_meta_tags %>
 </head>

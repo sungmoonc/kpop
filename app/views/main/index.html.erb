@@ -53,7 +53,9 @@
       <div class="header_panel row">
         <div class="numResults col-md-5"></div>                
         <div class="dropdown col-md-2">                
-            <button class="btnSort btn dropdown-toggle" type="button" id="btnSort" data-toggle="dropdown" aria-expanded="true"><span class="selection">SORT</span> <span class="caret"></span></button>
+            <% if !ismypage %>
+              <button class="btnSort btn dropdown-toggle" type="button" id="btnSort" data-toggle="dropdown" aria-expanded="true"><span class="selection">SORT</span> <span class="caret"></span></button>
+            <% end %>
             <ul id="ddSort" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">  
               <li role="presentation"><a role="menuitem" value="hotness" tabindex="-1" href="#">Sexy Score</a></li>
               <li role="presentation"><a role="menuitem" value="cheesiness" tabindex="-1" href="#">Cheesy Score</a></li>    

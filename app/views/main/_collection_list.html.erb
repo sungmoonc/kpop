@@ -1,11 +1,11 @@
 <div class="vlist">
-	<div>
+	<div class="hook--showmodal">
 		<div class="dataWrapper"
 			>
 		</div>
 		<div class="box panel panel-default">
 			<img src="{{thumbnail}}">					
-			<div class="overlay">
+			<div class="overlay collection">
 				View Collection >
 			</div>
 		</div>		
@@ -13,7 +13,7 @@
 	<div class="list-info">	  
       	<div class="titleD">{{name}}</div>              
       	<div class="row">        	
-          <div class="user col-md-6">By {{current_user.email}}</div>
+          <div class="user col-md-6">By <%= current_user.email %></div>
           <div class="register_date col-md-6">/ 2011-10-18</div>          
         </div>
         <div class="row">        	
