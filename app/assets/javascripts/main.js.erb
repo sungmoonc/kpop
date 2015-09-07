@@ -188,9 +188,28 @@ function mypage_ajax_collections() {
     	type: 'GET',
     	data: form.serialize()
   	}).done(function (response) {
+  		context.collections = response.collections;
+
     	$(".header_panel .numResults").html($.number(response.count) + " Collections");	
 
-    	console.log("t:"+response.count);
+    	if (form.find("#page").val() == "1") {    
+      		$(".thumbnails").empty();      	  
+      		$("#sidebar").css("height", 3650);    			   		      		
+    	}
+
+    	var cards = $("#cards");
+    	cards.imagesLoaded(function() {
+			cards.masonry({
+				itemSelector: '.vlist',
+				isFitWidth: true
+			});
+		});		
+
+    	var newThumbs = templatingFunction(context);
+    	$(".thumbnails").append(newThumbs);   
+
+    	$("#cards").masonry('reload');	
+    	$(".numvalue").number(true);			     	
     });
 }
 
