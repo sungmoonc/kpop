@@ -1,5 +1,7 @@
+<% if user_signed_in? %>
 <script id="collection_list_template" type="x-handlebars-template">
 	{{#each collections}}
 		<%= render 'collection_list' %>
 	{{/each}}	
 </script>
+<% end %>
