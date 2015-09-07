@@ -183,11 +183,11 @@ function mypage_ajax_collections() {
   	$.ajax({
     	url: '/main/mycollections',
     	type: 'GET',
-    	data: null
+    	data: form.serialize()
   	}).done(function (response) {
     	$(".header_panel .numResults").html($.number(response.count) + " Collections");	
 
-    	
+    	console.log("t:"+response.count);
     });
 }
 
