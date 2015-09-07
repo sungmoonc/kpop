@@ -1,8 +1,11 @@
 function redirect_ajax(mode){
-	if(window.location.pathname=="/"){
+	var pathname = window.location.pathname;
+	if(pathname=="/"){
   		main_ajax_filters(mode);
-  	} else {
+  	} else if(pathname=="/main/list_likes"){
   		mypage_ajax_likes(mode);
+  	} else if(pathname=="/main/list_collections"){
+  		mypage_ajax_collections();
   	}	  	  	
 }
 
